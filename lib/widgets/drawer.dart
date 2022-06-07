@@ -1,6 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -43,14 +40,14 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(
+            const Divider(
               endIndent: 10,
               indent: 10,
               thickness: 1,
               color: Colors.black,
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.menu_outlined,
                 color: Colors.black,
               ),
@@ -62,7 +59,7 @@ class MyDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(
-                CupertinoIcons.creditcard,
+                Icons.card_giftcard,
                 color: Colors.black,
               ),
               title: 'Payment'.text.bold.make(),

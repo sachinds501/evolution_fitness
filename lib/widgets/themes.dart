@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
-      fontFamily: GoogleFonts.montserrat().fontFamily,
+      fontFamily: GoogleFonts.openSans().fontFamily,
       cardColor: Colors.white,
       canvasColor: Colors.white,
-      backgroundColor: Colors.lightBlue[50],
+      backgroundColor: lightBluishColor,
       appBarTheme: AppBarTheme(
         color: Colors.white,
         elevation: 0.0,
@@ -34,6 +33,6 @@ class MyTheme {
 
   //Colors
   static Color creamColor = const Color(0xfff5f5f5);
-  static Color lightBluishColor = Vx.indigo500;
+  static Color lightBluishColor = const Color.fromARGB(255, 238, 250, 255);
   // static Color cyberYellowColor = const Color.fromARGB(255, 255, 213, 33);
 }
