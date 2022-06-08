@@ -28,7 +28,7 @@ class Choice {
 const List<Choice> choices = <Choice>[
   Choice(title: '0/0', caption: 'Burned', color: Colors.red),
   Choice(title: '1,191', caption: 'kCal Left', color: Colors.lightBlue),
-  Choice(title: '0/1,191', caption: 'Consumed', color: Colors.white54),
+  Choice(title: '0 /1,191', caption: 'Consumed', color: Colors.white54),
 ];
 
 class SelectCard extends StatefulWidget {
@@ -53,15 +53,15 @@ class _SelectCardState extends State<SelectCard> {
           child: Center(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  widget.choice.title.text.xl2.bold.make(),
+                  widget.choice.title.text.xl.bold.make(),
                   SizedBox(
-                    width: screenWidth * 24,
+                    width: screenWidth * 26,
                     child: LinearProgressIndicator(
                       color: widget.choice.color,
                       value: 1,
-                      minHeight: 6,
+                      minHeight: 5,
                     ),
                   ).cornerRadius(10),
                   widget.choice.caption.text.caption(context).make()

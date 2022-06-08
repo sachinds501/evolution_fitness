@@ -31,18 +31,15 @@ List<Choice2> choices2 = <Choice2>[
   Choice2(
       title: '390',
       caption: 'Carbs(g) Left',
-      icon: Image.network(
-          'https://icons.veryicon.com/png/o/food--drinks/vegetables-1/broccoli-2.png')),
+      icon: Image.asset('assets/images/broccoli-2.png')),
   Choice2(
       title: '210',
       caption: 'Protine(g) Left',
-      icon: Image.network(
-          'https://cdn-icons-png.flaticon.com/512/129/129998.png')),
+      icon: Image.asset('assets/images/eggs.png')),
   Choice2(
       title: '93.33',
       caption: 'Fats(g) Left',
-      icon: Image.network(
-          'https://icon-library.com/images/cheese-icon/cheese-icon-10.jpg')),
+      icon: Image.asset('assets/images/cheese.jpg')),
 ];
 
 class SelectCard2 extends StatefulWidget {
@@ -65,11 +62,19 @@ class _SelectCard2State extends State<SelectCard2> {
           child: Center(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  SizedBox(height: 25, width: 25, child: widget.choice2.icon),
-                  widget.choice2.title.text.xl3.bold.make(),
-                  widget.choice2.caption.text.caption(context).make()
+                  // Spacer(),
+                  SizedBox(height: 24, width: 24, child: widget.choice2.icon)
+                      .pSymmetric(v: 3),
+                  widget.choice2.title.text
+                      .fontWeight(FontWeight.w500)
+                      .xl2
+                      .make()
+                      .pSymmetric(v: 2),
+                  Expanded(
+                      child:
+                          widget.choice2.caption.text.caption(context).make())
                 ]),
           )),
     );

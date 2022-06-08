@@ -9,6 +9,7 @@ Stack cocurrentCircularProgressIndicators(Color bgcolor) {
         left: 50,
         child: CircleAvatar(
           radius: 73,
+          
           backgroundColor: Colors.white,
           child: Image.asset('assets/images/logo.jpg'),
         ),

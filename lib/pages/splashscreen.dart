@@ -16,7 +16,7 @@ class _AfterSplashState extends State<AfterSplash> {
   void initState() {
     super.initState();
     Timer(
-      const Duration(seconds: 4),
+      const Duration(seconds: 3),
       () => Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const Dashboard())),
     );
@@ -34,8 +34,8 @@ class _AfterSplashState extends State<AfterSplash> {
               width: 300,
               child: Image.asset('assets/images/logo.jpg'),
             ).centered(),
-            CircularProgressIndicator(
-              color: Theme.of(context).backgroundColor,
+            const CircularProgressIndicator(
+              color: Colors.blueAccent,
             ).centered(),
           ],
         ),
