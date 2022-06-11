@@ -1,4 +1,5 @@
 import 'package:evolution_fitness/drawer_pages/dashboard.dart';
+import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:evolution_fitness/pages/splashscreen.dart';
 import 'package:evolution_fitness/utils/routes.dart';
 import 'package:evolution_fitness/widgets/themes.dart';
@@ -14,15 +15,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-   
     return MaterialApp(
       title: 'Evolution Fitness',
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.splashscreenRoute,
+      initialRoute: MyRoutes.membershipRoute,
       routes: {
         MyRoutes.dashboardRoute: (context) => const Dashboard(),
         MyRoutes.splashscreenRoute: (context) => const AfterSplash(),
+        MyRoutes.membershipRoute: (context) => const MembershipPage(),
       },
     );
   }

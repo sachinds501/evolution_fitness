@@ -7,6 +7,7 @@ class MyTheme {
       cardColor: Colors.white,
       canvasColor: Colors.white,
       backgroundColor: lightBluishColor,
+      
       appBarTheme: AppBarTheme(
         color: Colors.white,
         elevation: 0.0,

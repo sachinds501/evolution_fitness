@@ -1,4 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:evolution_fitness/drawer_pages/dashboard.dart';
+import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -13,7 +18,7 @@ class MyDrawer extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             SizedBox(
-              height: 110,
+              height: 80,
               child: DrawerHeader(
                 padding: EdgeInsets.zero,
                 child: Center(
@@ -24,15 +29,14 @@ class MyDrawer extends StatelessWidget {
                     leading: CircleAvatar(
                       maxRadius: 28,
                       backgroundColor: Colors.transparent,
-                      child: Image.network(
-                        'https://www.shareicon.net/data/2017/02/15/878685_user_512x512.png',
+                      child: Image.asset(
+                        'assets/images/logo.jpg',
                         fit: BoxFit.fitWidth,
                       ),
                     ),
-                    title: 'Edward Mwongera'.text.size(10).extraBold.make(),
-                    subtitle: 'View Profile'
+                    title: 'Payel Patel'.text.size(10).extraBold.make(),
+                    subtitle: 'payalbchaudhari0902@gmail.com'
                         .text
-                        .size(12)
                         .bold
                         .caption(context)
                         .make(),
@@ -40,65 +44,163 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
+            "EvolutionFitness Member".text.bold.make(),
             const Divider(
-              endIndent: 10,
-              indent: 10,
               thickness: 1,
               color: Colors.black,
             ),
             ListTile(
-              leading: const Icon(
-                Icons.menu_outlined,
+              leading: const FaIcon(
+                FontAwesomeIcons.square,
                 color: Colors.black,
               ),
               title: 'DashBoard'.text.make(),
               onTap: () {
-                // Update the state of the app.
-                // Navigator.pushNamed(context, MyRoutes.viewprofileroute);
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+            ),
+            ListTile(
+              leading: const FaIcon(
+                Icons.card_membership_outlined,
+                color: Colors.black,
+              ),
+              title: 'Membership'.text.make(),
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => MembershipPage()));
               },
             ),
             ListTile(
               leading: const Icon(
-                Icons.card_giftcard,
+                Icons.play_circle_outline_outlined,
                 color: Colors.black,
               ),
-              title: 'Payment'.text.bold.make(),
+              title: 'Videos'.text.make(),
               onTap: () {
-                // Update the state of the app.
-                // Navigator.pushNamed(context, MyRoutes.paymentpageroute);
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
               },
             ),
             ListTile(
-              leading: const Icon(
-                Icons.pages_outlined,
+              leading: const FaIcon(
+                Icons.calendar_month_outlined,
                 color: Colors.black,
               ),
-              title: 'Orders'.text.bold.make(),
+              title: 'Appoitment'.text.make(),
               onTap: () {
-                // Update the state of the app.
-                // Navigator.pushNamed(context, MyRoutes.orderpageroute);
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
               },
             ),
             ListTile(
-              leading: const Icon(
-                Icons.discount_outlined,
+              leading: const FaIcon(
+                Icons.photo_library_outlined,
                 color: Colors.black,
               ),
-              title: 'Promotions'.text.bold.make(),
+              title: 'Photo Tracking'.text.make(),
               onTap: () {
-                // Update the state of the app.
-                // Navigator.pushNamed(context, MyRoutes.promcodepageroute);
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
               },
             ),
             ListTile(
-              leading: const Icon(
-                Icons.help_outline,
+              leading: const FaIcon(
+                Icons.chat_bubble_outline_outlined,
                 color: Colors.black,
               ),
-              title: 'Help'.text.bold.make(),
+              title: 'Chat'.text.make(),
               onTap: () {
-                // Update the state of the app.
-                // Navigator.pushNamed(context, MyRoutes.helppageroute);
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+            ),
+            ListTile(
+              leading: const FaIcon(
+                Icons.sports_gymnastics_outlined,
+                color: Colors.black,
+              ),
+              title: 'Gym Exercise'.text.make(),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+            ),
+            ListTile(
+              leading: const FaIcon(
+                Icons.sports_cricket_outlined,
+                color: Colors.black,
+              ),
+              title: 'Gym Classes'.text.make(),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+            ),
+            ListTile(
+              leading: const FaIcon(
+                Icons.analytics_outlined,
+                color: Colors.black,
+              ),
+              title: 'User Progress'.text.make(),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+            ),
+            ListTile(
+              leading: const FaIcon(
+                Icons.question_mark_outlined,
+                color: Colors.black,
+              ),
+              title: 'Bots'.text.make(),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+            ),
+            ListTile(
+              leading: const FaIcon(
+                Icons.book_outlined,
+                color: Colors.black,
+              ),
+              title: 'Diary'.text.make(),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+            ),
+            ListTile(
+              leading: const FaIcon(
+                Icons.settings_outlined,
+                color: Colors.black,
+              ),
+              title: 'Settings'.text.make(),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+            ),
+            ListTile(
+              leading: const FaIcon(
+                Icons.person_outline,
+                color: Colors.black,
+              ),
+              title: 'My Experts'.text.make(),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+            ),
+            ListTile(
+              leading: const FaIcon(
+                Icons.logout_outlined,
+                color: Colors.black,
+              ),
+              title: 'Logout'.text.make(),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
               },
             ),
           ],

@@ -1,7 +1,7 @@
 class MyRoutes {
   static String splashscreenRoute = "/splash";
   static String dashboardRoute = "dashboard";
-  // static String loginRoute = "/login";
+  static String membershipRoute = "membership";
   // static String signupRoute = "/signup";
   // static String materialsegmentRoute = "/segment";
   // static String homemappageroute = 'map';

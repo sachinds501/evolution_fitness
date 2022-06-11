@@ -72,9 +72,7 @@ class _SelectCard2State extends State<SelectCard2> {
                       .xl2
                       .make()
                       .pSymmetric(v: 2),
-                  Expanded(
-                      child:
-                          widget.choice2.caption.text.caption(context).make())
+                  widget.choice2.caption.text.caption(context).make()
                 ]),
           )),
     );
