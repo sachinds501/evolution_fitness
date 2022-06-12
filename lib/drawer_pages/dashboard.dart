@@ -57,7 +57,7 @@ class _DashboardState extends State<Dashboard> {
                             VxTwoColumn(
                               top: linearProgressBars(),
                               bottom: nutritientsData(),
-                            ).p16(),
+                            ),
                           ],
                         ),
                       ),

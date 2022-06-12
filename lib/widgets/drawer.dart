@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:evolution_fitness/drawer_pages/appointment.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard.dart';
 import 'package:evolution_fitness/drawer_pages/membership.dart';
+import 'package:evolution_fitness/drawer_pages/photo_tracking.dart';
+import 'package:evolution_fitness/drawer_pages/videos.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -79,7 +82,7 @@ class MyDrawer extends StatelessWidget {
               title: 'Videos'.text.make(),
               onTap: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                    .push(MaterialPageRoute(builder: (context) => Videos()));
               },
             ),
             ListTile(
@@ -89,8 +92,8 @@ class MyDrawer extends StatelessWidget {
               ),
               title: 'Appoitment'.text.make(),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Appointment()));
               },
             ),
             ListTile(
@@ -100,8 +103,8 @@ class MyDrawer extends StatelessWidget {
               ),
               title: 'Photo Tracking'.text.make(),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => PhotoTracking()));
               },
             ),
             ListTile(

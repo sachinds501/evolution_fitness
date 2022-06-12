@@ -2,9 +2,9 @@ class MyRoutes {
   static String splashscreenRoute = "/splash";
   static String dashboardRoute = "dashboard";
   static String membershipRoute = "membership";
-  // static String signupRoute = "/signup";
-  // static String materialsegmentRoute = "/segment";
-  // static String homemappageroute = 'map';
+  static String videoRoute = "video";
+  static String appointmentRoute = "appointment";
+  static String phototrackingRoute = 'photo';
   // static String panelroute = 'panel';
   // static String whattosendroute = 'sending';
   // static String viewprofileroute = 'viewprofile';
