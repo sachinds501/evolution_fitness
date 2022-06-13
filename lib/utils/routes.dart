@@ -5,13 +5,13 @@ class MyRoutes {
   static String videoRoute = "video";
   static String appointmentRoute = "appointment";
   static String phototrackingRoute = 'photo';
-  // static String panelroute = 'panel';
-  // static String whattosendroute = 'sending';
-  // static String viewprofileroute = 'viewprofile';
-  // static String editprofileroute = 'editprofile';
-  // static String helppageroute = 'help';
-  // static String paymentpageroute = 'payment';
-  // static String promcodepageroute = 'promocode';
-  // static String choosemediumroute = 'medium';
-  // static String orderpageroute = 'order';
+  static String chatsRoute = 'chats';
+  static String gymexerciseRoute = 'gym_exercise';
+  static String gymclassesRoute = 'gym_classes';
+  static String userprogressRoute = 'user_progeess';
+  static String botsRoute = 'bots';
+  static String diaryRoute = 'diary';
+  static String settingsRoute = 'settings';
+  static String expertsRoute = 'my_experts';
+  // static String orderpageRoute = 'order';
 }

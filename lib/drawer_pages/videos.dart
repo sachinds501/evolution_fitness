@@ -2,8 +2,9 @@
 
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import '../widgets/shimmer_widget.dart';
 
 class Videos extends StatefulWidget {
   const Videos({Key? key}) : super(key: key);
@@ -71,32 +72,4 @@ class _VideosState extends State<Videos> {
   }
 }
 
-class ShimmerWidget extends StatelessWidget {
-  final double width;
-  final double height;
 
-  final ShapeBorder shapeBorder;
-
-  const ShimmerWidget.rectangular(
-      {this.width = double.infinity, required this.height})
-      : shapeBorder = const RoundedRectangleBorder();
-
-  const ShimmerWidget.circular(
-      {this.width = double.infinity,
-      required this.height,
-      this.shapeBorder = const CircleBorder()});
-
-  @override
-  Widget build(BuildContext context) {
-    return Shimmer.fromColors(
-      baseColor: Colors.grey[300]!,
-      highlightColor: Colors.grey[200]!,
-      period: const Duration(seconds: 1),
-      child: Container(
-        decoration: ShapeDecoration(color: Colors.grey, shape: shapeBorder),
-        width: width,
-        height: height,
-      ),
-    );
-  }
-}

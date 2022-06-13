@@ -1,6 +1,13 @@
+import 'package:evolution_fitness/drawer_pages/bots.dart';
+import 'package:evolution_fitness/drawer_pages/chats.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard.dart';
+import 'package:evolution_fitness/drawer_pages/diary.dart';
+import 'package:evolution_fitness/drawer_pages/experts.dart';
+import 'package:evolution_fitness/drawer_pages/gym_classes.dart';
+import 'package:evolution_fitness/drawer_pages/gym_exercise.dart';
 import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking.dart';
+import 'package:evolution_fitness/drawer_pages/user_progress.dart';
 import 'package:evolution_fitness/drawer_pages/videos.dart';
 import 'package:evolution_fitness/pages/splashscreen.dart';
 import 'package:evolution_fitness/utils/routes.dart';
@@ -23,7 +30,7 @@ class MyApp extends StatelessWidget {
       title: 'Evolution Fitness',
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.phototrackingRoute,
+      initialRoute: MyRoutes.gymclassesRoute,
       routes: {
         MyRoutes.dashboardRoute: (context) => const Dashboard(),
         MyRoutes.splashscreenRoute: (context) => const AfterSplash(),
@@ -31,6 +38,13 @@ class MyApp extends StatelessWidget {
         MyRoutes.videoRoute: (context) => const Videos(),
         MyRoutes.appointmentRoute: (context) => const Appointment(),
         MyRoutes.phototrackingRoute: (context) => const PhotoTracking(),
+        MyRoutes.chatsRoute: (context) => const ChatsPage(),
+        MyRoutes.gymexerciseRoute: (context) => const GymExercise(),
+        MyRoutes.gymclassesRoute: (context) => const GymClasses(),
+        MyRoutes.botsRoute: (context) => const Bot(),
+        MyRoutes.userprogressRoute: (context) => const UserProgress(),
+        MyRoutes.diaryRoute: (context) => const Diary(),
+        MyRoutes.expertsRoute: (context) => const Experts(),
       },
     );
   }

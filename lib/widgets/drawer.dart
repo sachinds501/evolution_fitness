@@ -1,10 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:evolution_fitness/drawer_pages/Bots.dart';
 import 'package:evolution_fitness/drawer_pages/appointment.dart';
+import 'package:evolution_fitness/drawer_pages/chats.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard.dart';
+import 'package:evolution_fitness/drawer_pages/diary.dart';
+import 'package:evolution_fitness/drawer_pages/experts.dart';
+import 'package:evolution_fitness/drawer_pages/gym_classes.dart';
 import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking.dart';
+import 'package:evolution_fitness/drawer_pages/settings.dart';
+import 'package:evolution_fitness/drawer_pages/user_progress.dart';
 import 'package:evolution_fitness/drawer_pages/videos.dart';
+import 'package:evolution_fitness/pages/splashscreen.dart';
+import 'package:evolution_fitness/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -115,7 +124,7 @@ class MyDrawer extends StatelessWidget {
               title: 'Chat'.text.make(),
               onTap: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                    .push(MaterialPageRoute(builder: (context) => ChatsPage()));
               },
             ),
             ListTile(
@@ -125,8 +134,7 @@ class MyDrawer extends StatelessWidget {
               ),
               title: 'Gym Exercise'.text.make(),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                Navigator.of(context).pushNamed(MyRoutes.gymexerciseRoute);
               },
             ),
             ListTile(
@@ -136,8 +144,8 @@ class MyDrawer extends StatelessWidget {
               ),
               title: 'Gym Classes'.text.make(),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => GymClasses()));
               },
             ),
             ListTile(
@@ -147,8 +155,8 @@ class MyDrawer extends StatelessWidget {
               ),
               title: 'User Progress'.text.make(),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => UserProgress()));
               },
             ),
             ListTile(
@@ -159,7 +167,7 @@ class MyDrawer extends StatelessWidget {
               title: 'Bots'.text.make(),
               onTap: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                    .push(MaterialPageRoute(builder: (context) => Bot()));
               },
             ),
             ListTile(
@@ -170,7 +178,7 @@ class MyDrawer extends StatelessWidget {
               title: 'Diary'.text.make(),
               onTap: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                    .push(MaterialPageRoute(builder: (context) => Diary()));
               },
             ),
             ListTile(
@@ -181,7 +189,7 @@ class MyDrawer extends StatelessWidget {
               title: 'Settings'.text.make(),
               onTap: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                    .push(MaterialPageRoute(builder: (context) => Settings()));
               },
             ),
             ListTile(
@@ -192,7 +200,7 @@ class MyDrawer extends StatelessWidget {
               title: 'My Experts'.text.make(),
               onTap: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                    .push(MaterialPageRoute(builder: (context) => Experts()));
               },
             ),
             ListTile(
@@ -202,8 +210,8 @@ class MyDrawer extends StatelessWidget {
               ),
               title: 'Logout'.text.make(),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => AfterSplash()));
               },
             ),
           ],

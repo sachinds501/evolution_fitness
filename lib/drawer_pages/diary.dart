@@ -6,31 +6,31 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../widgets/shimmer_widget.dart';
 
-class MembershipPage extends StatefulWidget {
-  const MembershipPage({Key? key}) : super(key: key);
+class Diary extends StatefulWidget {
+  const Diary({Key? key}) : super(key: key);
 
   @override
-  State<MembershipPage> createState() => _MembershipPageState();
+  State<Diary> createState() => _DiaryState();
 }
 
-class _MembershipPageState extends State<MembershipPage> {
+class _DiaryState extends State<Diary> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
       appBar: AppBar(
-        title: 'Membership'.text.xl.black.bold.make(),
+        title: 'Diary'.text.xl.black.bold.make(),
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: ListView.builder(
-          itemCount: 3,
+          itemCount: 2,
           itemBuilder: (context, index) {
-            return buildMembershipShimmer();
+            return buildChatsShimmer();
           }).pOnly(top: 16, left: 16, right: 16),
     );
   }
 
-  Widget buildMembershipShimmer() {
+  Widget buildChatsShimmer() {
     // final screenHeight = (MediaQuery.of(context).size.height / 100);
     final screenWidth = (MediaQuery.of(context).size.width / 100);
     return Container(
