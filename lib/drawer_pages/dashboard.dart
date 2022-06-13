@@ -36,6 +36,10 @@ class _DashboardState extends State<Dashboard> {
             //Do whatever you want on refrsh.Usually update the date of the listview
             // Navigator.pushNamed(context, MyRoutes.splashscreenRoute);
             // ListView();
+            CocurrentCPI(
+              value: 0,
+            );
+            setState(() {});
           },
           color: Colors.white,
           backgroundColor: Colors.black,
@@ -53,7 +57,9 @@ class _DashboardState extends State<Dashboard> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            cocurrentCircularProgressIndicators(bgcolor).p16(),
+                            CocurrentCPI(
+                              value: 0,
+                            ).p16(),
                             VxTwoColumn(
                               top: linearProgressBars(),
                               bottom: nutritientsData(),
