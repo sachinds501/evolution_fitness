@@ -3,7 +3,7 @@
 import 'package:evolution_fitness/drawer_pages/Bots.dart';
 import 'package:evolution_fitness/drawer_pages/appointment.dart';
 import 'package:evolution_fitness/drawer_pages/chats.dart';
-import 'package:evolution_fitness/drawer_pages/dashboard.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/dashboard.dart';
 import 'package:evolution_fitness/drawer_pages/diary.dart';
 import 'package:evolution_fitness/drawer_pages/experts.dart';
 import 'package:evolution_fitness/drawer_pages/gym_classes.dart';
@@ -24,6 +24,7 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Colors.white,
       child: DrawerHeader(
         child: ListView(
           // Important: Remove any padding from the ListView.

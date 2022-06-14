@@ -13,5 +13,5 @@ class MyRoutes {
   static String diaryRoute = 'diary';
   static String settingsRoute = 'settings';
   static String expertsRoute = 'my_experts';
-  // static String orderpageRoute = 'order';
+  static String viewaddrecordRoute = 'var';
 }

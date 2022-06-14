@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:evolution_fitness/drawer_pages/dashboard.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -16,7 +16,7 @@ class _AfterSplashState extends State<AfterSplash> {
   void initState() {
     super.initState();
     Timer(
-      const Duration(seconds: 3),
+      const Duration(seconds: 2),
       () => Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const Dashboard())),
     );

@@ -1,6 +1,5 @@
 // ignore_for_file: use_key_in_widget_constructors
 
-
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -15,6 +14,19 @@ class PhotoTracking extends StatefulWidget {
 }
 
 class _PhotoTrackingState extends State<PhotoTracking> {
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    _isLoading = true;
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,4 +84,3 @@ class _PhotoTrackingState extends State<PhotoTracking> {
     ).pOnly(bottom: 4);
   }
 }
-

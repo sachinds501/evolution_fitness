@@ -16,7 +16,7 @@ class CocurrentCPI extends StatefulWidget {
 class _CocurrentCPIState extends State<CocurrentCPI> {
   @override
   Widget build(BuildContext context) {
-    final bgcolor = Theme.of(context).backgroundColor;
+    final bgcolor = Theme.of(context).canvasColor;
     // double value = widget.value;
 
     if (widget.value == 0) {
@@ -56,7 +56,6 @@ class _CocurrentCPIState extends State<CocurrentCPI> {
               radius: 222,
               backgroundColor: Colors.transparent,
               child: CircularProgressIndicator(
-                
                   backgroundColor: bgcolor,
                   strokeWidth: 10,
                   color: Colors.red,

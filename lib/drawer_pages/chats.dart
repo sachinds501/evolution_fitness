@@ -14,6 +14,20 @@ class ChatsPage extends StatefulWidget {
 }
 
 class _ChatsPageState extends State<ChatsPage> {
+   bool _isLoading = false;
+
+  @override
+  void initState() {
+    _isLoading = true;
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+    super.initState();
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +35,6 @@ class _ChatsPageState extends State<ChatsPage> {
       appBar: AppBar(
         title: 'Chats'.text.xl.black.bold.make(),
       ),
-      backgroundColor: Theme.of(context).backgroundColor,
       body: ListView.builder(
           itemCount: 2,
           itemBuilder: (context, index) {

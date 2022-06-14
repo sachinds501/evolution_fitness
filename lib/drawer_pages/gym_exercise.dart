@@ -15,7 +15,19 @@ class GymExercise extends StatefulWidget {
 
 class _GymExerciseState extends State<GymExercise> {
   DateTime? date;
+ bool _isLoading = false;
 
+  @override
+  void initState() {
+    _isLoading = true;
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+    super.initState();
+  }
+  
   String getText() {
     if (date == null) {
       return DateFormat('MMM dd yyyy').format(DateTime.now());
@@ -32,7 +44,6 @@ class _GymExerciseState extends State<GymExercise> {
       appBar: AppBar(
         title: 'Gym Exercise'.text.xl.black.xl.bold.make(),
       ),
-      backgroundColor: Theme.of(context).backgroundColor,
       body: Column(
         children: [
           Card(

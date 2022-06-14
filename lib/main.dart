@@ -1,6 +1,9 @@
+// ignore_for_file: use_key_in_widget_constructors, unused_field
+
 import 'package:evolution_fitness/drawer_pages/bots.dart';
 import 'package:evolution_fitness/drawer_pages/chats.dart';
-import 'package:evolution_fitness/drawer_pages/dashboard.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/dashboard.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/view_add_record.dart';
 import 'package:evolution_fitness/drawer_pages/diary.dart';
 import 'package:evolution_fitness/drawer_pages/experts.dart';
 import 'package:evolution_fitness/drawer_pages/gym_classes.dart';
@@ -20,6 +23,8 @@ void main() {
   runApp(const MyApp());
 }
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -28,9 +33,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Evolution Fitness',
+      navigatorKey: navigatorKey,
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.gymclassesRoute,
+      initialRoute: MyRoutes.membershipRoute,
       routes: {
         MyRoutes.dashboardRoute: (context) => const Dashboard(),
         MyRoutes.splashscreenRoute: (context) => const AfterSplash(),
@@ -45,6 +51,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.userprogressRoute: (context) => const UserProgress(),
         MyRoutes.diaryRoute: (context) => const Diary(),
         MyRoutes.expertsRoute: (context) => const Experts(),
+        MyRoutes.viewaddrecordRoute: (context) => const ViewAddRecord(),
       },
     );
   }

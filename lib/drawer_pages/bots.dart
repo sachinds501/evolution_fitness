@@ -4,8 +4,6 @@ import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../widgets/shimmer_widget.dart';
-
 class Bot extends StatefulWidget {
   const Bot({Key? key}) : super(key: key);
 
@@ -21,38 +19,39 @@ class _BotState extends State<Bot> {
       appBar: AppBar(
         title: 'Bots'.text.xl.black.bold.make(),
       ),
-      backgroundColor: Theme.of(context).backgroundColor,
-      body: ListView.builder(
-          itemCount: 2,
-          itemBuilder: (context, index) {
-            return buildChatsShimmer();
-          }).pOnly(top: 16, left: 16, right: 16),
+      backgroundColor: Theme.of(context).canvasColor,
+      body: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+        Container(
+          constraints: const BoxConstraints(maxHeight: 50),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  cursorColor: Colors.black,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    hintText: 'Type here...',
+                  ),
+                ).w56(context),
+              ),
+              InkWell(
+                child: Container(
+                    width: 80,
+                    height: 50,
+                    color: Colors.blue,
+                    child: "SEND".text.makeCentered()),
+                onTap: () {},
+              )
+            ],
+          ),
+        ),
+      ]),
     );
-  }
-
-  Widget buildChatsShimmer() {
-    // final screenHeight = (MediaQuery.of(context).size.height / 100);
-    final screenWidth = (MediaQuery.of(context).size.width / 100);
-    return Container(
-      color: Colors.white,
-      height: 60,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ShimmerWidget.rectangular(
-            height: 5,
-            width: screenWidth * 80,
-          ),
-          const ShimmerWidget.rectangular(
-            height: 5,
-          ),
-          ShimmerWidget.rectangular(
-            height: 5,
-            width: screenWidth * 50,
-          )
-        ],
-      ).p4(),
-    ).pOnly(bottom: 4);
   }
 }

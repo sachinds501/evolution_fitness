@@ -2,13 +2,14 @@
 
 import 'package:evolution_fitness/drawer_pages/dashboard/nutritients_data.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routine_list_view.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/viewmore/viewmore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../widgets/appbar.dart';
-import '../widgets/drawer.dart';
-import 'dashboard/cocurrent_indicators.dart';
-import 'dashboard/linear_progressbars.dart';
+import '../../widgets/appbar.dart';
+import '../../widgets/drawer.dart';
+import 'cocurrent_indicators.dart';
+import 'linear_progressbars.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -22,14 +23,13 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     // final screenHeight = (MediaQuery.of(context).size.height / 100);
     final screenWidth = (MediaQuery.of(context).size.width / 100);
-    final bgcolor = Theme.of(context).backgroundColor;
 
     return OrientationBuilder(
       builder: (BuildContext context, Orientation orientation) => Scaffold(
-        backgroundColor: bgcolor,
         appBar: appbar('Dashboard'),
         drawer: const MyDrawer(),
         body: RefreshIndicator(
+          color: Colors.black,
           displacement: 50,
           edgeOffset: 50,
           onRefresh: () async {
@@ -41,8 +41,6 @@ class _DashboardState extends State<Dashboard> {
             );
             setState(() {});
           },
-          color: Colors.white,
-          backgroundColor: Colors.black,
           child: ListView(
             children: [
               SingleChildScrollView(
@@ -51,7 +49,7 @@ class _DashboardState extends State<Dashboard> {
                     Container(
                       width: screenWidth * 100,
                       height: 600,
-                      color: Color.fromRGBO(255, 255, 255, 1),
+                      color: Colors.white,
                       child: Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,7 +67,13 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ).cornerRadius(6).p16(),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ViewMorePage(),
+                          ),
+                        );
+                      },
                       style: ButtonStyle(
                         elevation: MaterialStateProperty.all(0),
                         side: MaterialStateProperty.all(
@@ -88,7 +92,12 @@ class _DashboardState extends State<Dashboard> {
                           .make(),
                     ).wh(110, 30),
                     SizedBox().h(30),
-                    "Wedneshday, 8 June".text.bold.makeCentered(),
+                    DateFormat('EEEE, dd MMMM')
+                        .format(DateTime.now())
+                        .toString()
+                        .text
+                        .bold
+                        .makeCentered(),
                     routineListView(),
                   ],
                 ),

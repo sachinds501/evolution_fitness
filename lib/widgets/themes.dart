@@ -5,8 +5,8 @@ class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
       fontFamily: GoogleFonts.openSans().fontFamily,
       cardColor: Colors.white,
-      canvasColor: Colors.white,
-      backgroundColor: lightBluishColor,
+      canvasColor: lightBluishColor,
+      backgroundColor: Colors.white,
       appBarTheme: AppBarTheme(
         color: Colors.white,
         elevation: 0.0,

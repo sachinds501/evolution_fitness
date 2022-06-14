@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:evolution_fitness/drawer_pages/dashboard/view_add_record.dart';
+import 'package:evolution_fitness/main.dart';
+import 'package:evolution_fitness/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -16,7 +19,9 @@ ListView routineListView() {
 
 class Choice {
   const Choice(
-      {required this.elevatedButton,
+      {this.nav,
+      this.appBattitle,
+      required this.elevatedButton,
       required this.captionUnit,
       required this.title,
       required this.caption,
@@ -27,10 +32,12 @@ class Choice {
   final String? buttonTitle;
   final String captionUnit;
   final bool elevatedButton;
+  final Future? nav;
   final FaIcon icon;
+  final String? appBattitle;
 }
 
-const List<Choice> choices = <Choice>[
+List<Choice> choices = <Choice>[
   Choice(
       title: 'Weekly Avg. Sleep',
       caption: '0 hr 0 min',
@@ -41,6 +48,8 @@ const List<Choice> choices = <Choice>[
         size: 26,
       ),
       elevatedButton: true,
+      appBattitle: 'Sleep',
+      // nav: navigatorKey.currentState!.pushNamed(MyRoutes.viewaddrecordRoute),
       captionUnit: ''),
   Choice(
       title: 'Food',
@@ -52,6 +61,7 @@ const List<Choice> choices = <Choice>[
         size: 26,
       ),
       captionUnit: '/ 5,125 cal',
+      appBattitle: 'Diet',
       elevatedButton: true),
   Choice(
       title: 'Weight',
@@ -63,6 +73,7 @@ const List<Choice> choices = <Choice>[
         size: 26,
       ),
       captionUnit: '/ kg',
+      appBattitle: 'Weight Update',
       elevatedButton: true),
   Choice(
       title: 'Water',
@@ -152,7 +163,12 @@ class _SelectCardState extends State<SelectCard> {
               Spacer(),
               if (widget.choice.elevatedButton == true)
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    navigatorKey.currentState!
+                        .pushNamed(MyRoutes.viewaddrecordRoute);
+                    ViewAddRecord(appBarTitle: widget.choice.appBattitle);
+                    setState(() {});
+                  },
                   style: ButtonStyle(
                     elevation: MaterialStateProperty.all(0),
                     side: MaterialStateProperty.all(

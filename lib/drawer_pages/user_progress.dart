@@ -19,11 +19,11 @@ class _UserProgressState extends State<UserProgress> {
     return Scaffold(
       drawer: const MyDrawer(),
       appBar: AppBar(
-        title: 'Chats'.text.xl.black.bold.make(),
+        title: 'User Progress'.text.xl.black.bold.make(),
       ),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).canvasColor,
       body: ListView.builder(
-          itemCount: 2,
+          itemCount: 5,
           itemBuilder: (context, index) {
             return buildChatsShimmer();
           }).pOnly(top: 16, left: 16, right: 16),

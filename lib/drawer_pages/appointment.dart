@@ -3,7 +3,6 @@
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../widgets/shimmer_widget.dart';
 
 class Appointment extends StatefulWidget {
@@ -14,11 +13,29 @@ class Appointment extends StatefulWidget {
 }
 
 class _AppointmentState extends State<Appointment> {
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    _isLoading = true;
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        setState(
+          () {
+            _isLoading = false;
+          },
+        );
+      },
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
-      backgroundColor: Theme.of(context).backgroundColor,
+      // backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: "Appointment".text.xl.black.bold.make(),
       ),

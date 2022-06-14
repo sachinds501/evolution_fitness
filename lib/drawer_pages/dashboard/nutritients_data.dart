@@ -56,9 +56,9 @@ class _SelectCard2State extends State<SelectCard2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Card(
           elevation: 0,
-          color: Colors.white,
           child: Center(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

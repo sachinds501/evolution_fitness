@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-GridView linearProgressBars() {
+Widget linearProgressBars() {
   return GridView.count(
     scrollDirection: Axis.vertical,
     shrinkWrap: true,
@@ -47,9 +47,9 @@ class _SelectCardState extends State<SelectCard> {
     final screenWidth = (MediaQuery.of(context).size.width / 100);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Card(
           elevation: 0,
-          color: Colors.white,
           child: Center(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

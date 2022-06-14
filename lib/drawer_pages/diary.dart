@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+
 
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +14,19 @@ class Diary extends StatefulWidget {
 }
 
 class _DiaryState extends State<Diary> {
+   bool _isLoading = false;
+
+  @override
+  void initState() {
+    _isLoading = true;
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +34,7 @@ class _DiaryState extends State<Diary> {
       appBar: AppBar(
         title: 'Diary'.text.xl.black.bold.make(),
       ),
-      backgroundColor: Theme.of(context).backgroundColor,
+      // backgroundColor: Theme.of(context).canvasColor,
       body: ListView.builder(
           itemCount: 2,
           itemBuilder: (context, index) {
