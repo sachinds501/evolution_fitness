@@ -25,10 +25,10 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: Colors.white,
-      child: DrawerHeader(
-        child: ListView(
+      child: SafeArea(
+        child: Column(
           // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: 80,
@@ -57,163 +57,172 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            "EvolutionFitness Member".text.bold.make(),
+            "  EvolutionFitness Member".text.bold.make(),
             const Divider(
               thickness: 1,
               color: Colors.black,
             ),
-            ListTile(
-              leading: const FaIcon(
-                FontAwesomeIcons.square,
-                color: Colors.black,
+            Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                children: [
+                  ListTile(
+                    leading: const FaIcon(
+                      FontAwesomeIcons.square,
+                      color: Colors.black,
+                    ),
+                    title: 'DashBoard'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Dashboard()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.card_membership_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Membership'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MembershipPage()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.play_circle_outline_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Videos'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Videos()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.calendar_month_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Appoitment'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Appointment()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.photo_library_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Photo Tracking'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => PhotoTracking()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.chat_bubble_outline_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Chat'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => ChatsPage()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.sports_gymnastics_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Gym Exercise'.text.make(),
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(MyRoutes.gymexerciseRoute);
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.sports_cricket_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Gym Classes'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => GymClasses()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.analytics_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'User Progress'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => UserProgress()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.question_mark_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Bots'.text.make(),
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) => Bot()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.book_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Diary'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Diary()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.settings_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Settings'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Settings()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.person_outline,
+                      color: Colors.black,
+                    ),
+                    title: 'My Experts'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Experts()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      Icons.logout_outlined,
+                      color: Colors.black,
+                    ),
+                    title: 'Logout'.text.make(),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => AfterSplash()));
+                    },
+                  ),
+                ],
               ),
-              title: 'DashBoard'.text.make(),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.card_membership_outlined,
-                color: Colors.black,
-              ),
-              title: 'Membership'.text.make(),
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => MembershipPage()));
-              },
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.play_circle_outline_outlined,
-                color: Colors.black,
-              ),
-              title: 'Videos'.text.make(),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Videos()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.calendar_month_outlined,
-                color: Colors.black,
-              ),
-              title: 'Appoitment'.text.make(),
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Appointment()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.photo_library_outlined,
-                color: Colors.black,
-              ),
-              title: 'Photo Tracking'.text.make(),
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => PhotoTracking()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.chat_bubble_outline_outlined,
-                color: Colors.black,
-              ),
-              title: 'Chat'.text.make(),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => ChatsPage()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.sports_gymnastics_outlined,
-                color: Colors.black,
-              ),
-              title: 'Gym Exercise'.text.make(),
-              onTap: () {
-                Navigator.of(context).pushNamed(MyRoutes.gymexerciseRoute);
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.sports_cricket_outlined,
-                color: Colors.black,
-              ),
-              title: 'Gym Classes'.text.make(),
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => GymClasses()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.analytics_outlined,
-                color: Colors.black,
-              ),
-              title: 'User Progress'.text.make(),
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => UserProgress()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.question_mark_outlined,
-                color: Colors.black,
-              ),
-              title: 'Bots'.text.make(),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Bot()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.book_outlined,
-                color: Colors.black,
-              ),
-              title: 'Diary'.text.make(),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Diary()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.settings_outlined,
-                color: Colors.black,
-              ),
-              title: 'Settings'.text.make(),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Settings()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.person_outline,
-                color: Colors.black,
-              ),
-              title: 'My Experts'.text.make(),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Experts()));
-              },
-            ),
-            ListTile(
-              leading: const FaIcon(
-                Icons.logout_outlined,
-                color: Colors.black,
-              ),
-              title: 'Logout'.text.make(),
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => AfterSplash()));
-              },
             ),
           ],
         ),

@@ -6,6 +6,7 @@ import 'package:evolution_fitness/drawer_pages/dashboard/viewmore/viewmore.dart'
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
+import '../../utils/routes.dart';
 import '../../widgets/appbar.dart';
 import '../../widgets/drawer.dart';
 import 'cocurrent_indicators.dart';
@@ -34,12 +35,7 @@ class _DashboardState extends State<Dashboard> {
           edgeOffset: 50,
           onRefresh: () async {
             //Do whatever you want on refrsh.Usually update the date of the listview
-            // Navigator.pushNamed(context, MyRoutes.splashscreenRoute);
-            // ListView();
-            CocurrentCPI(
-              value: 0,
-            );
-            setState(() {});
+            Navigator.pushNamed(context, MyRoutes.dashboardRoute);
           },
           child: ListView(
             children: [
@@ -55,9 +51,7 @@ class _DashboardState extends State<Dashboard> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            CocurrentCPI(
-                              value: 0,
-                            ).p16(),
+                            CocurrentCPI().p16(),
                             VxTwoColumn(
                               top: linearProgressBars(),
                               bottom: nutritientsData(),

@@ -14,6 +14,19 @@ class UserProgress extends StatefulWidget {
 }
 
 class _UserProgressState extends State<UserProgress> {
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    _isLoading = true;
+    Future.delayed(const Duration(seconds: 1), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +35,19 @@ class _UserProgressState extends State<UserProgress> {
         title: 'User Progress'.text.xl.black.bold.make(),
       ),
       backgroundColor: Theme.of(context).canvasColor,
-      body: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return buildChatsShimmer();
-          }).pOnly(top: 16, left: 16, right: 16),
+      body: _isLoading
+          ? ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return buildChatsShimmer();
+              },
+            ).pOnly(top: 16, left: 16, right: 16)
+          : Container(
+              alignment: Alignment.centerLeft,
+              height: 50,
+              color: Colors.white,
+              child: "  Sorry, No Statastics available".text.make(),
+            ).wFull(context).cornerRadius(8).p16(),
     );
   }
 

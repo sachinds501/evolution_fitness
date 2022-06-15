@@ -16,7 +16,6 @@ import 'package:evolution_fitness/pages/splashscreen.dart';
 import 'package:evolution_fitness/utils/routes.dart';
 import 'package:evolution_fitness/widgets/themes.dart';
 import 'package:flutter/material.dart';
-
 import 'drawer_pages/appointment.dart';
 
 void main() {

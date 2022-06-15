@@ -14,7 +14,7 @@ class Experts extends StatefulWidget {
 }
 
 class _ExpertsState extends State<Experts> {
-   bool _isLoading = false;
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -22,11 +22,15 @@ class _ExpertsState extends State<Experts> {
     Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         _isLoading = false;
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('No experts available'),
+          duration: Duration(seconds: 1),
+        ));
       });
     });
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,11 +38,15 @@ class _ExpertsState extends State<Experts> {
       appBar: AppBar(
         title: 'Experts'.text.xl.black.bold.make(),
       ),
-      body: ListView.builder(
-          itemCount: 2,
-          itemBuilder: (context, index) {
-            return buildChatsShimmer();
-          }).pOnly(top: 16, left: 16, right: 16),
+      body: _isLoading
+          ? ListView.builder(
+              physics: const ScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 2,
+              itemBuilder: (context, index) {
+                return buildChatsShimmer();
+              }).pOnly(top: 16, left: 16, right: 16)
+          : null,
     );
   }
 

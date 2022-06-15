@@ -29,8 +29,6 @@ class _VideosState extends State<Videos> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = (MediaQuery.of(context).size.height / 100);
-    final screenWidth = (MediaQuery.of(context).size.width / 100);
     return Scaffold(
       drawer: const MyDrawer(),
       backgroundColor: Theme.of(context).canvasColor,

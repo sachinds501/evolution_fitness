@@ -15,7 +15,7 @@ class GymClasses extends StatefulWidget {
 }
 
 class _GymClassesState extends State<GymClasses> {
-   bool _isLoading = false;
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _GymClassesState extends State<GymClasses> {
     });
     super.initState();
   }
-  
+
   DateTime? date;
 
   String getText() {
@@ -68,19 +68,22 @@ class _GymClassesState extends State<GymClasses> {
             ),
           ).cornerRadius(5).p16().h(110),
           SizedBox(
-            height: 400,
-            child: ListView.builder(
-                itemCount: 2,
-                itemBuilder: (context, index) {
-                  return buildChatsShimmer();
-                }).pSymmetric(h: 16),
-          ),
+                  height: 400,
+                  child: _isLoading
+                      ? ListView.builder(
+                          itemCount: 2,
+                          itemBuilder: (context, index) {
+                            return buildClassesShimmer();
+                          },
+                        )
+                      : null)
+              .pSymmetric(h: 16),
         ],
       ),
     );
   }
 
-  Widget buildChatsShimmer() {
+  Widget buildClassesShimmer() {
     // final screenHeight = (MediaQuery.of(context).size.height / 100);
     final screenWidth = (MediaQuery.of(context).size.width / 100);
     return Container(

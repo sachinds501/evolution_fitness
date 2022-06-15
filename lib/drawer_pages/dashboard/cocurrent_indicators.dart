@@ -6,23 +6,28 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CocurrentCPI extends StatefulWidget {
-  CocurrentCPI({Key? key, required this.value}) : super(key: key);
-  double value;
+  const CocurrentCPI({Key? key}) : super(key: key);
 
   @override
   State<CocurrentCPI> createState() => _CocurrentCPIState();
 }
 
 class _CocurrentCPIState extends State<CocurrentCPI> {
+  double value = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      value = 0;
+    });
+    downloadData();
+  }
+
   @override
   Widget build(BuildContext context) {
     final bgcolor = Theme.of(context).canvasColor;
     // double value = widget.value;
-
-    if (widget.value == 0) {
-      downloadData();
-      setState(() {});
-    }
 
     return Center(
       child: Stack(
@@ -34,7 +39,7 @@ class _CocurrentCPIState extends State<CocurrentCPI> {
                 backgroundColor: bgcolor,
                 strokeWidth: 10,
                 color: Colors.lightBlue,
-                value: widget.value),
+                value: value),
           ),
           Positioned(
             top: 33,
@@ -91,13 +96,13 @@ class _CocurrentCPIState extends State<CocurrentCPI> {
   }
 
   void downloadData() {
-    Timer.periodic(const Duration(milliseconds: 1), (Timer timer) {
+    Timer.periodic(const Duration(microseconds: 1000), (Timer timer) {
       setState(() {
-        if (widget.value == 1) {
+        if (value == 1) {
           timer.cancel();
-          widget.value = 0;
+          value = 0;
         } else {
-          widget.value = widget.value + 0.001;
+          value = value + 0.001;
         }
       });
     });

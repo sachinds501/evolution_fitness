@@ -14,12 +14,12 @@ class ChatsPage extends StatefulWidget {
 }
 
 class _ChatsPageState extends State<ChatsPage> {
-   bool _isLoading = false;
+  bool _isLoading = false;
 
   @override
   void initState() {
     _isLoading = true;
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         _isLoading = false;
       });
@@ -27,7 +27,6 @@ class _ChatsPageState extends State<ChatsPage> {
     super.initState();
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,11 +34,27 @@ class _ChatsPageState extends State<ChatsPage> {
       appBar: AppBar(
         title: 'Chats'.text.xl.black.bold.make(),
       ),
-      body: ListView.builder(
-          itemCount: 2,
-          itemBuilder: (context, index) {
-            return buildChatsShimmer();
-          }).pOnly(top: 16, left: 16, right: 16),
+      body: _isLoading
+          ? ListView.builder(
+              itemCount: 2,
+              itemBuilder: (context, index) {
+                return buildChatsShimmer();
+              }).pOnly(top: 16, left: 16, right: 16)
+          : ListTile(
+              title: 'evolutionankleshwar'.text.make(),
+              subtitle: 'Admin'.text.make(),
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
+              leading: Container(
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black)),
+                height: 50,
+                width: 50,
+                child: Image.asset('assets/images/logo.jpg'),
+              ),
+              tileColor: Colors.white,
+            ).p16(),
     );
   }
 

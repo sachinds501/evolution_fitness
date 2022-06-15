@@ -15,7 +15,7 @@ class GymExercise extends StatefulWidget {
 
 class _GymExerciseState extends State<GymExercise> {
   DateTime? date;
- bool _isLoading = false;
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _GymExerciseState extends State<GymExercise> {
     });
     super.initState();
   }
-  
+
   String getText() {
     if (date == null) {
       return DateFormat('MMM dd yyyy').format(DateTime.now());
@@ -66,18 +66,22 @@ class _GymExerciseState extends State<GymExercise> {
             ),
           ).cornerRadius(5).p16().h(110),
           SizedBox(
-              height: 250,
-              child: ListView.builder(
-                  itemCount: 2,
-                  itemBuilder: (context, index) {
-                    return buildChatsShimmer();
-                  })).pSymmetric(h: 16),
+            height: 250,
+            child: _isLoading
+                ? ListView.builder(
+                    itemCount: 2,
+                    itemBuilder: (context, index) {
+                      return buildGymShimmer();
+                    },
+                  )
+                : null,
+          ).pSymmetric(h: 16)
         ],
       ),
     );
   }
 
-  Widget buildChatsShimmer() {
+  Widget buildGymShimmer() {
     // final screenHeight = (MediaQuery.of(context).size.height / 100);
     final screenWidth = (MediaQuery.of(context).size.width / 100);
     return Container(

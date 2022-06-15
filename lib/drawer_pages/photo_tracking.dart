@@ -19,7 +19,7 @@ class _PhotoTrackingState extends State<PhotoTracking> {
   @override
   void initState() {
     _isLoading = true;
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         _isLoading = false;
       });
@@ -31,15 +31,20 @@ class _PhotoTrackingState extends State<PhotoTracking> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
         title: "PhotoTracking".text.xl.black.bold.make(),
       ),
-      body: ListView.builder(
-          itemCount: 2,
-          itemBuilder: (context, index) {
-            return buildPhotoTrackinghimmer();
-          }).pOnly(top: 16, left: 16, right: 16),
+      body: _isLoading
+          ? ListView.builder(
+              itemCount: 2,
+              itemBuilder: (context, index) {
+                return buildPhotoTrackinghimmer();
+              }).pOnly(top: 16, left: 16, right: 16)
+          : Container(
+              color: Colors.white,
+              child: "No Recepie Available".text.make(),
+            ).wFull(context).p16(),
     );
   }
 
