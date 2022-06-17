@@ -3,11 +3,11 @@
 import 'package:evolution_fitness/drawer_pages/dashboard/nutritients_data.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routine_list_view.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/viewmore/viewmore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../utils/routes.dart';
-import '../../widgets/appbar.dart';
 import '../../widgets/drawer.dart';
 import 'cocurrent_indicators.dart';
 import 'linear_progressbars.dart';
@@ -27,7 +27,15 @@ class _DashboardState extends State<Dashboard> {
 
     return OrientationBuilder(
       builder: (BuildContext context, Orientation orientation) => Scaffold(
-        appBar: appbar('Dashboard'),
+        appBar: AppBar(title: "Dashboard".text.xl.black.bold.make(), actions: [
+          IconButton(
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed(MyRoutes.notificationsRoute);
+                  },
+                  icon: const Icon(CupertinoIcons.bell_fill))
+              .pOnly(right: 5),
+        ]),
         drawer: const MyDrawer(),
         body: RefreshIndicator(
           color: Colors.black,

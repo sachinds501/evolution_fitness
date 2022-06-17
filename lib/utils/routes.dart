@@ -14,4 +14,6 @@ class MyRoutes {
   static String settingsRoute = 'settings';
   static String expertsRoute = 'my_experts';
   static String viewaddrecordRoute = 'var';
+  static String notificationsRoute = 'notification';
+  static String userprofileRoute = 'profile';
 }

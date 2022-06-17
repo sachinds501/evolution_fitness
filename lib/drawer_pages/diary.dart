@@ -14,8 +14,8 @@ class Diary extends StatefulWidget {
 }
 
 class _DiaryState extends State<Diary> {
-   bool _isLoading = false;
-
+  bool _isLoading = false;
+  
   @override
   void initState() {
     _isLoading = true;
