@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../utils/routes.dart';
 import '../../widgets/drawer.dart';
+import '../../widgets/elevated_button.dart';
 import 'cocurrent_indicators.dart';
 import 'linear_progressbars.dart';
 
@@ -76,23 +77,9 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         );
                       },
-                      style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(0),
-                        side: MaterialStateProperty.all(
-                            BorderSide(color: Colors.black)),
-                        shape: MaterialStateProperty.all(
-                          StadiumBorder(),
-                        ),
-                      ),
-                      child: 'View More'
-                          .text
-                          .bold
-                          .maxFontSize(11)
-                          .minFontSize(5)
-                          .fontWeight(FontWeight.w600)
-                          .black
-                          .make(),
-                    ).wh(110, 30),
+                      style: myButtonStyle(),
+                      child: 'View More'.text.size(11).black.bold.make(),
+                    ),
                     SizedBox().h(30),
                     DateFormat('EEEE, dd MMMM')
                         .format(DateTime.now())

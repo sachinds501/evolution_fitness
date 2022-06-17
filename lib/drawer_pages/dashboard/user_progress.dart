@@ -4,7 +4,7 @@ import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../widgets/shimmer_widget.dart';
+import '../../widgets/shimmer_widget.dart';
 
 class UserProgress extends StatefulWidget {
   const UserProgress({Key? key}) : super(key: key);

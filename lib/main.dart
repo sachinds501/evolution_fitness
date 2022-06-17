@@ -10,8 +10,8 @@ import 'package:evolution_fitness/drawer_pages/gym_classes.dart';
 import 'package:evolution_fitness/drawer_pages/gym_exercise.dart';
 import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking.dart';
-import 'package:evolution_fitness/drawer_pages/user_profile.dart';
-import 'package:evolution_fitness/drawer_pages/user_progress.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/user_progress.dart';
+import 'package:evolution_fitness/drawer_pages/profile/user_profile.dart';
 import 'package:evolution_fitness/drawer_pages/videos/videos.dart';
 import 'package:evolution_fitness/pages/notifications.dart';
 import 'package:evolution_fitness/pages/splashscreen.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.userprofileRoute,
+      initialRoute: MyRoutes.dashboardRoute,
       routes: {
         MyRoutes.dashboardRoute: (context) => const Dashboard(),
         MyRoutes.splashscreenRoute: (context) => const AfterSplash(),

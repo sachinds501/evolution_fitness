@@ -7,6 +7,13 @@ class MyTheme {
       cardColor: Colors.white,
       canvasColor: lightBluishColor,
       backgroundColor: Colors.white,
+      textTheme: const TextTheme(
+          bodyText1: TextStyle(
+              fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
+          bodyText2: TextStyle(
+            fontSize: 14,
+            color: Colors.black,
+          )),
       appBarTheme: AppBarTheme(
         color: Colors.white,
         elevation: 0.0,
@@ -14,7 +21,7 @@ class MyTheme {
         iconTheme: const IconThemeData(color: Colors.black),
         toolbarTextStyle: const TextTheme(
           headline1: TextStyle(
-              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 20.0, fontWeight: FontWeight.w400, color: Colors.black),
           // headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
           bodyText2: TextStyle(
               fontSize: 12.0, fontFamily: 'Hind', color: Colors.black),

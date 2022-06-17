@@ -16,7 +16,7 @@ class _NotificationsState extends State<Notifications> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: "Notification".text.black.make(),
+        title: "Notification".text.xl.bold.black.make(),
       ),
       body: ListView.builder(
           itemCount: 10,
@@ -24,6 +24,7 @@ class _NotificationsState extends State<Notifications> {
                 title: "Your appointment scheduled"
                     .text
                     .overflow(TextOverflow.ellipsis)
+                    .bodyText2(context)
                     .make(),
                 subtitle: Text(DateFormat('dd MMM yyy').format(DateTime.now())),
                 tileColor: Colors.green[200],

@@ -100,7 +100,7 @@ class _VideoInfoState extends State<VideoInfo> {
                       _buildYtbView(),
 
                       SizedBox(
-                        height: 50,
+                        height: 20,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,6 +111,12 @@ class _VideoInfoState extends State<VideoInfo> {
                             height: 15,
                           ),
                           'Channel: ${_ytbPlayerController!.metadata.author}'
+                              .text
+                              .make(),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          'Duration: ${(_ytbPlayerController!.metadata.duration.inSeconds / 60).floor()} mins ${_ytbPlayerController!.metadata.duration.inSeconds % 60} seconds'
                               .text
                               .make(),
                         ],

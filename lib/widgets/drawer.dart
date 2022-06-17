@@ -10,7 +10,7 @@ import 'package:evolution_fitness/drawer_pages/gym_classes.dart';
 import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking.dart';
 import 'package:evolution_fitness/drawer_pages/settings.dart';
-import 'package:evolution_fitness/drawer_pages/user_progress.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/user_progress.dart';
 import 'package:evolution_fitness/drawer_pages/videos/videos.dart';
 import 'package:evolution_fitness/pages/splashscreen.dart';
 import 'package:evolution_fitness/utils/routes.dart';
@@ -47,8 +47,8 @@ class MyDrawer extends StatelessWidget {
                         fit: BoxFit.fitWidth,
                       ),
                     ),
-                    title: 'Payel Patel'.text.size(10).extraBold.make(),
-                    subtitle: 'payalbchaudhari0902@gmail.com'
+                    title: 'Sachin Solanki'.text.size(10).extraBold.make(),
+                    subtitle: 'codesachin501@gmail.com'
                         .text
                         .bold
                         .caption(context)
