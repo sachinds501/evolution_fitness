@@ -1,9 +1,5 @@
 // ignore_for_file: use_key_in_widget_constructors
 
-import 'dart:async';
-
-import 'package:evolution_fitness/drawer_pages/dashboard/viewmore/viewmorecontent.dart';
-import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -18,68 +14,52 @@ class ViewMorePage extends StatefulWidget {
 
 class _ViewMorePageState extends State<ViewMorePage> {
   @override
-  void initState() {
-    super.initState();
-    Timer(
-      const Duration(seconds: 1),
-      () => Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => const ViewMoreContent())),
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: 'ViewMore'.text.xl.black.bold.make(),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              color: Colors.white,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: Container(
-                      height: 70,
-                      color: Colors.grey[50],
-                      child: "Consumed\nCalories"
-                          .text
-                          .align(TextAlign.center)
-                          .xl
-                          .makeCentered(),
-                    ),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            color: Colors.white,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    height: 70,
+                    color: Colors.grey[50],
+                    child: "Consumed\nCalories"
+                        .text
+                        .align(TextAlign.center)
+                        .xl
+                        .makeCentered(),
                   ),
-                  Flexible(
-                    flex: 1,
-                    child: Container(
-                      height: 70,
-                      color: Colors.grey[50],
-                      child: "Remaining\nCalories"
-                          .text
-                          .align(TextAlign.center)
-                          .xl
-                          .makeCentered(),
-                    ),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    height: 70,
+                    color: Colors.grey[50],
+                    child: "Remaining\nCalories"
+                        .text
+                        .align(TextAlign.center)
+                        .xl
+                        .makeCentered(),
                   ),
-                ],
-              ),
-            ).wFull(context).hOneThird(context).cornerRadius(5).p16(),
-            SizedBox(
-              height: 500,
-              child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return buildViewMoreShimmer();
-                  }).pSymmetric(h: 16),
+                ),
+              ],
             ),
-          ],
-        ),
+          ).wFull(context).hOneThird(context).cornerRadius(5).p16(),
+          SizedBox(
+            height: 500,
+            child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return buildViewMoreShimmer();
+                }).pSymmetric(h: 16),
+          ),
+        ],
       ),
     );
   }

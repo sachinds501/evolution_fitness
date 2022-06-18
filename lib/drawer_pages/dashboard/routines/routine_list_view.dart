@@ -1,8 +1,12 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:evolution_fitness/drawer_pages/dashboard/view_add_record.dart';
 import 'package:evolution_fitness/main.dart';
-import 'package:evolution_fitness/utils/routes.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/blood_glucose.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/blood_pressure.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/exercise.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/food.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/sleep.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/steps.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/water.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/weight.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -10,7 +14,8 @@ import 'package:velocity_x/velocity_x.dart';
 ListView routineListView() {
   return ListView.builder(
     itemCount: choices.length,
-    itemBuilder: (context, index) => SelectCard(choice: choices[index]),
+    itemBuilder: (context, index) =>
+        SelectCard(choice: choices[index], index: index),
     // scrollDirection: Axis.vertical,
     shrinkWrap: true,
     physics: const ScrollPhysics(),
@@ -19,8 +24,7 @@ ListView routineListView() {
 
 class Choice {
   const Choice(
-      {this.nav,
-      this.appBattitle,
+      {this.appBattitle,
       required this.elevatedButton,
       required this.captionUnit,
       required this.title,
@@ -32,12 +36,11 @@ class Choice {
   final String? buttonTitle;
   final String captionUnit;
   final bool elevatedButton;
-  final Future? nav;
   final FaIcon icon;
   final String? appBattitle;
 }
 
-List<Choice> choices = <Choice>[
+List<Choice> choices = const <Choice>[
   Choice(
       title: 'Weekly Avg. Sleep',
       caption: '0 hr 0 min',
@@ -133,9 +136,10 @@ List<Choice> choices = <Choice>[
 ];
 
 class SelectCard extends StatefulWidget {
-  const SelectCard({Key? key, required this.choice}) : super(key: key);
+  const SelectCard({Key? key, required this.choice, required this.index})
+      : super(key: key);
   final Choice choice;
-
+  final int index;
   @override
   State<SelectCard> createState() => _SelectCardState();
 }
@@ -145,11 +149,10 @@ class _SelectCardState extends State<SelectCard> {
 
   @override
   Widget build(BuildContext context) {
-    // final screenWidth = (MediaQuery.of(context).size.width / 100);
+    // final screenWidth = (MediaQuery.of(context).size.width / 100)
 
-    return Card(
+    return Container(
       color: Colors.white,
-      elevation: 0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,21 +163,22 @@ class _SelectCardState extends State<SelectCard> {
             children: [
               widget.choice.icon,
               widget.choice.title.text.size(13).bold.make().pOnly(left: 10),
-              Spacer(),
+              const Spacer(),
               if (widget.choice.elevatedButton == true)
                 ElevatedButton(
                   onPressed: () {
-                    navigatorKey.currentState!
-                        .pushNamed(MyRoutes.viewaddrecordRoute);
-                    ViewAddRecord(appBarTitle: widget.choice.appBattitle);
-                    setState(() {});
+                    Future.delayed(const Duration(seconds: 1), () {
+                      setState(() {
+                        callClass();
+                      });
+                    });
                   },
                   style: ButtonStyle(
                     elevation: MaterialStateProperty.all(0),
                     side: MaterialStateProperty.all(
-                        BorderSide(color: Colors.black)),
+                        const BorderSide(color: Colors.black)),
                     shape: MaterialStateProperty.all(
-                      StadiumBorder(),
+                      const StadiumBorder(),
                     ),
                   ),
                   child: widget.choice.buttonTitle?.text.bold
@@ -195,7 +199,7 @@ class _SelectCardState extends State<SelectCard> {
 
             children: [
               widget.choice.caption.text.xl3.bold.make(),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               widget.choice.elevatedButton == true
@@ -211,6 +215,45 @@ class _SelectCardState extends State<SelectCard> {
           // widget.choice.caption.text.bold.xl3.make(),
         ],
       ).pSymmetric(h: 16, v: 12),
-    ).cornerRadius(6).pSymmetric(v: 7, h: 16).h(130);
+    ).cornerRadius(6).pSymmetric(v: 8, h: 16).h(130);
+  }
+
+  callClass() {
+    switch (widget.index) {
+      case 0:
+        navigatorKey.currentState!.push(
+            MaterialPageRoute(builder: (context) => const SleepRoutine()));
+        break;
+      case 1:
+        navigatorKey.currentState!
+            .push(MaterialPageRoute(builder: (context) => const FoodRoutine()));
+        break;
+      case 2:
+        navigatorKey.currentState!
+            .push(MaterialPageRoute(builder: (context) => const Weight()));
+        break;
+      case 3:
+        navigatorKey.currentState!.push(
+            MaterialPageRoute(builder: (context) => const WaterRoutine()));
+        break;
+      case 4:
+        navigatorKey.currentState!.push(
+            MaterialPageRoute(builder: (context) => const ExerciseRoutine()));
+        break;
+      case 5:
+        navigatorKey.currentState!
+            .push(MaterialPageRoute(builder: (context) => const Steps()));
+        break;
+      case 6:
+        navigatorKey.currentState!.push(
+            MaterialPageRoute(builder: (context) => const BloodPressure()));
+        break;
+      case 7:
+        navigatorKey.currentState!.push(
+            MaterialPageRoute(builder: (context) => const BloodGlucose()));
+        break;
+      default:
+        const Center(child: Text('Invalid input'));
+    }
   }
 }

@@ -1,15 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors
-
-import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../widgets/shimmer_widget.dart';
+import '../../../widgets/shimmer_widget.dart';
 
 class ViewAddRecord extends StatefulWidget {
-  const ViewAddRecord({Key? key, this.appBarTitle}) : super(key: key);
-  final String? appBarTitle;
+  const ViewAddRecord({Key? key}) : super(key: key);
 
   @override
   State<ViewAddRecord> createState() => _ViewAddRecordState();
@@ -18,25 +15,18 @@ class ViewAddRecord extends StatefulWidget {
 class _ViewAddRecordState extends State<ViewAddRecord> {
   @override
   Widget build(BuildContext context) {
-    final String appBarTitle = widget.appBarTitle.toString();
-    return Scaffold(
-      drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: Text(appBarTitle),
-      ),
-      body: Column(
-        children: [
-          DateFormat('EEEE, dd MMMM')
-              .format(DateTime.now())
-              .toString()
-              .text
-              .xl
-              .bold
-              .make(),
-          buildChatsShimmer(),
-        ],
-      ).pOnly(top: 10),
-    );
+    return Column(
+      children: [
+        DateFormat('EEEE, dd MMMM')
+            .format(DateTime.now())
+            .toString()
+            .text
+            .xl
+            .bold
+            .make(),
+        buildChatsShimmer()
+      ],
+    ).pOnly(top: 10);
   }
 
   Widget buildChatsShimmer() {

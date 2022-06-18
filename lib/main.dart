@@ -3,7 +3,6 @@
 import 'package:evolution_fitness/drawer_pages/bots.dart';
 import 'package:evolution_fitness/drawer_pages/chats.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/dashboard.dart';
-import 'package:evolution_fitness/drawer_pages/dashboard/view_add_record.dart';
 import 'package:evolution_fitness/drawer_pages/diary.dart';
 import 'package:evolution_fitness/drawer_pages/experts.dart';
 import 'package:evolution_fitness/drawer_pages/gym_classes.dart';
@@ -52,7 +51,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.userprogressRoute: (context) => const UserProgress(),
         MyRoutes.diaryRoute: (context) => const Diary(),
         MyRoutes.expertsRoute: (context) => const Experts(),
-        MyRoutes.viewaddrecordRoute: (context) => const ViewAddRecord(),
+        // MyRoutes.viewaddrecordRoute: (context) => const ViewAddRecord(0),
         MyRoutes.notificationsRoute: (context) => const Notifications(),
         MyRoutes.userprofileRoute: (context) => UserProfile(),
       },

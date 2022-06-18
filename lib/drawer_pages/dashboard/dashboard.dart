@@ -1,8 +1,8 @@
 // ignore_for_file: unnecessary_const, prefer_const_constructors, unrelated_type_equality_checks
 
 import 'package:evolution_fitness/drawer_pages/dashboard/nutritients_data.dart';
-import 'package:evolution_fitness/drawer_pages/dashboard/routine_list_view.dart';
-import 'package:evolution_fitness/drawer_pages/dashboard/viewmore/viewmore.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/routine_list_view.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/viewmore/viewmorecontent.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -73,7 +73,7 @@ class _DashboardState extends State<Dashboard> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => ViewMorePage(),
+                            builder: (context) => ViewMoreContent(),
                           ),
                         );
                       },
