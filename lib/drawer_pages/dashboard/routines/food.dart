@@ -29,7 +29,7 @@ class _FoodRoutineState extends State<FoodRoutine> {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
-        title: 'Diet'.text.xl.black.bold.make(),
+        title: 'Diet'.text.headline3(context).make(),
       ),
       floatingActionButton: myfloatingButton(context),
       body: _isLoading

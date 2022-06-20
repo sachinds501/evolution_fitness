@@ -47,12 +47,9 @@ class MyDrawer extends StatelessWidget {
                         fit: BoxFit.fitWidth,
                       ),
                     ),
-                    title: 'Sachin Solanki'.text.size(10).extraBold.make(),
-                    subtitle: 'codesachin501@gmail.com'
-                        .text
-                        .bold
-                        .caption(context)
-                        .make(),
+                    title: 'Sachin Solanki'.text.bodyText1(context).make(),
+                    subtitle:
+                        'codesachin501@gmail.com'.text.caption(context).make(),
                   ),
                 ),
               ),
@@ -72,7 +69,7 @@ class MyDrawer extends StatelessWidget {
                       FontAwesomeIcons.square,
                       color: Colors.black,
                     ),
-                    title: 'DashBoard'.text.make(),
+                    title: 'DashBoard'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => Dashboard()));
@@ -83,7 +80,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.card_membership_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Membership'.text.make(),
+                    title: 'Membership'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MembershipPage()));
@@ -94,7 +91,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.play_circle_outline_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Videos'.text.make(),
+                    title: 'Videos'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => Videos()));
@@ -105,7 +102,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.calendar_month_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Appoitment'.text.make(),
+                    title: 'Appoitment'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => Appointment()));
@@ -116,7 +113,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.photo_library_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Photo Tracking'.text.make(),
+                    title: 'Photo Tracking'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => PhotoTracking()));
@@ -127,7 +124,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.chat_bubble_outline_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Chat'.text.make(),
+                    title: 'Chat'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => ChatsPage()));
@@ -138,7 +135,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.sports_gymnastics_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Gym Exercise'.text.make(),
+                    title: 'Gym Exercise'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context)
                           .pushNamed(MyRoutes.gymexerciseRoute);
@@ -149,7 +146,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.sports_cricket_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Gym Classes'.text.make(),
+                    title: 'Gym Classes'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => GymClasses()));
@@ -160,7 +157,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.analytics_outlined,
                       color: Colors.black,
                     ),
-                    title: 'User Progress'.text.make(),
+                    title: 'User Progress'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => UserProgress()));
@@ -171,7 +168,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.question_mark_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Bots'.text.make(),
+                    title: 'Bots'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) => Bot()));
@@ -182,7 +179,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.book_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Diary'.text.make(),
+                    title: 'Diary'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => Diary()));
@@ -193,7 +190,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.settings_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Settings'.text.make(),
+                    title: 'Settings'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => Settings()));
@@ -204,7 +201,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.person_outline,
                       color: Colors.black,
                     ),
-                    title: 'My Experts'.text.make(),
+                    title: 'My Experts'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => Experts()));
@@ -215,7 +212,7 @@ class MyDrawer extends StatelessWidget {
                       Icons.logout_outlined,
                       color: Colors.black,
                     ),
-                    title: 'Logout'.text.make(),
+                    title: 'Logout'.text.bodyText2(context).make(),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => AfterSplash()));

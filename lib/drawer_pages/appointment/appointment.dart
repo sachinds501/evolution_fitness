@@ -40,7 +40,7 @@ class _AppointmentState extends State<Appointment> {
       drawer: const MyDrawer(),
       // backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        title: "Appointment".text.xl.black.bold.make(),
+        title: "Appointment".text.headline3(context).make(),
       ),
       body: Column(
         children: [
@@ -82,7 +82,9 @@ class _AppointmentState extends State<Appointment> {
                 ),
           const Spacer(),
           ElevatedButton(
-            onPressed: () {Navigator.push(context, routeName)},
+            onPressed: () {
+              Navigator.pushNamed(context, "/book");
+            },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.lightBlue)),
             child: 'Book Appointment'.toUpperCase().text.bold.makeCentered(),

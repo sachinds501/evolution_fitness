@@ -2,9 +2,9 @@
 
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../widgets/all_widgets.dart';
 import '../widgets/shimmer_widget.dart';
 
 class GymClasses extends StatefulWidget {
@@ -20,23 +20,12 @@ class _GymClassesState extends State<GymClasses> {
   @override
   void initState() {
     _isLoading = true;
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         _isLoading = false;
       });
     });
     super.initState();
-  }
-
-  DateTime? date;
-
-  String getText() {
-    if (date == null) {
-      return DateFormat('MMM dd yyyy').format(DateTime.now());
-    } else {
-      return DateFormat('MMM dd yyyy').format(date!);
-      // return '${date.month}/${date.day}/${date.year}';
-    }
   }
 
   @override
@@ -48,25 +37,10 @@ class _GymClassesState extends State<GymClasses> {
       ),
       body: Column(
         children: [
-          Card(
-            elevation: 0,
-            color: Colors.white,
-            child: InkWell(
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blueGrey),
-                    borderRadius: const BorderRadius.all(Radius.circular(10))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    getText().text.black.make(),
-                    const Icon(Icons.calendar_month, color: Colors.blueGrey),
-                  ],
-                ).pSymmetric(h: 12),
-              ).p16(),
-              onTap: () => pickDate(context),
-            ),
-          ).cornerRadius(5).p16().h(110),
+          Container(color: Colors.white, child: const PickDate().p16())
+              .cornerRadius(8)
+              .h(80)
+              .p16(),
           SizedBox(
                   height: 400,
                   child: _isLoading
@@ -141,36 +115,5 @@ class _GymClassesState extends State<GymClasses> {
         ],
       ).p12(),
     ).pOnly(bottom: 4).cornerRadius(5);
-  }
-
-  Future pickDate(BuildContext context) async {
-    final initialDate = DateTime.now();
-    final newDate = await showDatePicker(
-      context: context,
-      initialDate: date ?? initialDate,
-      firstDate: DateTime(DateTime.now().year - 5),
-      lastDate: DateTime(DateTime.now().year + 5),
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: const ColorScheme.light(
-              primary: Colors.blueAccent, // header background color
-              onPrimary: Colors.black, // header text color
-              onSurface: Colors.green, // body text color
-            ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(
-                primary: Colors.red, // button text color
-              ),
-            ),
-          ),
-          child: child!,
-        );
-      },
-    );
-
-    if (newDate == null) return;
-
-    setState(() => date = newDate);
   }
 }

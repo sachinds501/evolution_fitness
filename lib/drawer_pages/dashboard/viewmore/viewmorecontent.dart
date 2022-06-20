@@ -43,10 +43,12 @@ class _ViewMoreContentState extends State<ViewMoreContent> {
             ? ViewMorePage()
             : SingleChildScrollView(
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
                       color: Colors.white,
                       child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Row(
                             children: [
@@ -130,7 +132,7 @@ class _ViewMoreContentState extends State<ViewMoreContent> {
                           )
                         ],
                       ),
-                    ).wFull(context).h(270).cornerRadius(5).p16(),
+                    ).wFull(context).cornerRadius(5).p16(),
                     SizedBox(
                       height: 500,
                       child: ListView.builder(

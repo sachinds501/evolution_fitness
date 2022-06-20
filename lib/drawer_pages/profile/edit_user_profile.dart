@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../widgets/all_widgets.dart';
+
 class EditUserProfile extends StatefulWidget {
   EditUserProfile({Key? key}) : super(key: key);
 
@@ -276,47 +278,20 @@ class _EditUserProfileState extends State<EditUserProfile> {
     setState(() => date = newDate);
   }
 
-  Widget tff(fieldValue, suffix, contoller) {
+  Widget tff(fieldValue, suffix, controller) {
     return TextFormField(
-      controller: contoller,
+      controller: controller,
       readOnly: _readOnly == true ? true : false,
       cursorColor: Theme.of(context).colorScheme.secondary,
       cursorHeight: 30,
       cursorWidth: 3,
       style: TextStyle(fontSize: 14),
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 0),
-        // filled: true,
-        // fillColor: Colors.grey[100],
-        border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey[400]!),
-            borderRadius: BorderRadius.all(Radius.circular(8))),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey[400]!),
-            borderRadius: BorderRadius.all(Radius.circular(8))),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey[400]!),
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-        ),
-        errorBorder: InputBorder.none,
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-        ),
-        hintText: fieldValue,
-        suffix: Text(
-          suffix,
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
+      decoration: myInputDecoration(fieldValue,suffix),
       onFieldSubmitted: (value) {
         fieldValue = value;
       },
       onSaved: (value) {
-        contoller.text = value;
+        controller.text = value;
         fieldValue = value;
         setState(
           () {

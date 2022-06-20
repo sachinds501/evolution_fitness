@@ -51,16 +51,19 @@ class _DashboardState extends State<Dashboard> {
             children: [
               SingleChildScrollView(
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
                       width: screenWidth * 100,
-                      height: 570,
                       color: Colors.white,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CocurrentCPI().p16(),
+                          SizedBox(
+                            height: 10,
+                          ),
                           VxTwoColumn(
                             top: linearProgressBars(),
                             bottom: nutritionsdata(),

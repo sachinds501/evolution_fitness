@@ -3,20 +3,19 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
-      fontFamily: GoogleFonts.nunito().fontFamily,
+      fontFamily: GoogleFonts.montserrat().fontFamily,
       cardColor: Colors.white,
       canvasColor: lightBluishColor,
       backgroundColor: Colors.white,
       textTheme: const TextTheme(
           headline3: TextStyle(
-              fontSize: 16, color: Colors.black, fontWeight: FontWeight.w600),
+              fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
           bodyText1: TextStyle(
               fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
-          headline6: TextStyle(fontSize: 12, color: Colors.black),
+          headline6: TextStyle(
+              fontSize: 12, color: Colors.black, fontWeight: FontWeight.w500),
           bodyText2: TextStyle(
-            fontSize: 14,
-            color: Colors.black,
-          )),
+              fontSize: 14, color: Colors.black, fontWeight: FontWeight.w500)),
       appBarTheme: AppBarTheme(
         color: Colors.white,
         elevation: 0.0,
