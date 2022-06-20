@@ -1,6 +1,6 @@
 // ignore_for_file: unnecessary_const, prefer_const_constructors, unrelated_type_equality_checks
 
-import 'package:evolution_fitness/drawer_pages/dashboard/nutritients_data.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/nutritions_data.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/routine_list_view.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/viewmore/viewmorecontent.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../utils/routes.dart';
 import '../../widgets/drawer.dart';
-import '../../widgets/elevated_button.dart';
+import '../../widgets/all_widgets.dart';
 import 'cocurrent_indicators.dart';
 import 'linear_progressbars.dart';
 
@@ -28,7 +28,8 @@ class _DashboardState extends State<Dashboard> {
 
     return OrientationBuilder(
       builder: (BuildContext context, Orientation orientation) => Scaffold(
-        appBar: AppBar(title: "Dashboard".text.xl.black.bold.make(), actions: [
+        appBar:
+            AppBar(title: "Dashboard".text.headline3(context).make(), actions: [
           IconButton(
                   onPressed: () {
                     Navigator.of(context)
@@ -53,20 +54,18 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     Container(
                       width: screenWidth * 100,
-                      height: 600,
+                      height: 570,
                       color: Colors.white,
-                      child: Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CocurrentCPI().p16(),
-                            VxTwoColumn(
-                              top: linearProgressBars(),
-                              bottom: nutritientsData(),
-                            ),
-                          ],
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CocurrentCPI().p16(),
+                          VxTwoColumn(
+                            top: linearProgressBars(),
+                            bottom: nutritionsdata(),
+                          ),
+                        ],
                       ),
                     ).cornerRadius(6).p16(),
                     ElevatedButton(
@@ -88,6 +87,9 @@ class _DashboardState extends State<Dashboard> {
                         .bold
                         .makeCentered(),
                     routineListView(),
+                    SizedBox(
+                      height: 10,
+                    )
                   ],
                 ),
               ),

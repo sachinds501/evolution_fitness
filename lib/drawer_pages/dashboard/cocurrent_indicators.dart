@@ -29,69 +29,72 @@ class _CocurrentCPIState extends State<CocurrentCPI> {
     final bgcolor = Theme.of(context).canvasColor;
     // double value = widget.value;
 
-    return Center(
-      child: Stack(
-        children: [
-          VxCircle(
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(
+          // top: 33,
+          // left: 33,
+          child: VxCircle(
+            radius: 190,
+            backgroundColor: Colors.transparent,
+            child: CircularProgressIndicator(
+                backgroundColor: bgcolor,
+                strokeWidth: 10,
+                color: Colors.redAccent,
+                value: 0.60),
+          ),
+        ),
+
+        Positioned(
+          // top: 17,
+          // left: 17,
+          child: VxCircle(
+            radius: 222,
+            backgroundColor: Colors.transparent,
+            child: CircularProgressIndicator(
+                backgroundColor: bgcolor,
+                strokeWidth: 10,
+                color: Colors.blueGrey,
+                value: 0.60),
+          ),
+        ),
+        Positioned(
+          // top: 48,
+          // left: 50,
+          child: CircleAvatar(
+            radius: 73,
+            backgroundColor: Colors.white,
+            child: Image.asset('assets/images/logo.jpg'),
+          ),
+        ),
+        Positioned(
+          // top: 5,
+          // left: 20,
+          child: VxCircle(
             radius: 255,
             backgroundColor: Colors.transparent,
             child: CircularProgressIndicator(
                 backgroundColor: bgcolor,
                 strokeWidth: 10,
-                color: Colors.lightBlue,
+                color: Colors.lightBlueAccent,
                 value: value),
           ),
-          Positioned(
-            top: 33,
-            left: 33,
-            child: VxCircle(
-              radius: 190,
-              backgroundColor: Colors.transparent,
-              child: CircularProgressIndicator(
-                  backgroundColor: bgcolor,
-                  strokeWidth: 10,
-                  color: Colors.purple,
-                  value: 0.01),
-            ),
-          ),
-          Positioned(
-            top: 17,
-            left: 17,
-            child: VxCircle(
-              radius: 222,
-              backgroundColor: Colors.transparent,
-              child: CircularProgressIndicator(
-                  backgroundColor: bgcolor,
-                  strokeWidth: 10,
-                  color: Colors.red,
-                  value: 0.01),
-            ),
-          ),
-          Positioned(
-            top: 48,
-            left: 50,
-            child: CircleAvatar(
-              radius: 73,
-              backgroundColor: Colors.white,
-              child: Image.asset('assets/images/logo.jpg'),
-            ),
-          ),
-
-          // Container(
-          //   margin: const EdgeInsets.all(20),
-          //   child: ElevatedButton(
-          //     style: ElevatedButton.styleFrom(
-          //         onPrimary: Colors.white, primary: Colors.green),
-          //     onPressed: () {
-          //       value = 0;
-          //       downloadData(value);
-          //       setState(() {});
-          //     },
-          //     child: const Text("Download File"),
-          //   ),
-          // )
-        ],
-      ),
+        ),
+        // Container(
+        //   margin: const EdgeInsets.all(20),
+        //   child: ElevatedButton(
+        //     style: ElevatedButton.styleFrom(
+        //         onPrimary: Colors.white, primary: Colors.green),
+        //     onPressed: () {
+        //       value = 0;
+        //       downloadData(value);
+        //       setState(() {});
+        //     },
+        //     child: const Text("Download File"),
+        //   ),
+        // )
+      ],
     );
   }
 

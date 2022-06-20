@@ -3,13 +3,16 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
-      fontFamily: GoogleFonts.openSans().fontFamily,
+      fontFamily: GoogleFonts.nunito().fontFamily,
       cardColor: Colors.white,
       canvasColor: lightBluishColor,
       backgroundColor: Colors.white,
       textTheme: const TextTheme(
+          headline3: TextStyle(
+              fontSize: 16, color: Colors.black, fontWeight: FontWeight.w600),
           bodyText1: TextStyle(
               fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
+          headline6: TextStyle(fontSize: 12, color: Colors.black),
           bodyText2: TextStyle(
             fontSize: 14,
             color: Colors.black,
@@ -21,18 +24,16 @@ class MyTheme {
         iconTheme: const IconThemeData(color: Colors.black),
         toolbarTextStyle: const TextTheme(
           headline1: TextStyle(
-              fontSize: 20.0, fontWeight: FontWeight.w400, color: Colors.black),
-          // headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+              fontSize: 18.0, fontFamily: 'Hind', color: Colors.black),
           bodyText2: TextStyle(
-              fontSize: 12.0, fontFamily: 'Hind', color: Colors.black),
-        ).bodyText2,
+              fontSize: 18.0, fontFamily: 'Hind', color: Colors.black),
+        ).headline1,
         titleTextStyle: const TextTheme(
           headline1: TextStyle(
-              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
-          // headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+              fontSize: 18.0, fontFamily: 'Hind', color: Colors.black),
           bodyText2: TextStyle(
-              fontSize: 12.0, fontFamily: 'Hind', color: Colors.black),
-        ).headline6,
+              fontSize: 18.0, fontFamily: 'Hind', color: Colors.black),
+        ).bodyText2,
       ),
       colorScheme: ColorScheme.fromSwatch().copyWith(
           // secondary: const Color.fromARGB(255, 255, 213, 33),

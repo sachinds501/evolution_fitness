@@ -2,6 +2,8 @@ import 'package:evolution_fitness/drawer_pages/dashboard/routines/view_add_recor
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../../widgets/all_widgets.dart';
+
 class Weight extends StatefulWidget {
   const Weight({Key? key}) : super(key: key);
 
@@ -30,6 +32,7 @@ class _FoodRoutineState extends State<Weight> {
       appBar: AppBar(
         title: 'Weight'.text.xl.black.bold.make(),
       ),
+            floatingActionButton: myfloatingButton(context),
       body: _isLoading
           ? const ViewAddRecord()
           : SizedBox(

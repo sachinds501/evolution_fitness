@@ -1,8 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors, unused_field
 
+import 'package:evolution_fitness/drawer_pages/appointment/book_appointment.dart';
 import 'package:evolution_fitness/drawer_pages/bots.dart';
 import 'package:evolution_fitness/drawer_pages/chats.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/dashboard.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/feeds.dart';
 import 'package:evolution_fitness/drawer_pages/diary.dart';
 import 'package:evolution_fitness/drawer_pages/experts.dart';
 import 'package:evolution_fitness/drawer_pages/gym_classes.dart';
@@ -17,7 +19,8 @@ import 'package:evolution_fitness/pages/splashscreen.dart';
 import 'package:evolution_fitness/utils/routes.dart';
 import 'package:evolution_fitness/widgets/themes.dart';
 import 'package:flutter/material.dart';
-import 'drawer_pages/appointment.dart';
+import 'drawer_pages/appointment/appointment.dart';
+import 'drawer_pages/dashboard/routines/view_add_record_shimmer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,9 +54,11 @@ class MyApp extends StatelessWidget {
         MyRoutes.userprogressRoute: (context) => const UserProgress(),
         MyRoutes.diaryRoute: (context) => const Diary(),
         MyRoutes.expertsRoute: (context) => const Experts(),
-        // MyRoutes.viewaddrecordRoute: (context) => const ViewAddRecord(0),
+        MyRoutes.viewaddrecordRoute: (context) => const ViewAddRecord(),
         MyRoutes.notificationsRoute: (context) => const Notifications(),
         MyRoutes.userprofileRoute: (context) => UserProfile(),
+        MyRoutes.feedsRoute: ((context) => const Feeds()),
+        MyRoutes.bookappointmentRoute: ((context) => const BookAppointment()),
       },
     );
   }

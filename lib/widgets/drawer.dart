@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:evolution_fitness/drawer_pages/Bots.dart';
-import 'package:evolution_fitness/drawer_pages/appointment.dart';
+import 'package:evolution_fitness/drawer_pages/appointment/appointment.dart';
 import 'package:evolution_fitness/drawer_pages/chats.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/dashboard.dart';
 import 'package:evolution_fitness/drawer_pages/diary.dart';

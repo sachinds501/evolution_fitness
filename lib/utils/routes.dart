@@ -13,7 +13,9 @@ class MyRoutes {
   static String diaryRoute = '/diary';
   static String settingsRoute = '/settings';
   static String expertsRoute = '/my_experts';
-  // static String viewaddrecordRoute = '/var';
+  static String viewaddrecordRoute = '/var';
   static String notificationsRoute = '/notification';
   static String userprofileRoute = '/profile';
+  static String feedsRoute = '/feeds';
+  static String bookappointmentRoute = '/book';
 }

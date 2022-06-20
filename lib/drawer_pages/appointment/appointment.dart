@@ -4,7 +4,7 @@ import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../widgets/shimmer_widget.dart';
+import '../../widgets/shimmer_widget.dart';
 
 class Appointment extends StatefulWidget {
   const Appointment({Key? key}) : super(key: key);
@@ -82,7 +82,7 @@ class _AppointmentState extends State<Appointment> {
                 ),
           const Spacer(),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {Navigator.push(context, routeName)},
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.lightBlue)),
             child: 'Book Appointment'.toUpperCase().text.bold.makeCentered(),

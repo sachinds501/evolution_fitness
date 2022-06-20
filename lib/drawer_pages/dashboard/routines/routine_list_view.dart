@@ -113,26 +113,26 @@ List<Choice> choices = const <Choice>[
       elevatedButton: true),
   Choice(
       title: 'Blood Pressure',
-      caption: '',
-      buttonTitle: '',
+      caption: '120',
+      buttonTitle: 'Record',
       icon: FaIcon(
         FontAwesomeIcons.heartPulse,
         color: Colors.red,
         size: 26,
       ),
-      elevatedButton: false,
-      captionUnit: ''),
+      elevatedButton: true,
+      captionUnit: 'mm Hg'),
   Choice(
       title: 'Blood Glucose',
-      caption: '',
-      buttonTitle: '',
+      caption: '76',
+      buttonTitle: 'Record',
       icon: FaIcon(
         FontAwesomeIcons.droplet,
         color: Colors.orange,
         size: 26,
       ),
-      elevatedButton: false,
-      captionUnit: ''),
+      elevatedButton: true,
+      captionUnit: 'mg/dl'),
 ];
 
 class SelectCard extends StatefulWidget {

@@ -3,11 +3,11 @@
 import 'package:evolution_fitness/drawer_pages/dashboard/viewmore/viewmore.dart';
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:pie_chart/pie_chart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ViewMoreContent extends StatefulWidget {
   const ViewMoreContent({Key? key}) : super(key: key);
-
   @override
   State<ViewMoreContent> createState() => _ViewMoreContentState();
 }
@@ -26,6 +26,12 @@ class _ViewMoreContentState extends State<ViewMoreContent> {
     super.initState();
   }
 
+  final dataMap = <String, double>{
+    'Protien': 0.44,
+    'Carbs': 0.93,
+    'Fats': 0.07,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,83 +49,93 @@ class _ViewMoreContentState extends State<ViewMoreContent> {
                       child: Column(
                         children: [
                           Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
                                 flex: 1,
                                 child: Container(
-                                  height: 70,
+                                  alignment: Alignment.center,
+                                  // height: 70,
                                   color: Colors.grey[50],
-                                  child: "Consumed\n0\nCalories"
-                                      .text
-                                      .align(TextAlign.center)
-                                      .xl
-                                      .bold
-                                      .makeCentered(),
+                                  child: RichText(
+                                      text: TextSpan(children: const [
+                                    TextSpan(
+                                        text: "Consumed\n",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black,
+                                            fontSize: 17)),
+                                    TextSpan(
+                                        text: "      0\n",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.blue,
+                                            fontSize: 22)),
+                                    TextSpan(
+                                        text: "  Calories",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black,
+                                            fontSize: 17))
+                                  ])),
                                 ),
                               ),
                               Flexible(
                                 flex: 1,
                                 child: Container(
-                                  height: 70,
+                                  alignment: Alignment.center,
+                                  // height: 70,
                                   color: Colors.grey[50],
-                                  child: "Remaining\n0\nCalories"
-                                      .text
-                                      .align(TextAlign.center)
-                                      .xl
-                                      .bold
-                                      .makeCentered(),
+                                  child: RichText(
+                                      text: TextSpan(children: const [
+                                    TextSpan(
+                                        text: "Remaining\n",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black,
+                                            fontSize: 17)),
+                                    TextSpan(
+                                        text: "      0\n",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.blue,
+                                            fontSize: 22)),
+                                    TextSpan(
+                                        text: "  Calories",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black,
+                                            fontSize: 17))
+                                  ])),
                                 ),
                               ),
                             ],
+                          ).h(80),
+                          Flexible(
+                            child: SizedBox(
+                              height: 160,
+                              child: PieChart(
+                                ringStrokeWidth: 35,
+                                chartLegendSpacing: 30,
+                                legendOptions: LegendOptions(
+                                    legendPosition: LegendPosition.top,
+                                    showLegendsInRow: true,
+                                    legendShape: BoxShape.rectangle),
+                                chartType: ChartType.ring,
+                                dataMap: dataMap,
+                              ),
+                            ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              VxTwoRow(
-                                      left: Container(
-                                        height: 12,
-                                        color: Colors.blue,
-                                      ).w10(context),
-                                      right: "Carbs"
-                                          .text
-                                          .minFontSize(10)
-                                          .maxFontSize(12)
-                                          .make())
-                                  .pOnly(left: 5),
-                              VxTwoRow(
-                                      left: Container(
-                                        height: 12,
-                                        color: Colors.pink,
-                                      ).w10(context),
-                                      right: "Protien"
-                                          .text
-                                          .minFontSize(10)
-                                          .maxFontSize(12)
-                                          .make())
-                                  .pOnly(left: 5),
-                              VxTwoRow(
-                                      left: Container(
-                                        height: 12,
-                                        color: Colors.orange,
-                                      ).w10(context),
-                                      right: "Fats"
-                                          .text
-                                          .minFontSize(10)
-                                          .maxFontSize(12)
-                                          .make())
-                                  .pOnly(left: 5),
-                            ],
-                          ).p12(),
-                          "Hello".text.make()
-                          
+                          SizedBox(
+                            height: 20,
+                          )
                         ],
                       ),
-                    ).wFull(context).hOneThird(context).cornerRadius(5).p16(),
+                    ).wFull(context).h(270).cornerRadius(5).p16(),
                     SizedBox(
                       height: 500,
                       child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: AlwaysScrollableScrollPhysics(),
                           itemCount: choices.length,
                           itemBuilder: (context, index) {
                             return SelectTile(choice: choices[index]);
@@ -138,11 +154,11 @@ class Choice {
 }
 
 const List<Choice> choices = <Choice>[
-  Choice(title: 'Protien', gram: 0),
-  Choice(title: 'Carbs', gram: 0),
+  Choice(title: 'Protien', gram: 0.44),
+  Choice(title: 'Carbs', gram: 0.93),
   Choice(title: 'Sugar', gram: 0),
   Choice(title: 'Fiber', gram: 0),
-  Choice(title: 'Fat', gram: 0),
+  Choice(title: 'Fat', gram: 0.07),
   Choice(title: 'Cholesterol', gram: 0),
   Choice(title: 'Sodium', gram: 0),
   Choice(title: 'Potassium', gram: 0),

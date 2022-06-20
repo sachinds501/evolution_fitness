@@ -19,16 +19,25 @@ Widget linearProgressBars() {
 
 class Choice {
   const Choice(
-      {required this.title, required this.caption, required this.color});
+      {required this.title,
+      required this.caption,
+      required this.color,
+      required this.value});
   final String title;
   final String caption;
   final Color color;
+  final double value;
 }
 
 const List<Choice> choices = <Choice>[
-  Choice(title: '0/0', caption: 'Burned', color: Colors.red),
-  Choice(title: '1,191', caption: 'kCal Left', color: Colors.lightBlue),
-  Choice(title: '0 /1,191', caption: 'Consumed', color: Colors.white54),
+  Choice(title: '0/0', caption: 'Burned', color: Colors.redAccent, value: 1),
+  Choice(
+      title: '1,191',
+      caption: 'kCal Left',
+      color: Colors.lightBlueAccent,
+      value: 1),
+  Choice(
+      title: '0 /1,191', caption: 'Consumed', color: Colors.blueGrey, value: 0),
 ];
 
 class SelectCard extends StatefulWidget {
@@ -60,7 +69,8 @@ class _SelectCardState extends State<SelectCard> {
                     width: screenWidth * 26,
                     child: LinearProgressIndicator(
                       color: widget.choice.color,
-                      value: 1,
+                      backgroundColor: Theme.of(context).canvasColor,
+                      value: widget.choice.value,
                       minHeight: 5,
                     ),
                   ).cornerRadius(10),

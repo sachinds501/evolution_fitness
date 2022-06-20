@@ -1,4 +1,5 @@
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/view_add_record_shimmer.dart';
+import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -28,8 +29,9 @@ class _FoodRoutineState extends State<FoodRoutine> {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
-        title: 'Food'.text.xl.black.bold.make(),
+        title: 'Diet'.text.xl.black.bold.make(),
       ),
+      floatingActionButton: myfloatingButton(context),
       body: _isLoading
           ? const ViewAddRecord()
           : SizedBox(
