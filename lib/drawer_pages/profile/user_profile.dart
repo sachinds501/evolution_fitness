@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, avoid_print, duplicate_ignore, use_build_context_synchronously, library_private_types_in_public_api
 
-import 'package:evolution_fitness/drawer_pages/dashboard/linear_progressbars.dart';
+import 'package:evolution_fitness/drawer_pages/profile/add_alergies_medications_medical_conditions.dart';
 import 'package:evolution_fitness/drawer_pages/profile/edit_user_profile.dart';
 import 'package:evolution_fitness/main.dart';
 import 'package:evolution_fitness/widgets/all_widgets.dart';
@@ -21,11 +21,12 @@ class _UserProfileState extends State<UserProfile> {
       backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
         centerTitle: true,
-        title: " Edit Profile".text.xl.bold.black.make(),
+        title: " Edit Profile".text.headline3(context).make(),
         // backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               color: Colors.white,
@@ -83,7 +84,7 @@ class _UserProfileState extends State<UserProfile> {
               physics: AlwaysScrollableScrollPhysics(),
               itemCount: choices.length,
               itemBuilder: (context, index) =>
-                  SelectCol(choice: choices[index]),
+                  SelectCol(choice: choices[index], index: index),
             )
           ],
         ).p16(),
@@ -114,8 +115,10 @@ List<Choice> choices = <Choice>[
 ];
 
 class SelectCol extends StatefulWidget {
-  const SelectCol({Key? key, required this.choice}) : super(key: key);
+  const SelectCol({Key? key, required this.choice, required this.index})
+      : super(key: key);
   final Choice choice;
+  final int index;
   @override
   State<SelectCol> createState() => _SelectColState();
 }
@@ -123,22 +126,68 @@ class SelectCol extends StatefulWidget {
 class _SelectColState extends State<SelectCol> {
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      tileColor: Colors.white,
-      contentPadding: EdgeInsets.all(8),
-      leading: Container(
-              decoration:
-                  BoxDecoration(border: Border(right: BorderSide(width: 1))),
-              child: widget.choice.image
-                  .circle(backgroundColor: Colors.transparent, radius: 50)
-                  .p4())
-          .wh(70, 60),
-      title: widget.choice.title.text.headline6(context).make(),
-      subtitle: "ok".text.make(),
-      trailing: IconButton(
-        onPressed: () {},
-        icon: Icon(Icons.add_circle_outlined),
-      ),
+    return Container(
+      color: Colors.white,
+      child: Row(
+        children: [
+          widget.choice.image
+              .circle(backgroundColor: Colors.transparent, radius: 50)
+              .p8(),
+          Container(
+            color: Colors.grey,
+          ).wh(1, 60),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                widget.choice.title.text
+                    .bodyText2(context)
+                    .overflow(TextOverflow.ellipsis)
+                    .make(),
+                sh(10),
+                Wrap(
+                  children: [
+                    ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.blue)),
+                            child: "ok".text.size(10).make())
+                        .h(25)
+                        .pSymmetric(v: 5),
+                  ],
+                ),
+              ],
+            ).pSymmetric(h: 10),
+          ),
+          IconButton(
+            onPressed: () {
+              switch (widget.index) {
+                case 0:
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Allergies(),
+                  ));
+                  break;
+                case 1:
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => MedicalConditions(),
+                  ));
+                  break;
+                case 2:
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Medications(),
+                  ));
+                  break;
+                default:
+              }
+            },
+            icon: Icon(
+              Icons.add,
+              color: Colors.blue,
+            ),
+          ).wh(50, 50),
+        ],
+      ).p12(),
     ).pOnly(bottom: 10);
   }
 }

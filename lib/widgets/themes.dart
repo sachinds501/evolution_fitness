@@ -9,7 +9,7 @@ class MyTheme {
       backgroundColor: Colors.white,
       textTheme: const TextTheme(
           headline3: TextStyle(
-              fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+              fontSize: 15, color: Colors.black, fontWeight: FontWeight.w500),
           bodyText1: TextStyle(
               fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
           headline6: TextStyle(

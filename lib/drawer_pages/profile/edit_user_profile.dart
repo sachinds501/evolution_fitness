@@ -18,7 +18,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
   DateTime? date;
   bool changeButton = false;
   String? _btn3SelectedVal;
-  bool _readOnly = true;
+  bool? readOnly;
   final String _fname = 'Sachin';
   final String _lname = 'Solanki';
   final String _phone = '92540 24221';
@@ -32,6 +32,14 @@ class _EditUserProfileState extends State<EditUserProfile> {
 
   final _formKey3 = GlobalKey<FormState>();
 
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      readOnly = false;
+    });
+  }
+
   static const gender = <String>[
     'Male',
     'Female',
@@ -41,6 +49,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
   final List<DropdownMenuItem<String>> dropdown1 = gender
       .map(
         (String value) => DropdownMenuItem<String>(
+          // enabled: readOnly == true ? false : true,
           value: value,
           child: Text(value),
         ),
@@ -57,14 +66,6 @@ class _EditUserProfileState extends State<EditUserProfile> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    setState(() {
-      _readOnly = false;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
@@ -73,11 +74,11 @@ class _EditUserProfileState extends State<EditUserProfile> {
         title: " Edit Profile".text.xl.bold.black.make(),
         // backgroundColor: Colors.blue,
         actions: [
-          _readOnly == true
+          readOnly == true
               ? TextButton(
                   onPressed: () {
                     setState(() {
-                      _readOnly = false;
+                      readOnly = false;
                     });
                   },
                   child: "Edit".text.red500.bold.make())
@@ -85,7 +86,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                       onPressed: () {
                         _formKey3.currentState!.save();
                         setState(() {
-                          _readOnly = true;
+                          readOnly = true;
                         });
                       },
                       icon: Icon(Icons.check))
@@ -100,6 +101,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(8))),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
@@ -170,7 +172,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
 
   Widget dob() => ListTile(
         contentPadding: EdgeInsets.zero,
-        enabled: _readOnly == false ? true : false,
+        enabled: readOnly == false ? true : false,
         title: 'Date of Birth*'.text.bodyText1(context).make(),
         onTap: () => pickDate(context),
         subtitle: Container(
@@ -190,13 +192,14 @@ class _EditUserProfileState extends State<EditUserProfile> {
   ListTile selectGender() {
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      enabled: _readOnly == true ? false : true,
+      enabled: readOnly == true ? false : true,
       title: 'Gender*'.text.bodyText1(context).make(),
       trailing: DropdownButton(
+        style: TextStyle(fontSize: 14, color: Colors.black),
         dropdownColor: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(8)),
         value: _btn3SelectedVal,
-        hint: 'Choose'.text.bodyText2(context).make(),
+        hint: 'Choose'.text.headline6(context).make(),
         onChanged: (String? newValue) {
           if (newValue != null) {
             setState(() => _btn3SelectedVal = newValue);
@@ -212,7 +215,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
         contentPadding: EdgeInsets.zero,
         onTap: () {
           setState(() {
-            _readOnly = true;
+            readOnly = true;
             _tileno[2] = true;
           });
         },
@@ -225,7 +228,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
       contentPadding: EdgeInsets.zero,
       onTap: () {
         setState(() {
-          _readOnly = true;
+          readOnly = true;
           _tileno[0] = true;
         });
       },
@@ -239,7 +242,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
         contentPadding: EdgeInsets.zero,
         onTap: () {
           setState(() {
-            _readOnly = true;
+            readOnly = true;
             _tileno[0] = true;
           });
         },
@@ -281,12 +284,12 @@ class _EditUserProfileState extends State<EditUserProfile> {
   Widget tff(fieldValue, suffix, controller) {
     return TextFormField(
       controller: controller,
-      readOnly: _readOnly == true ? true : false,
+      readOnly: readOnly == true ? true : false,
       cursorColor: Theme.of(context).colorScheme.secondary,
       cursorHeight: 30,
       cursorWidth: 3,
       style: TextStyle(fontSize: 14),
-      decoration: myInputDecoration(fieldValue,suffix),
+      decoration: myInputDecoration(fieldValue, suffix),
       onFieldSubmitted: (value) {
         fieldValue = value;
       },
@@ -295,7 +298,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
         fieldValue = value;
         setState(
           () {
-            _readOnly = false;
+            readOnly = false;
           },
         );
       },

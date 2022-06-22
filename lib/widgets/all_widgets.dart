@@ -126,6 +126,8 @@ InputDecoration myInputDecoration(fieldValue, suffix) {
     contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
     // filled: true,
     // fillColor: Colors.grey[100],
+    hintStyle: const TextStyle(fontSize: 12),
+    labelStyle: const TextStyle(fontSize: 12),
     border: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.blueGrey[100]!),
         borderRadius: const BorderRadius.all(Radius.circular(8))),
@@ -149,5 +151,25 @@ InputDecoration myInputDecoration(fieldValue, suffix) {
       suffix,
       style: const TextStyle(color: Colors.black),
     ),
+  );
+}
+
+/* Sized Box*/
+SizedBox sh(double height) {
+  return SizedBox(
+    height: height,
+  );
+}
+
+SizedBox sw(double width) {
+  return SizedBox(
+    width: width,
+  );
+}
+
+SizedBox swh(double width, double height) {
+  return SizedBox(
+    width: width,
+    height: height,
   );
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'package:evolution_fitness/drawer_pages/settings/change_password.dart';
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -22,7 +23,10 @@ class _SettingsState extends State<Settings> {
       body: ListView.builder(
           itemCount: choices.length,
           itemBuilder: (context, index) {
-            return SelectTile(choice: choices[index]);
+            return SelectTile(
+              choice: choices[index],
+              index: index,
+            );
           }),
     );
   }
@@ -62,8 +66,10 @@ List<Choice> choices = <Choice>[
 ];
 
 class SelectTile extends StatefulWidget {
-  const SelectTile({Key? key, required this.choice}) : super(key: key);
+  const SelectTile({Key? key, required this.choice, required this.index})
+      : super(key: key);
   final Choice choice;
+  final int index;
   @override
   State<SelectTile> createState() => _SelectTileState();
 }
@@ -72,6 +78,46 @@ class _SelectTileState extends State<SelectTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {
+        switch (widget.index) {
+          case 0:
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const Password(),
+            ));
+            break;
+          case 1:
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const Password(),
+            ));
+            break;
+          case 2:
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const Password(),
+            ));
+            break;
+          case 3:
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const Password(),
+            ));
+            break;
+          case 4:
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const Password(),
+            ));
+            break;
+          case 5:
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const Password(),
+            ));
+            break;
+          case 6:
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const Password(),
+            ));
+            break;
+          default:
+        }
+      },
       tileColor: Colors.white,
       leading: CircleAvatar(
         radius: 15,
