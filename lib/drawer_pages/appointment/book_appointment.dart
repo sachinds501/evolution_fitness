@@ -95,12 +95,8 @@ class _BookAppointmentState extends State<BookAppointment> {
                       ).pSymmetric(h: 12),
                     ).h(45),
                     onTap: () {
-                      setState(() {
-                        // _selectCheck == true
-                        //     ? _selectCheck = false
-                        //     : _selectCheck = true;
-                        showDialogBox(context);
-                      });
+                      showDialogBox(context);
+                      setState(() {});
                     },
                   ).cornerRadius(5),
                   const PickDate(),
@@ -186,49 +182,52 @@ class _BookAppointmentState extends State<BookAppointment> {
 
   Future<dynamic> showDialogBox(BuildContext context) {
     return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              actions: [
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: Checkbox(
-                      value: _selectCheck,
-                      onChanged: (value) {
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (BuildContext context, setState) {
+          return AlertDialog(
+            actions: [
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: Checkbox(
+                    value: _selectCheck,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectCheck = value!;
+                      });
+                    }),
+                shape: const Border.symmetric(horizontal: BorderSide(width: 1)),
+                title: alertDialogMessage.text.headline6(context).make(),
+              ),
+              ButtonBar(
+                children: [
+                  TextButton(
+                      onPressed: () {
                         setState(() {
-                          _selectCheck = value!;
+                          _selectCheck = false;
+                          ok = false;
+                          Navigator.pop(context);
                         });
-                      }),
-                  shape:
-                      const Border.symmetric(horizontal: BorderSide(width: 1)),
-                  title: alertDialogMessage.text.headline6(context).make(),
-                ),
-                ButtonBar(
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          setState(() {
-                            _selectCheck = false;
-                            ok = false;
-                            Navigator.pop(context);
-                          });
-                        },
-                        child: 'Cancel'.text.headline3(context).blue500.make()),
-                    TextButton(
-                        onPressed: () {
-                          setState(() {
-                            if (_selectCheck == true) {
-                              ok = true;
-                            } else {
-                              ok = false;
-                            }
-                          });
-                          Navigator.of(context).pop();
-                        },
-                        child: 'Ok'.text.headline3(context).blue500.make()),
-                  ],
-                )
-              ],
-            ));
+                      },
+                      child: 'Cancel'.text.headline3(context).blue500.make()),
+                  TextButton(
+                      onPressed: () {
+                        if (_selectCheck == true) {
+                          ok = true;
+                        } else {
+                          ok = false;
+                        }
+                        Navigator.of(context).pop();
+                        setState(() {});
+                      },
+                      child: 'Ok'.text.headline3(context).blue500.make()),
+                ],
+              )
+            ],
+          );
+        },
+      ),
+    );
   }
 
   Widget tff(fieldValue, suffix, controller) {

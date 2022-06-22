@@ -13,6 +13,7 @@ import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/user_progress.dart';
 import 'package:evolution_fitness/drawer_pages/profile/user_profile.dart';
+import 'package:evolution_fitness/drawer_pages/videos/video_info.dart';
 import 'package:evolution_fitness/drawer_pages/videos/videos.dart';
 import 'package:evolution_fitness/pages/notifications.dart';
 import 'package:evolution_fitness/pages/splashscreen.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.appointmentRoute,
+      initialRoute: MyRoutes.userprofileRoute,
       routes: {
         MyRoutes.dashboardRoute: (context) => const Dashboard(),
         MyRoutes.splashscreenRoute: (context) => const AfterSplash(),
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.userprofileRoute: (context) => UserProfile(),
         MyRoutes.feedsRoute: ((context) => const Feeds()),
         MyRoutes.bookappointmentRoute: ((context) => const BookAppointment()),
+        MyRoutes.videoinfoRoute: ((context) => const VideoInfo()),
       },
     );
   }

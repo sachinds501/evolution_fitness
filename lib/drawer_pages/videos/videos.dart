@@ -34,7 +34,7 @@ class _VideosState extends State<Videos> {
       drawer: const MyDrawer(),
       backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
-        title: "Videos".text.xl.black.bold.make(),
+        title: 'Videos'.text.xl.black.bold.make(),
       ),
       body: ListView.builder(
           physics: const ScrollPhysics(),
@@ -103,11 +103,11 @@ class _GetVideosState extends State<GetVideos> {
     return Card(
       elevation: 3,
       child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => VideoInfo(index: widget.index),
-          ));
-        },
+        // onTap: () {
+        //   Navigator.of(context).push(MaterialPageRoute(
+        //     builder: (context) => const VideoInfo(),
+        //   ));
+        // },
         child: SizedBox(
           width: screenWidth,
           child: Column(

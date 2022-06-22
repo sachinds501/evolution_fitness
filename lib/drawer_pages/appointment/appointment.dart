@@ -54,7 +54,7 @@ class _AppointmentState extends State<Appointment> {
                     size: 10,
                     color: Colors.red,
                   ),
-                  right: "Current Date".text.make(),
+                  right: "Current Date".text.bodyText2(context).make(),
                 ),
                 VxTwoRow(
                     left: const Icon(
@@ -62,12 +62,12 @@ class _AppointmentState extends State<Appointment> {
                       size: 10,
                       color: Colors.blue,
                     ),
-                    right: "Appointment Date".text.make())
+                    right: "Appointment Date".text.bodyText2(context).make())
               ],
             ),
           ).p12(),
           _isLoading
-              ? buildAppointmentShimmer().pOnly()
+              ? buildAppointmentShimmer()
               : Container(
                   color: Colors.white,
                   child: TableCalendar(

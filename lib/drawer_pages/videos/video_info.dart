@@ -7,8 +7,8 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class VideoInfo extends StatefulWidget {
-  const VideoInfo({Key? key, required this.index}) : super(key: key);
-  final int index;
+  const VideoInfo({Key? key}) : super(key: key);
+
   @override
   State<VideoInfo> createState() => _VideoInfoState();
 }
@@ -16,12 +16,13 @@ class VideoInfo extends StatefulWidget {
 class _VideoInfoState extends State<VideoInfo> {
   YoutubePlayerController? _ytbPlayerController;
   bool _isLoading = false;
+  int i = 0;
 
   List<YoutubeModel> videosList = const [
-    YoutubeModel(id: 1, youtubeId: '2dcLiaXI6Ro'),
-    YoutubeModel(id: 2, youtubeId: 'mNcC4Qin-h8'),
-    YoutubeModel(id: 3, youtubeId: 'zzD80vCLq0Y'),
-    YoutubeModel(id: 4, youtubeId: 'PkDOH359gbs'),
+    YoutubeModel(id: 1, youtubeId: '6_XsB_BQYss'),
+    YoutubeModel(id: 2, youtubeId: '77lcmg9_x_w'),
+    YoutubeModel(id: 3, youtubeId: 'EuayIecZVHM'),
+    YoutubeModel(id: 4, youtubeId: 'VVvVxMOrh14'),
   ];
 
   _setOrientation(List<DeviceOrientation> orientations) {
@@ -61,7 +62,7 @@ class _VideoInfoState extends State<VideoInfo> {
         setState(
           () {
             _ytbPlayerController = YoutubePlayerController(
-              initialVideoId: videosList[widget.index].youtubeId,
+              initialVideoId: videosList[i].youtubeId,
               params: const YoutubePlayerParams(
                 showFullscreenButton: true,
                 autoPlay: false,
@@ -91,10 +92,10 @@ class _VideoInfoState extends State<VideoInfo> {
       ),
       body: _isLoading
           ? buildVideoShimmer(context)
-          : SingleChildScrollView(
-              child: YoutubeValueBuilder(
-                controller: _ytbPlayerController,
-                builder: (context, value) => SizedBox(
+          : YoutubeValueBuilder(
+              controller: _ytbPlayerController,
+              builder: (context, value) => SingleChildScrollView(
+                child: SizedBox(
                   child: Column(
                     children: [
                       _buildYtbView(),
@@ -121,8 +122,8 @@ class _VideoInfoState extends State<VideoInfo> {
                               .make(),
                         ],
                       ).p12(),
-                      _buildMoreVideoTitle(),
-                      _buildMoreVideosView(),
+                      // _buildMoreVideoTitle(),
+                      _buildMoreVideosView(context),
                       // _ytbPlayerController!.metadata.title.
                     ],
                   ),
@@ -134,29 +135,16 @@ class _VideoInfoState extends State<VideoInfo> {
 
   _buildYtbView() {
     return AspectRatio(
-      aspectRatio: 16 / 16,
+      aspectRatio: 16 / 9,
       child: _ytbPlayerController != null
           ? YoutubePlayerIFrame(controller: _ytbPlayerController)
           : Center(child: CircularProgressIndicator()),
     );
   }
 
-  _buildMoreVideoTitle() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(14, 10, 182, 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: const [
-          Text(
-            "More videos",
-            style: TextStyle(fontSize: 16, color: Colors.black),
-          ),
-        ],
-      ),
-    );
-  }
-
-  _buildMoreVideosView() {
+  _buildMoreVideosView(BuildContext context) {
+    final screenHeight = (MediaQuery.of(context).size.height / 100);
+    final screenWidth = (MediaQuery.of(context).size.width / 100);
     return Expanded(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 15),
@@ -165,41 +153,55 @@ class _VideoInfoState extends State<VideoInfo> {
             itemCount: videosList.length,
             physics: AlwaysScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  final _newCode = videosList[index].youtubeId;
-                  _ytbPlayerController!.load(_newCode);
-                  _ytbPlayerController!.stop();
-                },
-                child: Container(
-                  height: MediaQuery.of(context).size.height / 5,
-                  margin: EdgeInsets.symmetric(vertical: 7),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(18),
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: <Widget>[
-                        Positioned(
-                          child: Image.network(
-                            "https://img.youtube.com/vi/${videosList[index].youtubeId}/0.jpg",
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Positioned(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Image.asset(
-                              'assets/images/logo.jpg',
-                              height: 30,
-                              width: 30,
+              return Card(
+                elevation: 3,
+                child: InkWell(
+                  onTap: () {
+                    final _newCode = videosList[index].youtubeId;
+                    _ytbPlayerController!.load(_newCode);
+                    _ytbPlayerController!.stop();
+                  },
+                  child: SizedBox(
+                    width: screenWidth,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          constraints: BoxConstraints(
+                              maxHeight: screenHeight * 25,
+                              minWidth: screenWidth * 100,
+                              minHeight: screenHeight * 25,
+                              maxWidth: screenWidth * 100),
+                          color: Colors.white,
+                          child: Expanded(
+                            child: Image.network(
+                              "https://img.youtube.com/vi/${videosList[index].youtubeId}/0.jpg",
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
+                        Container(
+                            constraints: BoxConstraints(
+                                minWidth: screenWidth * 100,
+                                minHeight: screenHeight * 5,
+                                maxWidth: screenWidth * 100),
+                            color: Colors.white,
+                            child:
+                                //  YoutubeValueBuilder(
+                                // controller: _ytbPlayerController,
+                                // builder: (context, value) => _ytbPlayerController!
+                                //     .metadata.title
+                                videosList[index]
+                                    .youtubeId
+                                    .text
+                                    .blue600
+                                    .make()
+                                    .p12()),
                       ],
-                    ),
-                  ),
+                    ).pOnly(bottom: 4),
+                  ).cornerRadius(5),
                 ),
-              );
+              ).pSymmetric(v: 5);
             }),
       ),
     );
