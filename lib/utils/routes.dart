@@ -19,4 +19,10 @@ class MyRoutes {
   static String feedsRoute = '/feeds';
   static String bookappointmentRoute = '/book';
   static String videoinfoRoute = '/videoinfo';
+    static String goalsRoute = '/goals';
+  // static String notificationsRoute = '/notification';
+  // static String userprofileRoute = '/profile';
+  // static String feedsRoute = '/feeds';
+  // static String bookappointmentRoute = '/book';
+  // static String videoinfoRoute = '/videoinfo';
 }

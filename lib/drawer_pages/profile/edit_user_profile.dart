@@ -143,19 +143,25 @@ class _EditUserProfileState extends State<EditUserProfile> {
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: 'Height'.text.bodyText1(context).make(),
-                      subtitle: tff(5.toString(), 'ft', feetController),
+                      subtitle: tff(
+                          5.toString(), 'ft', feetController, setState, context,
+                          readOnly: readOnly),
                     ).wOneThird(context),
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: ''.text.bodyText1(context).make(),
-                      subtitle: tff(6.toString(), 'inch', inchController),
+                      subtitle: tff(6.toString(), 'inch', inchController,
+                          setState, context,
+                          readOnly: readOnly),
                     ).wOneThird(context),
                   ],
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: 'Weight'.text.bodyText1(context).make(),
-                  subtitle: tff(60.toString(), 'lbs', weightController),
+                  subtitle: tff(
+                      60.toString(), 'lbs', weightController, setState, context,
+                      readOnly: readOnly),
                 ).wOneThird(context),
               ],
             ).p16(),
@@ -189,25 +195,33 @@ class _EditUserProfileState extends State<EditUserProfile> {
         ).h(40).pOnly(top: 5),
       );
 
-  ListTile selectGender() {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      enabled: readOnly == true ? false : true,
-      title: 'Gender*'.text.bodyText1(context).make(),
-      trailing: DropdownButton(
-        style: TextStyle(fontSize: 14, color: Colors.black),
-        dropdownColor: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(8)),
-        value: _btn3SelectedVal,
-        hint: 'Choose'.text.headline6(context).make(),
-        onChanged: (String? newValue) {
-          if (newValue != null) {
-            setState(() => _btn3SelectedVal = newValue);
-          }
-        },
-        items: dropdown1,
+  Row selectGender() {
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      'Gender*'.text.bodyText1(context).make(),
+      Container(
+        decoration: BoxDecoration(
+            border: Border.all(
+              width: 1,
+              color: Colors.blueGrey[100]!,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(5))),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton(
+            style: TextStyle(fontSize: 14, color: Colors.black),
+            dropdownColor: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+            value: _btn3SelectedVal,
+            hint: 'Choose'.text.headline6(context).make(),
+            onChanged: (String? newValue) {
+              if (newValue != null) {
+                setState(() => _btn3SelectedVal = newValue);
+              }
+            },
+            items: dropdown1,
+          ).p4(),
+        ),
       ).h(40),
-    );
+    ]);
   }
 
   Widget phoneNo() {
@@ -220,7 +234,8 @@ class _EditUserProfileState extends State<EditUserProfile> {
           });
         },
         title: 'Contact Number*'.text.bodyText1(context).make(),
-        subtitle: tff(_phone, '', phoneController));
+        subtitle: tff(_phone, '', phoneController, setState, context,
+            readOnly: readOnly));
   }
 
   Widget lastName() {
@@ -233,7 +248,8 @@ class _EditUserProfileState extends State<EditUserProfile> {
         });
       },
       title: 'Last Name'.text.bodyText1(context).make(),
-      subtitle: tff(_lname, '', lnameController),
+      subtitle: tff(_lname, '', lnameController, setState, context,
+          readOnly: readOnly),
     );
   }
 
@@ -247,7 +263,8 @@ class _EditUserProfileState extends State<EditUserProfile> {
           });
         },
         title: 'First Name'.text.bodyText1(context).make(),
-        subtitle: tff(_fname, '', fnameController));
+        subtitle: tff(_fname, '', fnameController, setState, context,
+            readOnly: readOnly));
   }
 
   Future pickDate(BuildContext context) async {
@@ -279,29 +296,5 @@ class _EditUserProfileState extends State<EditUserProfile> {
     if (newDate == null) return;
 
     setState(() => date = newDate);
-  }
-
-  Widget tff(fieldValue, suffix, controller) {
-    return TextFormField(
-      controller: controller,
-      readOnly: readOnly == true ? true : false,
-      cursorColor: Theme.of(context).colorScheme.secondary,
-      cursorHeight: 30,
-      cursorWidth: 3,
-      style: TextStyle(fontSize: 14),
-      decoration: myInputDecoration(fieldValue, suffix),
-      onFieldSubmitted: (value) {
-        fieldValue = value;
-      },
-      onSaved: (value) {
-        controller.text = value;
-        fieldValue = value;
-        setState(
-          () {
-            readOnly = false;
-          },
-        );
-      },
-    ).h(40).pOnly(top: 5);
   }
 }

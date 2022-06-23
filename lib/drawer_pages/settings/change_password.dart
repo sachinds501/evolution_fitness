@@ -70,6 +70,25 @@ class _PasswordState extends State<Password> {
                       title: 'Old Password'.text.bodyText1(context).make(),
                       subtitle: TextFormField(
                           decoration: InputDecoration(
+                            border: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.blueGrey[100]!),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.blueGrey[100]!),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.blueGrey[100]!),
+                            ),
+                            disabledBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.blueGrey[100]!),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red[100]!),
+                            ),
                             suffixIcon: _oldpasswordVisibility == true
                                 ? IconButton(
                                     onPressed: () {
@@ -108,11 +127,25 @@ class _PasswordState extends State<Password> {
                       title: 'New Password'.text.bodyText1(context).make(),
                       subtitle: TextFormField(
                           decoration: InputDecoration(
-                            // border: OutlineInputBorder(
-                            //     borderSide:
-                            //         BorderSide(color: Colors.blueGrey[100]!),
-                            //     borderRadius:
-                            //         const BorderRadius.all(Radius.circular(8))),
+                            border: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.blueGrey[100]!),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.blueGrey[100]!),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.blueGrey[100]!),
+                            ),
+                            disabledBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.blueGrey[100]!),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red[100]!),
+                            ),
                             suffixIcon: _newpasswordVisibility == true
                                 ? IconButton(
                                     onPressed: () {
@@ -168,6 +201,27 @@ class _PasswordState extends State<Password> {
                       title:
                           'Confirm New Password'.text.bodyText1(context).make(),
                       subtitle: TextFormField(
+                        decoration: InputDecoration(
+                          border: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.blueGrey[100]!),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.blueGrey[100]!),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.blueGrey[100]!),
+                          ),
+                          disabledBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.blueGrey[100]!),
+                          ),
+                          errorBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.red[100]!),
+                          ),
+                        ),
                         controller: _confirmPass,
                         cursorColor: Theme.of(context).colorScheme.secondary,
                         cursorHeight: 30,
@@ -214,7 +268,7 @@ class _PasswordState extends State<Password> {
                     // Spacer(),
                   ],
                 ).p12(),
-              ).p16(),
+              ).cornerRadius(8).p16(),
             ),
           ),
         ));

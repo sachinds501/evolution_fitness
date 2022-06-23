@@ -173,3 +173,84 @@ SizedBox swh(double width, double height) {
     height: height,
   );
 }
+
+InputDecoration myUnderlineInputDec() {
+  return InputDecoration(
+    border: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.blueGrey[100]!),
+    ),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.blueGrey[100]!),
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.blueGrey[100]!),
+    ),
+    disabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.blueGrey[100]!),
+    ),
+    errorBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.red[100]!),
+    ),
+  );
+}
+
+AppBar myAppBar(BuildContext context, String title,
+    {List<Widget>? action = const []}) {
+  return AppBar(
+    title: title.text.headline3(context).make(),
+    actions: action,
+  );
+}
+
+class SizeTransition5 extends PageRouteBuilder {
+  final Widget page;
+
+  SizeTransition5(this.page)
+      : super(
+          pageBuilder: (context, animation, anotherAnimation) => page,
+          transitionDuration: const Duration(milliseconds: 1000),
+          reverseTransitionDuration: const Duration(milliseconds: 200),
+          transitionsBuilder: (context, animation, anotherAnimation, child) {
+            animation = CurvedAnimation(
+                curve: Curves.fastLinearToSlowEaseIn,
+                parent: animation,
+                reverseCurve: Curves.fastOutSlowIn);
+            return Align(
+              alignment: Alignment.centerRight,
+              child: SizeTransition(
+                axis: Axis.horizontal,
+                sizeFactor: animation,
+                axisAlignment: 0,
+                child: page,
+              ),
+            );
+          },
+        );
+}
+
+Widget tff(fieldValue, suffix, controller, setState, BuildContext context,
+    {maxlines = 1, readOnly = false, expands = false}) {
+  return TextFormField(
+    controller: controller,
+    readOnly: readOnly == true ? true : false,
+    cursorColor: Theme.of(context).colorScheme.secondary,
+    cursorHeight: 30,
+    cursorWidth: 3,
+    expands: expands,
+    style: const TextStyle(fontSize: 14),
+    decoration: myInputDecoration(fieldValue, suffix),
+    maxLines: maxlines,
+    onFieldSubmitted: (value) {
+      fieldValue = value;
+    },
+    onSaved: (value) {
+      controller.text = value;
+      fieldValue = value;
+      setState(
+        () {
+          readOnly = false;
+        },
+      );
+    },
+  ).h(40).pOnly(top: 5);
+}

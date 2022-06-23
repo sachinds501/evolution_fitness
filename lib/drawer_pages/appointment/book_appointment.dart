@@ -26,9 +26,9 @@ const List<Time> times = <Time>[
 class BookAppointment extends StatefulWidget {
   const BookAppointment({
     Key? key,
-    /*required this.time*/
+    
   }) : super(key: key);
-  // final Time time;
+
 
   @override
   State<BookAppointment> createState() => _BookAppointmentState();
@@ -276,36 +276,36 @@ class _BookAppointmentState extends State<BookAppointment> {
 //   }
 // }
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+// class Home extends StatefulWidget {
+//   const Home({Key? key}) : super(key: key);
 
-  @override
-  State<Home> createState() => _HomeState();
-}
+//   @override
+//   State<Home> createState() => _HomeState();
+// }
 
-class _HomeState extends State<Home> {
-  int? selectedIndex;
+// class _HomeState extends State<Home> {
+//   int? selectedIndex;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: ListView.builder(
-        shrinkWrap: true,
-        physics: const AlwaysScrollableScrollPhysics(),
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('Item: $index'),
-            tileColor: selectedIndex == index ? Colors.blue : null,
-            onTap: () {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-          );
-        },
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       body: ListView.builder(
+//         shrinkWrap: true,
+//         physics: const AlwaysScrollableScrollPhysics(),
+//         itemCount: 10,
+//         itemBuilder: (context, index) {
+//           return ListTile(
+//             title: Text('Item: $index'),
+//             tileColor: selectedIndex == index ? Colors.blue : null,
+//             onTap: () {
+//               setState(() {
+//                 selectedIndex = index;
+//               });
+//             },
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }

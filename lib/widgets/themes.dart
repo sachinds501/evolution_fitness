@@ -40,6 +40,6 @@ class MyTheme {
 
   //Colors
   static Color creamColor = const Color(0xfff5f5f5);
-  static Color lightBluishColor = const Color.fromARGB(255, 238, 250, 255);
+  static Color lightBluishColor = const Color.fromARGB(255, 232, 243, 252);
   // static Color cyberYellowColor = const Color.fromARGB(255, 255, 213, 33);
 }

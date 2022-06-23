@@ -61,6 +61,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.feedsRoute: ((context) => const Feeds()),
         MyRoutes.bookappointmentRoute: ((context) => const BookAppointment()),
         MyRoutes.videoinfoRoute: ((context) => const VideoInfo()),
+        
       },
     );
   }
