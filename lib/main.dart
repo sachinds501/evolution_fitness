@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.chatsRoute: (context) => const ChatsPage(),
         MyRoutes.gymexerciseRoute: (context) => const GymExercise(),
         MyRoutes.gymclassesRoute: (context) => const GymClasses(),
-        MyRoutes.botsRoute: (context) => const Bot(),
+        MyRoutes.botsRoute: (context) => const Bots(),
         MyRoutes.userprogressRoute: (context) => const UserProgress(),
         MyRoutes.diaryRoute: (context) => const Diary(),
         MyRoutes.expertsRoute: (context) => const Experts(),

@@ -95,7 +95,10 @@ class _RecipeState extends State<Recipe> {
                                   ListTile(
                                     onTap: () async =>
                                         await _pickImageFromCamera(),
-                                    leading: const Icon(Icons.camera),
+                                    leading: const Icon(
+                                      Icons.camera,
+                                      color: Colors.blue,
+                                    ),
                                     title: 'Take photo'
                                         .text
                                         .bodyText2(context)
@@ -104,7 +107,10 @@ class _RecipeState extends State<Recipe> {
                                   ListTile(
                                     onTap: () async =>
                                         await _pickImageFromGallery(),
-                                    leading: const Icon(Icons.photo),
+                                    leading: const Icon(
+                                      Icons.photo,
+                                      color: Colors.green,
+                                    ),
                                     title: 'Pick from gallery'
                                         .text
                                         .bodyText2(context)

@@ -4,21 +4,21 @@ import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class Bot extends StatefulWidget {
-  const Bot({Key? key}) : super(key: key);
+class Bots extends StatefulWidget {
+  const Bots({Key? key}) : super(key: key);
 
   @override
-  State<Bot> createState() => _BotState();
+  State<Bots> createState() => _BotsState();
 }
 
-class _BotState extends State<Bot> {
+class _BotsState extends State<Bots> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
       appBar: AppBar(
-        title: 'Bots'.text.xl.black.bold.make(),
+        title: 'Botss'.text.xl.black.bold.make(),
       ),
       backgroundColor: Theme.of(context).canvasColor,
       body: Column(mainAxisAlignment: MainAxisAlignment.end, children: [

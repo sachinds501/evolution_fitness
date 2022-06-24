@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, avoid_print, duplicate_ignore, use_build_context_synchronously, library_private_types_in_public_api
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -14,6 +17,7 @@ class EditUserProfile extends StatefulWidget {
 }
 
 class _EditUserProfileState extends State<EditUserProfile> {
+  XFile? _imageFile;
   String name = "";
   DateTime? date;
   bool changeButton = false;
@@ -22,7 +26,6 @@ class _EditUserProfileState extends State<EditUserProfile> {
   final String _fname = 'Sachin';
   final String _lname = 'Solanki';
   final String _phone = '92540 24221';
-  final List<bool> _tileno = [false, false, false];
   final fnameController = TextEditingController();
   final lnameController = TextEditingController();
   final phoneController = TextEditingController();
@@ -107,9 +110,87 @@ class _EditUserProfileState extends State<EditUserProfile> {
                 SizedBox(
                   height: 20,
                 ),
-                FlutterLogo(
-                  size: 100,
-                ).centered(),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 60,
+                      backgroundColor: Colors.grey[100],
+                      child: ClipOval(
+                        child: _imageFile == null
+                            ? const Placeholder(
+                                color: Colors.transparent,
+                              )
+                            : Image.file(
+                                fit: BoxFit.cover, File(_imageFile!.path)),
+                      ).wh(200, 200),
+                    ).centered(),
+                    Positioned(
+                        top: 70,
+                        left: 171,
+                        child: IconButton(
+                            onPressed: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) => Container(
+                                  color: Colors.white,
+                                  child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        "Select mode of picture"
+                                            .text
+                                            .gray500
+                                            .xl
+                                            .make(),
+                                        const Divider(),
+                                        ListTile(
+                                          onTap: () async =>
+                                              await _pickImageFromCamera(),
+                                          leading: const Icon(
+                                            Icons.camera,
+                                            color: Colors.blue,
+                                          ),
+                                          title: 'Take photo'
+                                              .text
+                                              .bodyText2(context)
+                                              .make(),
+                                        ),
+                                        ListTile(
+                                          onTap: () async =>
+                                              await _pickImageFromGallery(),
+                                          leading: const Icon(
+                                            Icons.photo,
+                                            color: Colors.green,
+                                          ),
+                                          title: 'Pick from gallery'
+                                              .text
+                                              .bodyText2(context)
+                                              .make(),
+                                        ),
+                                        if (_imageFile != null)
+                                          ListTile(
+                                            onTap: () => setState(() {
+                                              _imageFile = null;
+                                            }),
+                                            leading: const Icon(
+                                              Icons.cancel,
+                                              color: Colors.red,
+                                            ),
+                                            title: 'Remove Image'
+                                                .text
+                                                .bodyText2(context)
+                                                .make(),
+                                          ),
+                                      ]).p16(),
+                                ),
+                              );
+                            },
+                            icon: Icon(Icons.add_circle_outlined,
+                                size: 25, color: Colors.green))),
+                  ],
+                ),
 
                 // "Name" form.
                 const SizedBox(height: 24.0),
@@ -171,6 +252,18 @@ class _EditUserProfileState extends State<EditUserProfile> {
     );
   }
 
+  Future<void> _pickImageFromGallery() async {
+    final XFile? imageFile =
+        (await ImagePicker().pickImage(source: ImageSource.gallery));
+    setState(() => _imageFile = imageFile);
+  }
+
+  Future<void> _pickImageFromCamera() async {
+    final XFile? imageFile =
+        (await ImagePicker().pickImage(source: ImageSource.camera));
+    setState(() => _imageFile = imageFile);
+  }
+
   /* ----------------- Method Extracted bewlow--------------*/
   /* ----------------- Method Extracted bewlow--------------*/
   /* ----------------- Method Extracted bewlow--------------*/
@@ -230,7 +323,6 @@ class _EditUserProfileState extends State<EditUserProfile> {
         onTap: () {
           setState(() {
             readOnly = true;
-            _tileno[2] = true;
           });
         },
         title: 'Contact Number*'.text.bodyText1(context).make(),
@@ -244,7 +336,6 @@ class _EditUserProfileState extends State<EditUserProfile> {
       onTap: () {
         setState(() {
           readOnly = true;
-          _tileno[0] = true;
         });
       },
       title: 'Last Name'.text.bodyText1(context).make(),
@@ -259,7 +350,6 @@ class _EditUserProfileState extends State<EditUserProfile> {
         onTap: () {
           setState(() {
             readOnly = true;
-            _tileno[0] = true;
           });
         },
         title: 'First Name'.text.bodyText1(context).make(),
