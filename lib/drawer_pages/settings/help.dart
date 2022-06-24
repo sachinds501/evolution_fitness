@@ -26,7 +26,8 @@ class _HelpState extends State<Help> {
                   );
                 },
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue)),
+                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                ),
                 child: "ADD NEW TICKET".text.xl.white.make())
             .h(40)
             .p64(),
@@ -77,7 +78,10 @@ class _AddNewTicketState extends State<AddNewTicket> {
       appBar: myAppBar(
         context,
         'Contact us',
-        action: [const Icon(Icons.check).pOnly(right: 10)],
+        action: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.check))
+              .pOnly(right: 10)
+        ],
       ),
 
       // actions: [const Icon(Icons.check).pOnly(right: 10)],

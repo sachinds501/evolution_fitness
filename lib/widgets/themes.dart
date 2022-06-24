@@ -7,6 +7,10 @@ class MyTheme {
       cardColor: Colors.white,
       canvasColor: lightBluishColor,
       backgroundColor: Colors.white,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.white))),
+      buttonTheme: const ButtonThemeData(buttonColor: Colors.blue),
       textTheme: const TextTheme(
           headline3: TextStyle(
               fontSize: 15, color: Colors.black, fontWeight: FontWeight.w500),

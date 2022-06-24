@@ -10,7 +10,8 @@ import 'package:evolution_fitness/drawer_pages/experts.dart';
 import 'package:evolution_fitness/drawer_pages/gym_classes.dart';
 import 'package:evolution_fitness/drawer_pages/gym_exercise.dart';
 import 'package:evolution_fitness/drawer_pages/membership.dart';
-import 'package:evolution_fitness/drawer_pages/photo_tracking.dart';
+import 'package:evolution_fitness/drawer_pages/photo_tracking/add_recipe.dart';
+import 'package:evolution_fitness/drawer_pages/photo_tracking/photo_tracking.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/user_progress.dart';
 import 'package:evolution_fitness/drawer_pages/profile/user_profile.dart';
 import 'package:evolution_fitness/drawer_pages/videos/video_info.dart';
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.feedsRoute: ((context) => const Feeds()),
         MyRoutes.bookappointmentRoute: ((context) => const BookAppointment()),
         MyRoutes.videoinfoRoute: ((context) => const VideoInfo()),
-        
+        MyRoutes.recipeRoute: ((context) => const Recipe()),
       },
     );
   }

@@ -25,19 +25,16 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(
         title: 'Settings'.text.headline3(context).make(),
       ),
-      body: Card(
-        elevation: 3,
-        child: ListView.builder(
-            shrinkWrap: true,
-            physics: const AlwaysScrollableScrollPhysics(),
-            itemCount: choices.length,
-            itemBuilder: (context, index) {
-              return SelectTile(
-                choice: choices[index],
-                index: index,
-              );
-            }),
-      ).pSymmetric(v: 16),
+      body: ListView.builder(
+          shrinkWrap: true,
+          physics: const AlwaysScrollableScrollPhysics(),
+          itemCount: choices.length,
+          itemBuilder: (context, index) {
+            return SelectTile(
+              choice: choices[index],
+              index: index,
+            );
+          }),
     );
   }
 }

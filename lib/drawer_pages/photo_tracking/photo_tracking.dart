@@ -1,10 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'package:evolution_fitness/drawer_pages/photo_tracking/add_recipe.dart';
+import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../widgets/shimmer_widget.dart';
+import '../../widgets/shimmer_widget.dart';
 
 class PhotoTracking extends StatefulWidget {
   const PhotoTracking({Key? key}) : super(key: key);
@@ -33,7 +35,17 @@ class _PhotoTrackingState extends State<PhotoTracking> {
       drawer: const MyDrawer(),
       backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
-        title: "PhotoTracking".text.xl.black.bold.make(),
+        title: "PhotoTracking".text.headline3(context).make(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'Add food',
+        backgroundColor: Colors.redAccent,
+        onPressed: () {
+          Navigator.of(context).push(SizeTransition5(const Recipe()));
+        },
+        child: const Icon(
+          Icons.food_bank,
+        ),
       ),
       body: _isLoading
           ? ListView.builder(
