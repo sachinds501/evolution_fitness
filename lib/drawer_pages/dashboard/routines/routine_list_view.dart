@@ -7,6 +7,7 @@ import 'package:evolution_fitness/drawer_pages/dashboard/routines/sleep.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/steps.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/water.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/weight.dart';
+import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -23,14 +24,15 @@ ListView routineListView() {
 }
 
 class Choice {
-  const Choice(
-      {this.appBattitle,
-      required this.elevatedButton,
-      required this.captionUnit,
-      required this.title,
-      required this.caption,
-      this.buttonTitle,
-      required this.icon});
+  const Choice({
+    this.appBattitle,
+    required this.elevatedButton,
+    required this.captionUnit,
+    required this.title,
+    required this.caption,
+    this.buttonTitle,
+    required this.icon,
+  });
   final String title;
   final String caption;
   final String? buttonTitle;
@@ -135,6 +137,17 @@ List<Choice> choices = const <Choice>[
       captionUnit: 'mg/dl'),
 ];
 
+const List<Widget> pages = <Widget>[
+  SleepRoutine(),
+  FoodRoutine(),
+  Weight(),
+  WaterRoutine(),
+  ExerciseRoutine(),
+  Steps(),
+  BloodPressure(),
+  BloodGlucose(),
+];
+
 class SelectCard extends StatefulWidget {
   const SelectCard({Key? key, required this.choice, required this.index})
       : super(key: key);
@@ -167,11 +180,8 @@ class _SelectCardState extends State<SelectCard> {
               if (widget.choice.elevatedButton == true)
                 ElevatedButton(
                   onPressed: () {
-                    Future.delayed(const Duration(seconds: 1), () {
-                      setState(() {
-                        callClass();
-                      });
-                    });
+                    navigatorKey.currentState!
+                        .push(SizeTransition5(pages[widget.index]));
                   },
                   style: ButtonStyle(
                     elevation: MaterialStateProperty.all(0),
@@ -216,44 +226,5 @@ class _SelectCardState extends State<SelectCard> {
         ],
       ).pSymmetric(h: 16, v: 12),
     ).cornerRadius(6).pSymmetric(v: 8, h: 16).h(130);
-  }
-
-  callClass() {
-    switch (widget.index) {
-      case 0:
-        navigatorKey.currentState!.push(
-            MaterialPageRoute(builder: (context) => const SleepRoutine()));
-        break;
-      case 1:
-        navigatorKey.currentState!
-            .push(MaterialPageRoute(builder: (context) => const FoodRoutine()));
-        break;
-      case 2:
-        navigatorKey.currentState!
-            .push(MaterialPageRoute(builder: (context) => const Weight()));
-        break;
-      case 3:
-        navigatorKey.currentState!.push(
-            MaterialPageRoute(builder: (context) => const WaterRoutine()));
-        break;
-      case 4:
-        navigatorKey.currentState!.push(
-            MaterialPageRoute(builder: (context) => const ExerciseRoutine()));
-        break;
-      case 5:
-        navigatorKey.currentState!
-            .push(MaterialPageRoute(builder: (context) => const Steps()));
-        break;
-      case 6:
-        navigatorKey.currentState!.push(
-            MaterialPageRoute(builder: (context) => const BloodPressure()));
-        break;
-      case 7:
-        navigatorKey.currentState!.push(
-            MaterialPageRoute(builder: (context) => const BloodGlucose()));
-        break;
-      default:
-        const Center(child: Text('Invalid input'));
-    }
   }
 }

@@ -41,9 +41,7 @@ class _UserProfileState extends State<UserProfile> {
                   ElevatedButton(
                           onPressed: () {
                             navigatorKey.currentState!.push(
-                              MaterialPageRoute(
-                                builder: (context) => EditUserProfile(),
-                              ),
+                              SizeTransition5(EditUserProfile()),
                             );
                           },
                           style: myButtonStyle(),
@@ -164,19 +162,19 @@ class _SelectColState extends State<SelectCol> {
             onPressed: () {
               switch (widget.index) {
                 case 0:
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Allergies(),
-                  ));
+                  Navigator.of(context).push(
+                    SizeTransition5(Allergies()),
+                  );
                   break;
                 case 1:
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => MedicalConditions(),
-                  ));
+                  Navigator.of(context).push(
+                    SizeTransition5(MedicalConditions()),
+                  );
                   break;
                 case 2:
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Medications(),
-                  ));
+                  Navigator.of(context).push(
+                    SizeTransition5(Medications()),
+                  );
                   break;
                 default:
               }

@@ -1,5 +1,4 @@
 // ignore_for_file: use_key_in_widget_constructors
-
 import 'package:evolution_fitness/drawer_pages/settings/change_password.dart';
 import 'package:evolution_fitness/drawer_pages/settings/change_unit.dart';
 import 'package:evolution_fitness/drawer_pages/settings/goals.dart';
@@ -32,7 +31,6 @@ class _SettingsState extends State<Settings> {
           itemBuilder: (context, index) {
             return SelectTile(
               choice: choices[index],
-              index: index,
             );
           }),
     );
@@ -40,25 +38,33 @@ class _SettingsState extends State<Settings> {
 }
 
 class Choice {
-  const Choice({required this.title, required this.image});
+  const Choice({required this.title, required this.image, required this.page});
   final String title;
   final String image;
+  final Widget page;
 }
 
 const List<Choice> choices = <Choice>[
-  Choice(title: 'My Goals', image: 'assets/images/goals.jpg'),
-  Choice(title: 'Change Password', image: 'assets/images/password.png'),
-  Choice(title: 'Change Unit', image: 'assets/images/flag.webp'),
-  Choice(title: 'Terms & Conditions', image: 'assets/images/tandc.png'),
-  Choice(title: 'About Us', image: 'assets/images/about.webp'),
-  Choice(title: 'Help', image: 'assets/images/help.png'),
+  Choice(title: 'My Goals', image: 'assets/images/goals.jpg', page: Goals()),
+  Choice(
+      title: 'Change Password',
+      image: 'assets/images/password.png',
+      page: Password()),
+  Choice(
+      title: 'Change Unit',
+      image: 'assets/images/flag.webp',
+      page: ChangeUnit()),
+  Choice(
+      title: 'Terms & Conditions',
+      image: 'assets/images/tandc.png',
+      page: TermsAndConditions()),
+  Choice(title: 'About Us', image: 'assets/images/about.webp', page: AboutUs()),
+  Choice(title: 'Help', image: 'assets/images/help.png', page: Help()),
 ];
 
 class SelectTile extends StatefulWidget {
-  const SelectTile({Key? key, required this.choice, required this.index})
-      : super(key: key);
+  const SelectTile({Key? key, required this.choice});
   final Choice choice;
-  final int index;
   @override
   State<SelectTile> createState() => _SelectTileState();
 }
@@ -68,37 +74,7 @@ class _SelectTileState extends State<SelectTile> {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        switch (widget.index) {
-          case 0:
-            Navigator.of(context).push(SizeTransition5(
-              const Goals(),
-            ));
-            break;
-          case 1:
-            Navigator.of(context).push(SizeTransition5(
-              const Password(),
-            ));
-            break;
-          case 2:
-            Navigator.of(context).push(SizeTransition5(
-              const ChangeUnit(),
-            ));
-            break;
-          case 3:
-            Navigator.of(context).push(SizeTransition5(
-              const TermsAndConditions(),
-            ));
-            break;
-          case 4:
-            Navigator.of(context).push(SizeTransition5(
-              const AboutUs(),
-            ));
-            break;
-          case 5:
-            Navigator.of(context).push(SizeTransition5(const Help()));
-            break;
-          default:
-        }
+        Navigator.of(context).push(SizeTransition5(widget.choice.page));
       },
       tileColor: Colors.white,
       leading: CircleAvatar(
