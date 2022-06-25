@@ -72,11 +72,10 @@ class _EditUserProfileState extends State<EditUserProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      appBar: AppBar(
-        centerTitle: true,
-        title: " Edit Profile".text.xl.bold.black.make(),
-        // backgroundColor: Colors.blue,
-        actions: [
+      appBar: myAppBar(
+        context,
+        "Edit Profile",
+        action: [
           readOnly == true
               ? TextButton(
                   onPressed: () {
@@ -110,87 +109,79 @@ class _EditUserProfileState extends State<EditUserProfile> {
                 SizedBox(
                   height: 20,
                 ),
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 60,
-                      backgroundColor: Colors.grey[100],
-                      child: ClipOval(
-                        child: _imageFile == null
-                            ? const Placeholder(
-                                color: Colors.transparent,
-                              )
-                            : Image.file(
-                                fit: BoxFit.cover, File(_imageFile!.path)),
-                      ).wh(200, 200),
-                    ).centered(),
-                    Positioned(
-                        top: 70,
-                        left: 171,
-                        child: IconButton(
-                            onPressed: () {
-                              showModalBottomSheet(
-                                context: context,
-                                builder: (context) => Container(
-                                  color: Colors.white,
-                                  child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        "Select mode of picture"
+                InkWell(
+                  onTap: () {
+                    readOnly == true
+                        ? null
+                        : showModalBottomSheet(
+                            context: context,
+                            builder: (context) => Container(
+                              color: Colors.white,
+                              child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    "Select mode of picture"
+                                        .text
+                                        .gray500
+                                        .xl
+                                        .make(),
+                                    const Divider(),
+                                    ListTile(
+                                      onTap: () async =>
+                                          await _pickImageFromCamera(),
+                                      leading: const Icon(
+                                        Icons.camera,
+                                        color: Colors.blue,
+                                      ),
+                                      title: 'Take photo'
+                                          .text
+                                          .bodyText2(context)
+                                          .make(),
+                                    ),
+                                    ListTile(
+                                      onTap: () async =>
+                                          await _pickImageFromGallery(),
+                                      leading: const Icon(
+                                        Icons.photo,
+                                        color: Colors.green,
+                                      ),
+                                      title: 'Pick from gallery'
+                                          .text
+                                          .bodyText2(context)
+                                          .make(),
+                                    ),
+                                    if (_imageFile != null)
+                                      ListTile(
+                                        onTap: () => setState(() {
+                                          _imageFile = null;
+                                        }),
+                                        leading: const Icon(
+                                          Icons.cancel,
+                                          color: Colors.red,
+                                        ),
+                                        title: 'Remove Image'
                                             .text
-                                            .gray500
-                                            .xl
+                                            .bodyText2(context)
                                             .make(),
-                                        const Divider(),
-                                        ListTile(
-                                          onTap: () async =>
-                                              await _pickImageFromCamera(),
-                                          leading: const Icon(
-                                            Icons.camera,
-                                            color: Colors.blue,
-                                          ),
-                                          title: 'Take photo'
-                                              .text
-                                              .bodyText2(context)
-                                              .make(),
-                                        ),
-                                        ListTile(
-                                          onTap: () async =>
-                                              await _pickImageFromGallery(),
-                                          leading: const Icon(
-                                            Icons.photo,
-                                            color: Colors.green,
-                                          ),
-                                          title: 'Pick from gallery'
-                                              .text
-                                              .bodyText2(context)
-                                              .make(),
-                                        ),
-                                        if (_imageFile != null)
-                                          ListTile(
-                                            onTap: () => setState(() {
-                                              _imageFile = null;
-                                            }),
-                                            leading: const Icon(
-                                              Icons.cancel,
-                                              color: Colors.red,
-                                            ),
-                                            title: 'Remove Image'
-                                                .text
-                                                .bodyText2(context)
-                                                .make(),
-                                          ),
-                                      ]).p16(),
-                                ),
-                              );
-                            },
-                            icon: Icon(Icons.add_circle_outlined,
-                                size: 25, color: Colors.green))),
-                  ],
-                ),
+                                      ),
+                                  ]).p16(),
+                            ),
+                          );
+                  },
+                  child: CircleAvatar(
+                    radius: 60,
+                    backgroundColor: Colors.grey[100],
+                    child: ClipOval(
+                      child: _imageFile == null
+                          ? const Placeholder(
+                              color: Colors.transparent,
+                            )
+                          : Image.file(
+                              fit: BoxFit.cover, File(_imageFile!.path)),
+                    ).wh(200, 200),
+                  ).centered(),
+                ).wh(140, 140).centered(),
 
                 // "Name" form.
                 const SizedBox(height: 24.0),

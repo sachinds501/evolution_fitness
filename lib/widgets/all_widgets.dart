@@ -1,3 +1,4 @@
+import 'package:evolution_fitness/drawer_pages/appointment/book_appointment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:intl/intl.dart';
@@ -35,7 +36,10 @@ Widget myfloatingButton(BuildContext context) {
           backgroundColor: Colors.greenAccent,
           label: 'Appointment',
           // labelStyle: TextTheme(fontSize: 18.0),
-          onTap: () => {Navigator.of(context).pushNamed('/book')}),
+          onTap: () => {
+                Navigator.of(context)
+                    .push(SizeTransition5(const BookAppointment()))
+              }),
       SpeedDialChild(
           child: const Icon(Icons.food_bank),
           backgroundColor: Colors.orangeAccent,
@@ -68,24 +72,23 @@ class _PickDateState extends State<PickDate> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: InkWell(
-        child: Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.blueGrey[100]!),
-              borderRadius: const BorderRadius.all(Radius.circular(10))),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              getText().text.color(Colors.lightBlue).make(),
-              Icon(Icons.calendar_month, color: Colors.blueGrey[100]),
-            ],
-          ).pSymmetric(h: 12),
-        ),
-        onTap: () => pickDate(context),
-      ),
-    ).cornerRadius(5).h(45);
+    return InkWell(
+      child: Container(
+        constraints: const BoxConstraints(maxHeight: 45),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Colors.blueGrey[100]!),
+            borderRadius: const BorderRadius.all(Radius.circular(10))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            getText().text.color(Colors.lightBlue).make(),
+            Icon(Icons.calendar_month, color: Colors.blueGrey[100]),
+          ],
+        ).pSymmetric(h: 12),
+      ).h(45).wFull(context),
+      onTap: () => pickDate(context),
+    );
   }
 
   Future pickDate(BuildContext context) async {

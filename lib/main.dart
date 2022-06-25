@@ -12,7 +12,6 @@ import 'package:evolution_fitness/drawer_pages/gym_exercise.dart';
 import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking/add_recipe.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking/photo_tracking.dart';
-import 'package:evolution_fitness/drawer_pages/dashboard/user_progress.dart';
 import 'package:evolution_fitness/drawer_pages/profile/user_profile.dart';
 import 'package:evolution_fitness/drawer_pages/videos/video_info.dart';
 import 'package:evolution_fitness/drawer_pages/videos/videos.dart';
@@ -23,6 +22,7 @@ import 'package:evolution_fitness/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'drawer_pages/appointment/appointment.dart';
 import 'drawer_pages/dashboard/routines/view_add_record_shimmer.dart';
+import 'drawer_pages/user_progress.dart';
 
 void main() {
   runApp(const MyApp());

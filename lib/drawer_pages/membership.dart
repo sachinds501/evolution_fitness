@@ -39,7 +39,7 @@ class _MembershipPageState extends State<MembershipPage> {
     return Scaffold(
       drawer: const MyDrawer(),
       appBar: AppBar(
-        title: 'Membership'.text.xl.black.bold.make(),
+        title: 'Membership'.text.headline3(context).make(),
       ),
       backgroundColor: Theme.of(context).canvasColor,
       body: _isLoading

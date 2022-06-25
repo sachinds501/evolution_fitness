@@ -19,11 +19,7 @@ class _UserProfileState extends State<UserProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      appBar: AppBar(
-        centerTitle: true,
-        title: " Edit Profile".text.headline3(context).make(),
-        // backgroundColor: Colors.blue,
-      ),
+      appBar: myAppBar(context, "View Profile"),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,

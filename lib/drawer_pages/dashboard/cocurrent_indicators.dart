@@ -81,20 +81,7 @@ class _CocurrentCPIState extends State<CocurrentCPI> {
                 value: value),
           ),
         ),
-        // Container(
-        //   margin: const EdgeInsets.all(20),
-        //   child: ElevatedButton(
-        //     style: ElevatedButton.styleFrom(
-        //         onPrimary: Colors.white, primary: Colors.green),
-        //     onPressed: () {
-        //       value = 0;
-        //       downloadData(value);
-        //       setState(() {});
-        //     },
-        //     child: const Text("Download File"),
-        //   ),
-        // )
-      ],
+      ]
     );
   }
 

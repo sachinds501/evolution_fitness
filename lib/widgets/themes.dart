@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
-      fontFamily: GoogleFonts.montserrat().fontFamily,
+      fontFamily: GoogleFonts.openSans().fontFamily,
       cardColor: Colors.white,
       canvasColor: lightBluishColor,
       backgroundColor: Colors.white,
@@ -13,7 +13,7 @@ class MyTheme {
       buttonTheme: const ButtonThemeData(buttonColor: Colors.blue),
       textTheme: const TextTheme(
           headline3: TextStyle(
-              fontSize: 15, color: Colors.black, fontWeight: FontWeight.w500),
+              fontSize: 15, color: Colors.black, fontWeight: FontWeight.w600),
           bodyText1: TextStyle(
               fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
           headline6: TextStyle(

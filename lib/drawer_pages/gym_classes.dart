@@ -37,7 +37,9 @@ class _GymClassesState extends State<GymClasses> {
       ),
       body: Column(
         children: [
-          Container(color: Colors.white, child: const PickDate().p16())
+          Container(
+                  color: Colors.white,
+                  child: Center(child: const PickDate().p16()))
               .cornerRadius(8)
               .h(80)
               .p16(),

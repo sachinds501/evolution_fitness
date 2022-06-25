@@ -10,13 +10,14 @@ import 'package:evolution_fitness/drawer_pages/gym_exercise.dart';
 import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking/photo_tracking.dart';
 import 'package:evolution_fitness/drawer_pages/settings/settings.dart';
-import 'package:evolution_fitness/drawer_pages/dashboard/user_progress.dart';
 import 'package:evolution_fitness/drawer_pages/videos/videos.dart';
 import 'package:evolution_fitness/pages/splashscreen.dart';
 import 'package:evolution_fitness/utils/routes.dart';
 import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import '../drawer_pages/user_progress.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -61,22 +62,21 @@ class MyDrawer extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  physics: ScrollPhysics(),
-                  itemCount: draweritems.length,
-                  itemBuilder: (context, index) => ListTile(
-                        leading: Icon(
-                          icons[index],
-                          color: Colors.black,
-                        ),
-                        title:
-                            draweritems[index].text.bodyText2(context).make(),
-                        onTap: () {
-                          Navigator.of(context)
-                              .push(SizeTransition5(pages[index]));
-                        },
-                      )),
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                itemCount: draweritems.length,
+                itemBuilder: (context, index) => ListTile(
+                  leading: Icon(
+                    icons[index],
+                    color: Colors.black,
+                  ),
+                  title: draweritems[index].text.bodyText2(context).make(),
+                  onTap: () {
+                    Navigator.of(context).push(SizeTransition5(pages[index]));
+                  },
+                ).h(50),
+              ),
             ),
           ],
         ),
@@ -103,7 +103,7 @@ List<String> draweritems = <String>[
 ];
 
 List<IconData> icons = <IconData>[
-  Icons.square_outlined,
+  Icons.menu,
   Icons.card_membership_outlined,
   Icons.play_circle_outline_outlined,
   Icons.calendar_month_outlined,

@@ -3,11 +3,12 @@
 import 'package:evolution_fitness/drawer_pages/dashboard/nutritions_data.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/routine_list_view.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/viewmore/viewmorecontent.dart';
+import 'package:evolution_fitness/pages/notifications.dart';
+import 'package:evolution_fitness/utils/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../utils/routes.dart';
 import '../../widgets/drawer.dart';
 import '../../widgets/all_widgets.dart';
 import 'cocurrent_indicators.dart';
@@ -33,7 +34,7 @@ class _DashboardState extends State<Dashboard> {
           IconButton(
                   onPressed: () {
                     Navigator.of(context)
-                        .pushNamed(MyRoutes.notificationsRoute);
+                        .push(SizeTransition5(Notifications()));
                   },
                   icon: const Icon(CupertinoIcons.bell_fill))
               .pOnly(right: 5),
@@ -46,6 +47,7 @@ class _DashboardState extends State<Dashboard> {
           onRefresh: () async {
             //Do whatever you want on refrsh.Usually update the date of the listview
             Navigator.pushNamed(context, MyRoutes.dashboardRoute);
+            // setState(() {});
           },
           child: ListView(
             children: [
@@ -65,8 +67,8 @@ class _DashboardState extends State<Dashboard> {
                             height: 10,
                           ),
                           VxTwoColumn(
-                            top: linearProgressBars(),
-                            bottom: nutritionsdata(),
+                            top: Container(child: linearProgressBars()),
+                            bottom: Container(child: nutritionsdata()),
                           ),
                         ],
                       ),
@@ -74,8 +76,8 @@ class _DashboardState extends State<Dashboard> {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => ViewMoreContent(),
+                          SizeTransition5(
+                            ViewMoreContent(),
                           ),
                         );
                       },

@@ -393,7 +393,7 @@ class _RecipeState extends State<Recipe> {
     'oz',
     'tbsp',
     'fillet',
-    'cup, secitons',
+    'cup, sections',
     'cup (8fl oz)',
     'cup (16fl oz)'
   ];
