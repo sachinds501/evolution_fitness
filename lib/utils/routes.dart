@@ -18,7 +18,7 @@ class MyRoutes {
   static String userprofileRoute = '/profile';
   static String feedsRoute = '/feeds';
   static String bookappointmentRoute = '/book';
-  static String videoinfoRoute = '/videoinfo';
+  // static String videoinfoRoute = '/videoinfo';
   static String goalsRoute = '/goals';
   static String recipeRoute = '/recipe';
   // static String userprofileRoute = '/profile';

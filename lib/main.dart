@@ -13,7 +13,6 @@ import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking/add_recipe.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking/photo_tracking.dart';
 import 'package:evolution_fitness/drawer_pages/profile/user_profile.dart';
-import 'package:evolution_fitness/drawer_pages/videos/video_info.dart';
 import 'package:evolution_fitness/drawer_pages/videos/videos.dart';
 import 'package:evolution_fitness/pages/notifications.dart';
 import 'package:evolution_fitness/pages/splashscreen.dart';
@@ -46,7 +45,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.dashboardRoute: (context) => const Dashboard(),
         MyRoutes.splashscreenRoute: (context) => const AfterSplash(),
         MyRoutes.membershipRoute: (context) => const MembershipPage(),
-        MyRoutes.videoRoute: (context) => const Videos(),
+        MyRoutes.videoRoute: (context) => Videos(),
         MyRoutes.appointmentRoute: (context) => const Appointment(),
         MyRoutes.phototrackingRoute: (context) => const PhotoTracking(),
         MyRoutes.chatsRoute: (context) => const ChatsPage(),
@@ -61,7 +60,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.userprofileRoute: (context) => UserProfile(),
         MyRoutes.feedsRoute: ((context) => const Feeds()),
         MyRoutes.bookappointmentRoute: ((context) => const BookAppointment()),
-        MyRoutes.videoinfoRoute: ((context) => const VideoInfo()),
+        // MyRoutes.videoinfoRoute: ((context) => const VideoInfo()),
         MyRoutes.recipeRoute: ((context) => const Recipe()),
       },
     );
