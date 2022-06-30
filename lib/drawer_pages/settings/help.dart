@@ -199,7 +199,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
           });
         },
         title: 'Contact Number*'.text.bodyText1(context).make(),
-        subtitle: tff(_phone, '', phoneController, setState, context));
+        subtitle: tff(_phone, phoneController, setState, context));
   }
 
   Widget email() {
@@ -211,7 +211,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
           });
         },
         title: 'Email*'.text.bodyText1(context).make(),
-        subtitle: tff(_email, '', emailCntrl, setState, context));
+        subtitle: tff(_email, emailCntrl, setState, context));
   }
 
   Widget title() {
@@ -223,7 +223,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
         });
       },
       title: 'Title*'.text.bodyText1(context).make(),
-      subtitle: tff(_title, '', _titleController, setState, context),
+      subtitle: tff(_title, _titleController, setState, context),
     );
   }
 
@@ -236,7 +236,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
         });
       },
       title: 'Description*'.text.bodyText1(context).make(),
-      subtitle: tff(_description, '', _descriptionController, setState, context,
+      subtitle: tff(_description, _descriptionController, setState, context,
               maxlines: null, expands: true)
           .h(150),
     );

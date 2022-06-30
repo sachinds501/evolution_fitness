@@ -187,7 +187,7 @@ class _RecipeState extends State<Recipe> {
           });
         },
         title: 'Recipe Name*'.text.bodyText1(context).make(),
-        subtitle: tff(_recipeName, '', recipeCntrl, setState, context));
+        subtitle: tff(_recipeName, recipeCntrl, setState, context));
   }
 
   Widget recipeIngridients() {
@@ -199,7 +199,7 @@ class _RecipeState extends State<Recipe> {
         });
       },
       title: 'Recipe Ingridients'.text.bodyText1(context).make(),
-      subtitle: tff(_recipeIngridients, '', _recipeIngridientsController,
+      subtitle: tff(_recipeIngridients,  _recipeIngridientsController,
               setState, context,
               maxlines: null, expands: true)
           .h(150),
@@ -215,7 +215,7 @@ class _RecipeState extends State<Recipe> {
         });
       },
       title: 'Recipe description*'.text.bodyText1(context).make(),
-      subtitle: tff(_recipeDescription, '', _recipeDescriptionController,
+      subtitle: tff(_recipeDescription,  _recipeDescriptionController,
               setState, context,
               maxlines: null, expands: true)
           .h(150),
@@ -231,7 +231,7 @@ class _RecipeState extends State<Recipe> {
           });
         },
         title: 'Quantity'.text.bodyText1(context).make(),
-        subtitle: tff(_quantity, '', quantityCntrl, setState, context));
+        subtitle: tff(_quantity,  quantityCntrl, setState, context));
   }
 
   Widget session() {

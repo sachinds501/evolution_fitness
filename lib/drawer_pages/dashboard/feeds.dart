@@ -12,6 +12,8 @@ class Feeds extends StatefulWidget {
 }
 
 class _FeedsState extends State<Feeds> {
+  String name = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,9 +58,13 @@ class _FeedsState extends State<Feeds> {
           feedFoodgrid(),
           Container(
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                TextFormField(
+                  initialValue: name,
+                  onChanged: (String name) => this.name = name,
+                ),
                 '14-Days Clean-Eating Meal Plan'.text.size(16).make(),
                 'Eating clean is the great way to up your intake of good-for-you foods'
                     .text
@@ -68,7 +74,9 @@ class _FeedsState extends State<Feeds> {
                   height: 40,
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                        
+                          },
                           style: ButtonStyle(
                             elevation: MaterialStateProperty.all(0),
                             backgroundColor:
@@ -85,7 +93,7 @@ class _FeedsState extends State<Feeds> {
           ),
         ],
       ),
-    ).cornerRadius(8).h(450).wFull(context);
+    ).cornerRadius(8).wFull(context);
   }
 
   Widget exerciseCard() {

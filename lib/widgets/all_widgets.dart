@@ -199,10 +199,14 @@ InputDecoration myUnderlineInputDec() {
 }
 
 AppBar myAppBar(BuildContext context, String title,
-    {List<Widget>? action = const []}) {
+    {List<Widget>? action = const [], String data = ''}) {
   return AppBar(
     title: title.text.headline3(context).make(),
     actions: action,
+    leading: IconButton(
+      icon: const Icon(Icons.arrow_back, color: Colors.black),
+      onPressed: () => Navigator.of(context).pop(data),
+    ),
   );
 }
 
@@ -232,30 +236,18 @@ class SizeTransition5 extends PageRouteBuilder {
         );
 }
 
-Widget tff(fieldValue, suffix, initialValue, setState, BuildContext context,
-    {maxlines = 1, readOnly = false, expands = false}) {
+Widget tff(fieldValue, initialValue, setState, BuildContext context,
+    {maxlines = 1, readOnly = false, expands = false, suffix = ''}) {
   return TextFormField(
     initialValue: initialValue,
     readOnly: readOnly == true ? true : false,
     cursorColor: Theme.of(context).colorScheme.secondary,
-    cursorHeight: 30, 
+    cursorHeight: 30,
     cursorWidth: 3,
     expands: expands,
     style: const TextStyle(fontSize: 14),
     decoration: myInputDecoration(fieldValue, suffix),
     maxLines: maxlines,
-    onChanged: (String name) => setState(() => initialValue = name),
-    // onFieldSubmitted: (value) {
-    //   fieldValue = value;
-    // },
-    // onSaved: (value) {
-    //   initialValue. = value;
-    //   fieldValue = value;
-    //   setState(
-    //     () {
-    //       readOnly = false;
-    //     },
-    //   );
-    // },
+    onChanged: (String name) => initialValue = name,
   ).h(40).pOnly(top: 5);
 }

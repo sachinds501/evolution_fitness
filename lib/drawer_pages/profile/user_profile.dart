@@ -2,7 +2,7 @@
 
 import 'package:evolution_fitness/drawer_pages/profile/add_alergies_medications_medical_conditions.dart';
 import 'package:evolution_fitness/drawer_pages/profile/edit_user_profile.dart';
-import 'package:evolution_fitness/main.dart';
+import 'package:evolution_fitness/utils/user_simple_preferences.dart';
 import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -15,11 +15,25 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
+  String fname = '';
+  String lname = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    fname = UserSimplePreferences.getFname() ?? ' ';
+    lname = UserSimplePreferences.getLname() ?? ' ';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      appBar: myAppBar(context, "View Profile"),
+      appBar: myAppBar(
+        context,
+        "View Profile",
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -33,12 +47,23 @@ class _UserProfileState extends State<UserProfile> {
                     size: 80,
                   ),
                   sh(10),
-                  "Sachin Solanki".text.headline3(context).bold.make(),
+                  "$fname $lname".text.headline3(context).bold.make(),
                   ElevatedButton(
-                          onPressed: () {
-                            navigatorKey.currentState!.push(
-                              SizeTransition5(EditUserProfile()),
-                            );
+                          onPressed: () async {
+                            // start the SecondScreen and wait for it to finish with a result
+                            final result = await Navigator.push(
+                                context,
+                                SizeTransition5(
+                                  EditUserProfile(),
+                                ));
+                            // after the SecondScreen result comes back update the Text widget with it
+                            setState(() {
+                              result == null ? null : fname = result.toString();
+                            });
+
+                            // navigatorKey.currentState!.push(
+                            //   SizeTransition5(EditUserProfile()),
+                            // );
                           },
                           style: myButtonStyle(),
                           child:

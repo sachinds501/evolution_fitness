@@ -36,9 +36,8 @@ class _EditUserProfileState extends State<EditUserProfile> {
   @override
   void initState() {
     super.initState();
-    _fname = UserSimplePreferences.getUsername() ?? '';
-    _lname = UserSimplePreferences.getLname() ?? '';
-
+    _fname = UserSimplePreferences.getFname()!;
+    _lname = UserSimplePreferences.getLname()!;
     setState(() {
       readOnly = false;
     });
@@ -86,17 +85,20 @@ class _EditUserProfileState extends State<EditUserProfile> {
                   },
                   child: "Edit".text.red500.bold.make())
               : IconButton(
-                      onPressed: () async {
-                        await UserSimplePreferences.setUsername(_fname);
-                        UserSimplePreferences.setLname(_lname);
-                        _formKey3.currentState!.save();
-                        setState(() {
-                          readOnly = true;
-                        });
-                      },
-                      icon: Icon(Icons.check))
-                  .pOnly(right: 12)
+                  onPressed: () async {
+                    await UserSimplePreferences.setFname(_fname);
+                    UserSimplePreferences.setLname(_lname);
+                    _formKey3.currentState!.save();
+                    setState(() {
+                      readOnly = true;
+                    });
+                  },
+                  icon: Icon(
+                    Icons.check,
+                    color: Colors.black,
+                  )).pOnly(right: 10),
         ],
+        data: '$_fname $_lname',
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -218,22 +220,22 @@ class _EditUserProfileState extends State<EditUserProfile> {
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: 'Height'.text.bodyText1(context).make(),
-                      subtitle: tff('', 'ft', _feet, setState, context,
-                          readOnly: readOnly),
+                      subtitle: textformfield('', _feet, context,
+                          suffix: 'ft', readOnly: readOnly),
                     ).wOneThird(context),
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: ''.text.bodyText1(context).make(),
-                      subtitle: tff('', 'inch', _inch, setState, context,
-                          readOnly: readOnly),
+                      subtitle: textformfield('', _inch, context,
+                          suffix: 'inch', readOnly: readOnly),
                     ).wOneThird(context),
                   ],
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: 'Weight'.text.bodyText1(context).make(),
-                  subtitle: tff('', 'lbs', _weight, setState, context,
-                      readOnly: readOnly),
+                  subtitle: textformfield('', _weight, context,
+                      suffix: 'lbs', readOnly: readOnly),
                 ).wOneThird(context),
               ],
             ).p16(),
@@ -317,7 +319,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
           });
         },
         title: 'Contact Number*'.text.bodyText1(context).make(),
-        subtitle: tff('Enter your phone no.', '', _phone, setState, context,
+        subtitle: textformfield('Enter your phone no.', _phone, context,
             readOnly: readOnly));
   }
 
@@ -330,8 +332,8 @@ class _EditUserProfileState extends State<EditUserProfile> {
         });
       },
       title: 'Last Name'.text.bodyText1(context).make(),
-      subtitle: tff('Enter Last Name', '', _lname, setState, context,
-          readOnly: readOnly),
+      subtitle: textformfield('Enter Last Name', _lname, context,
+          readOnly: readOnly, index: 1),
     );
   }
 
@@ -344,8 +346,8 @@ class _EditUserProfileState extends State<EditUserProfile> {
           });
         },
         title: 'First Name'.text.bodyText1(context).make(),
-        subtitle: tff('Enter First Name', '', _fname, setState, context,
-            readOnly: readOnly));
+        subtitle: textformfield('Enter First Name', _fname, context,
+            readOnly: readOnly, index: 0));
   }
 
   Future pickDate(BuildContext context) async {
@@ -377,5 +379,22 @@ class _EditUserProfileState extends State<EditUserProfile> {
     if (newDate == null) return;
 
     setState(() => date = newDate);
+  }
+
+  Widget textformfield(fieldValue, initialValue, BuildContext context,
+      {maxlines = 1, readOnly = false, suffix = '', index = 3}) {
+    return TextFormField(
+        initialValue: initialValue,
+        readOnly: readOnly == true ? true : false,
+        cursorColor: Theme.of(context).colorScheme.secondary,
+        cursorHeight: 30,
+        cursorWidth: 3,
+        style: const TextStyle(fontSize: 14),
+        decoration: myInputDecoration(fieldValue, suffix),
+        maxLines: maxlines,
+        onChanged: (String name) {
+          if (index == 0) _fname = name;
+          if (index == 1) _lname = name;
+        }).h(40).pOnly(top: 5);
   }
 }
