@@ -45,7 +45,7 @@ class Choice {
 List<Choice> choices = const <Choice>[
   Choice(
       title: 'Weekly Avg. Sleep',
-      caption: '0 hr 0 min',
+      caption: '7 hr 5 min',
       buttonTitle: 'View',
       icon: FaIcon(
         FontAwesomeIcons.solidMoon,
@@ -58,7 +58,7 @@ List<Choice> choices = const <Choice>[
       captionUnit: ''),
   Choice(
       title: 'Food',
-      caption: '0',
+      caption: '600',
       buttonTitle: 'Add',
       icon: FaIcon(
         FontAwesomeIcons.kitchenSet,
@@ -82,7 +82,7 @@ List<Choice> choices = const <Choice>[
       elevatedButton: true),
   Choice(
       title: 'Water',
-      caption: '0',
+      caption: '300',
       buttonTitle: 'Record',
       icon: FaIcon(
         FontAwesomeIcons.glassWater,
@@ -93,25 +93,25 @@ List<Choice> choices = const <Choice>[
       elevatedButton: true),
   Choice(
       title: 'Exercise',
-      caption: '0',
+      caption: '40',
       buttonTitle: 'View',
       icon: FaIcon(
         FontAwesomeIcons.personRunning,
         color: Colors.blue,
         size: 26,
       ),
-      captionUnit: '/ 0 cal',
+      captionUnit: '/ 500 cal',
       elevatedButton: true),
   Choice(
       title: 'Steps',
-      caption: '0 steps',
+      caption: '3210 steps',
       buttonTitle: 'View',
       icon: FaIcon(
         FontAwesomeIcons.solidMoon,
         color: Colors.grey,
         size: 26,
       ),
-      captionUnit: '/ 0 cal',
+      captionUnit: '/ 500 cal',
       elevatedButton: true),
   Choice(
       title: 'Blood Pressure',

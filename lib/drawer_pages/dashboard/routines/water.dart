@@ -12,6 +12,7 @@ class WaterRoutine extends StatefulWidget {
 }
 
 class _FoodRoutineState extends State<WaterRoutine> {
+  String appBarTitle = 'Water';
   bool _isLoading = false;
 
   @override
@@ -29,10 +30,8 @@ class _FoodRoutineState extends State<WaterRoutine> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      appBar: AppBar(
-        title: 'Water'.text.xl.black.bold.make(),
-      ),
-            floatingActionButton: myfloatingButton(context),
+      appBar: myAppBar(context, 'Water'),
+      floatingActionButton: myfloatingButton(context, 1, appBarTitle),
       body: _isLoading
           ? const ViewAddRecord()
           : SizedBox(

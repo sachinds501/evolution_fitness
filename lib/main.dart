@@ -17,13 +17,16 @@ import 'package:evolution_fitness/drawer_pages/videos/videos.dart';
 import 'package:evolution_fitness/pages/notifications.dart';
 import 'package:evolution_fitness/pages/splashscreen.dart';
 import 'package:evolution_fitness/utils/routes.dart';
+import 'package:evolution_fitness/utils/user_simple_preferences.dart';
 import 'package:evolution_fitness/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'drawer_pages/appointment/appointment.dart';
 import 'drawer_pages/dashboard/routines/view_add_record_shimmer.dart';
 import 'drawer_pages/user_progress.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserSimplePreferences.init();
   runApp(const MyApp());
 }
 

@@ -9,10 +9,10 @@ import 'package:evolution_fitness/drawer_pages/gym_classes.dart';
 import 'package:evolution_fitness/drawer_pages/gym_exercise.dart';
 import 'package:evolution_fitness/drawer_pages/membership.dart';
 import 'package:evolution_fitness/drawer_pages/photo_tracking/photo_tracking.dart';
+import 'package:evolution_fitness/drawer_pages/profile/user_profile.dart';
 import 'package:evolution_fitness/drawer_pages/settings/settings.dart';
 import 'package:evolution_fitness/drawer_pages/videos/videos.dart';
 import 'package:evolution_fitness/pages/splashscreen.dart';
-import 'package:evolution_fitness/utils/routes.dart';
 import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -38,7 +38,7 @@ class MyDrawer extends StatelessWidget {
                 child: Center(
                   child: ListTile(
                     onTap: () {
-                      Navigator.pushNamed(context, MyRoutes.userprofileRoute);
+                      Navigator.push(context, SizeTransition5(UserProfile()));
                     },
                     leading: CircleAvatar(
                       maxRadius: 28,

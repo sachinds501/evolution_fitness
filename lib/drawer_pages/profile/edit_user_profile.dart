@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../utils/user_simple_preferences.dart';
 import '../../widgets/all_widgets.dart';
 
 class EditUserProfile extends StatefulWidget {
@@ -23,21 +24,21 @@ class _EditUserProfileState extends State<EditUserProfile> {
   bool changeButton = false;
   String? _btn3SelectedVal;
   bool? readOnly;
-  final String _fname = 'Sachin';
-  final String _lname = 'Solanki';
+  String _fname = '';
+  String _lname = '';
   final String _phone = '92540 24221';
-  final fnameController = TextEditingController();
-  final lnameController = TextEditingController();
-  final phoneController = TextEditingController();
-  final feetController = TextEditingController();
-  final inchController = TextEditingController();
-  final weightController = TextEditingController();
+  final String _feet = '5';
+  final String _inch = '10';
+  final String _weight = '60';
 
   final _formKey3 = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
+    _fname = UserSimplePreferences.getUsername() ?? '';
+    _lname = UserSimplePreferences.getLname() ?? '';
+
     setState(() {
       readOnly = false;
     });
@@ -85,7 +86,9 @@ class _EditUserProfileState extends State<EditUserProfile> {
                   },
                   child: "Edit".text.red500.bold.make())
               : IconButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        await UserSimplePreferences.setUsername(_fname);
+                        UserSimplePreferences.setLname(_lname);
                         _formKey3.currentState!.save();
                         setState(() {
                           readOnly = true;
@@ -215,15 +218,13 @@ class _EditUserProfileState extends State<EditUserProfile> {
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: 'Height'.text.bodyText1(context).make(),
-                      subtitle: tff(
-                          5.toString(), 'ft', feetController, setState, context,
+                      subtitle: tff('', 'ft', _feet, setState, context,
                           readOnly: readOnly),
                     ).wOneThird(context),
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: ''.text.bodyText1(context).make(),
-                      subtitle: tff(6.toString(), 'inch', inchController,
-                          setState, context,
+                      subtitle: tff('', 'inch', _inch, setState, context,
                           readOnly: readOnly),
                     ).wOneThird(context),
                   ],
@@ -231,8 +232,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: 'Weight'.text.bodyText1(context).make(),
-                  subtitle: tff(
-                      60.toString(), 'lbs', weightController, setState, context,
+                  subtitle: tff('', 'lbs', _weight, setState, context,
                       readOnly: readOnly),
                 ).wOneThird(context),
               ],
@@ -317,7 +317,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
           });
         },
         title: 'Contact Number*'.text.bodyText1(context).make(),
-        subtitle: tff(_phone, '', phoneController, setState, context,
+        subtitle: tff('Enter your phone no.', '', _phone, setState, context,
             readOnly: readOnly));
   }
 
@@ -330,7 +330,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
         });
       },
       title: 'Last Name'.text.bodyText1(context).make(),
-      subtitle: tff(_lname, '', lnameController, setState, context,
+      subtitle: tff('Enter Last Name', '', _lname, setState, context,
           readOnly: readOnly),
     );
   }
@@ -344,7 +344,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
           });
         },
         title: 'First Name'.text.bodyText1(context).make(),
-        subtitle: tff(_fname, '', fnameController, setState, context,
+        subtitle: tff('Enter First Name', '', _fname, setState, context,
             readOnly: readOnly));
   }
 

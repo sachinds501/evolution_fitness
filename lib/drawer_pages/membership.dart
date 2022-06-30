@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -38,16 +39,14 @@ class _MembershipPageState extends State<MembershipPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: 'Membership'.text.headline3(context).make(),
-      ),
-      backgroundColor: Theme.of(context).canvasColor,
+      appBar: myAppBar(context, 'Membership'),
       body: _isLoading
-          ? ListView.builder(
+          ? ListView.separated(
               itemCount: 3,
+              separatorBuilder: (context, value) => Divider(),
               itemBuilder: (context, index) {
                 return buildMembershipShimmer();
-              }).pOnly(top: 16, left: 16, right: 16)
+              })
           : SingleChildScrollView(
               child: Column(
                 children: [

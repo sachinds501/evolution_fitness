@@ -1,4 +1,5 @@
 // ignore_for_file: use_key_in_widget_constructors, avoid_print
+import 'package:evolution_fitness/drawer_pages/videos/video_shimmer.dart';
 import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -12,6 +13,7 @@ class Videos extends StatefulWidget {
 }
 
 class _VideosState extends State<Videos> {
+  bool _isLoading = false;
   static String key = "AIzaSyDCtA9CExtP7AER8X3mrmwCCJvUes0CqPU";
 
   YoutubeAPI youtube = YoutubeAPI(key);
@@ -26,9 +28,15 @@ class _VideosState extends State<Videos> {
 
   @override
   void initState() {
+    _isLoading = true;
+    Future.delayed(const Duration(seconds: 1), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+
     super.initState();
     callAPI();
-    print('hello');
   }
 
   @override
@@ -38,9 +46,11 @@ class _VideosState extends State<Videos> {
         context,
         'Videos',
       ),
-      body: ListView(
-        children: videoResult.map<Widget>(listItem).toList(),
-      ).p16(),
+      body: _isLoading == true
+          ? buildVideoShimmer(context)
+          : ListView(
+              children: videoResult.map<Widget>(listItem).toList(),
+            ).p16(),
     );
   }
 

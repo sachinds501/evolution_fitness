@@ -139,18 +139,30 @@ class _SelectColState extends State<SelectCol> {
                     .overflow(TextOverflow.ellipsis)
                     .make(),
                 sh(10),
-                Wrap(
-                  children: [
-                    ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.blue)),
-                            child: "ok".text.size(10).make())
-                        .h(25)
-                        .pSymmetric(v: 5),
-                  ],
-                ),
+                if (widget.index == 1)
+                  Wrap(
+                    children: [
+                      ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(0),
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.blue)),
+                              child: "Asthama".text.size(10).make())
+                          .h(25)
+                          .p4(),
+                      if (widget.index == 1)
+                        ElevatedButton(
+                                onPressed: () {},
+                                style: ButtonStyle(
+                                    elevation: MaterialStateProperty.all(0),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(Colors.blue)),
+                                child: "Hypertesion".text.size(10).make())
+                            .h(25)
+                            .p4(),
+                    ],
+                  ),
               ],
             ).pSymmetric(h: 10),
           ),
@@ -182,6 +194,6 @@ class _SelectColState extends State<SelectCol> {
           ).wh(50, 50),
         ],
       ).p12(),
-    ).pOnly(bottom: 10);
+    ).cornerRadius(5).pOnly(bottom: 10);
   }
 }

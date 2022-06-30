@@ -29,17 +29,61 @@ class _FoodRoutineState extends State<BloodPressure> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      appBar: AppBar(
-        title: 'Blood Pressure'.text.xl.black.bold.make(),
-      ),
-            floatingActionButton: myfloatingButton(context),
+      appBar: myAppBar(context, 'Blood Pressure'),
+      floatingActionButton: myfloatingButton(context, 2, 'Blood Pressure'),
       body: _isLoading
           ? const ViewAddRecord()
-          : SizedBox(
-              height: 500,
-              child:
-                  Center(child: " Get Amazing Food here".text.bold.xl3.make()),
-            ),
+          : Container(
+              color: Colors.white,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    color: Colors.redAccent,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        "Note down Blood Pressure"
+                            .text
+                            .align(TextAlign.center)
+                            .white
+                            .xl3
+                            .makeCentered(),
+                        "Set your target to stay active and healthy"
+                            .text
+                            .align(TextAlign.center)
+                            .white
+                            .headline6(context)
+                            .makeCentered()
+                      ],
+                    ).pSymmetric(v: 40).px(20),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      setState(() {});
+                    },
+                    title: 'Blood Pressure Level'
+                        .text
+                        .bodyText1(context)
+                        .red500
+                        .makeCentered(),
+                    subtitle: TextFormField(
+                      // controller: _confirmPass,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 14),
+                      decoration: myUnderlineInputDec(),
+                      cursorColor: Theme.of(context).colorScheme.secondary,
+                      cursorHeight: 30,
+                      cursorWidth: 3,
+                      onFieldSubmitted: (value) {},
+                      onSaved: (value) {
+                        setState(() {});
+                      },
+                    ).h(40),
+                  ).py(20),
+                ],
+              ),
+            ).cornerRadius(5).p16(),
     );
   }
 }

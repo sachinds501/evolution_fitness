@@ -30,14 +30,18 @@ class Choice {
 }
 
 const List<Choice> choices = <Choice>[
-  Choice(title: '0/0', caption: 'Burned', color: Colors.redAccent, value: 1),
   Choice(
-      title: '1,191',
+      title: '140/550', caption: 'Burned', color: Colors.redAccent, value: 1),
+  Choice(
+      title: '841',
       caption: 'kCal Left',
       color: Colors.lightBlueAccent,
       value: 1),
   Choice(
-      title: '0 /1,191', caption: 'Consumed', color: Colors.blueGrey, value: 0),
+      title: '250 /1,191',
+      caption: 'Consumed',
+      color: Colors.blueGrey,
+      value: 0.4),
 ];
 
 class SelectCard extends StatefulWidget {

@@ -28,10 +28,8 @@ class _FoodRoutineState extends State<SleepRoutine> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      appBar: AppBar(
-        title: 'Sleep'.text.xl.black.bold.make(),
-      ),
-      floatingActionButton: myfloatingButton(context),
+      appBar: myAppBar(context, 'Sleep'),
+      floatingActionButton: myfloatingButton(context, 1, 'Sleep'),
       body: _isLoading
           ? const ViewAddRecord()
           : SizedBox(

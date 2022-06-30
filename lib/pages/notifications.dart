@@ -19,24 +19,25 @@ class _NotificationsState extends State<Notifications> {
         title: "Notification".text.xl.bold.black.make(),
       ),
       body: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, value) => ListTile(
-                title: "Your appointment scheduled"
-                    .text
-                    .overflow(TextOverflow.ellipsis)
-                    .bodyText2(context)
-                    .make(),
-                subtitle: Text(DateFormat('dd MMM yyy').format(DateTime.now())),
-                tileColor: Colors.green[200],
-                leading: const Icon(
-                  CupertinoIcons.bell_circle,
-                  size: 40,
-                ),
-                shape: const Border(bottom: BorderSide(width: 1)),
-                trailing: Text(
-                  DateFormat.jm().format(DateTime.now()),
-                ),
-              )),
+        itemCount: 10,
+        itemBuilder: (context, value) => ListTile(
+          title: "Your appointment scheduled"
+              .text
+              .overflow(TextOverflow.ellipsis)
+              .bodyText2(context)
+              .make(),
+          subtitle: Text(DateFormat('dd MMM yyy').format(DateTime.now())),
+          tileColor: Colors.white,
+          leading: const Icon(
+            CupertinoIcons.bell_circle,
+            size: 40,
+          ),
+          shape: const Border(bottom: BorderSide(width: 1)),
+          trailing: Text(
+            DateFormat.jm().format(DateTime.now()),
+          ),
+        ).h(80),
+      ),
     );
   }
 }

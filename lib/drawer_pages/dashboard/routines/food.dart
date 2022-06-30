@@ -1,7 +1,7 @@
+import 'package:evolution_fitness/drawer_pages/dashboard/feeds.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/view_add_record_shimmer.dart';
 import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class FoodRoutine extends StatefulWidget {
   const FoodRoutine({Key? key}) : super(key: key);
@@ -26,19 +26,13 @@ class _FoodRoutineState extends State<FoodRoutine> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).canvasColor,
-      appBar: AppBar(
-        title: 'Diet'.text.headline3(context).make(),
-      ),
-      floatingActionButton: myfloatingButton(context),
-      body: _isLoading
-          ? const ViewAddRecord()
-          : SizedBox(
-              height: 500,
-              child:
-                  Center(child: " Get Amazing Food here".text.bold.xl3.make()),
-            ),
-    );
+    return _isLoading
+        ? Scaffold(
+            backgroundColor: Theme.of(context).canvasColor,
+            appBar: myAppBar(context, 'Diet'),
+            floatingActionButton: myfloatingButton(context, 2, 'Diet'),
+            body: const ViewAddRecord(),
+          )
+        : const Feeds();
   }
 }

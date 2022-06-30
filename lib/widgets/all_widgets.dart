@@ -14,7 +14,7 @@ ButtonStyle myButtonStyle() {
   );
 }
 
-Widget myfloatingButton(BuildContext context) {
+Widget myfloatingButton(BuildContext context, id, appBarTitle) {
   return SpeedDial(
     animatedIcon: AnimatedIcons.add_event,
     animatedIconTheme: const IconThemeData(size: 30.0),
@@ -40,12 +40,13 @@ Widget myfloatingButton(BuildContext context) {
                 Navigator.of(context)
                     .push(SizeTransition5(const BookAppointment()))
               }),
-      SpeedDialChild(
-          child: const Icon(Icons.food_bank),
-          backgroundColor: Colors.orangeAccent,
-          label: 'Diet',
-          // labelStyle: TextTheme(fontSize: 18.0),
-          onTap: () {}),
+      if (id == 2)
+        SpeedDialChild(
+            child: const Icon(Icons.food_bank),
+            backgroundColor: Colors.orangeAccent,
+            label: appBarTitle,
+            // labelStyle: TextTheme(fontSize: 18.0),
+            onTap: () {}),
     ],
   );
 }
@@ -231,29 +232,30 @@ class SizeTransition5 extends PageRouteBuilder {
         );
 }
 
-Widget tff(fieldValue, suffix, controller, setState, BuildContext context,
+Widget tff(fieldValue, suffix, initialValue, setState, BuildContext context,
     {maxlines = 1, readOnly = false, expands = false}) {
   return TextFormField(
-    controller: controller,
+    initialValue: initialValue,
     readOnly: readOnly == true ? true : false,
     cursorColor: Theme.of(context).colorScheme.secondary,
-    cursorHeight: 30,
+    cursorHeight: 30, 
     cursorWidth: 3,
     expands: expands,
     style: const TextStyle(fontSize: 14),
     decoration: myInputDecoration(fieldValue, suffix),
     maxLines: maxlines,
-    onFieldSubmitted: (value) {
-      fieldValue = value;
-    },
-    onSaved: (value) {
-      controller.text = value;
-      fieldValue = value;
-      setState(
-        () {
-          readOnly = false;
-        },
-      );
-    },
+    onChanged: (String name) => setState(() => initialValue = name),
+    // onFieldSubmitted: (value) {
+    //   fieldValue = value;
+    // },
+    // onSaved: (value) {
+    //   initialValue. = value;
+    //   fieldValue = value;
+    //   setState(
+    //     () {
+    //       readOnly = false;
+    //     },
+    //   );
+    // },
   ).h(40).pOnly(top: 5);
 }
