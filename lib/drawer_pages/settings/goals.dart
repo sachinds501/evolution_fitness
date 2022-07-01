@@ -71,10 +71,12 @@ class _GoalsState extends State<Goals> {
       body: Container(
         color: Colors.white,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               color: Colors.blueAccent,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   "Set your Goal".text.white.xl3.makeCentered(),
@@ -86,109 +88,106 @@ class _GoalsState extends State<Goals> {
                 ],
               ).pSymmetric(v: 40),
             ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ListTile(
-                    onTap: () {
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ListTile(
+                  onTap: () {
+                    setState(() {});
+                  },
+                  title: 'Steps'.text.bodyText1(context).blue500.makeCentered(),
+                  subtitle: TextFormField(
+                    // controller: _confirmPass,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 14),
+                    decoration: myUnderlineInputDec(),
+                    cursorColor: Theme.of(context).colorScheme.secondary,
+                    cursorHeight: 30,
+                    cursorWidth: 3,
+                    onFieldSubmitted: (value) {},
+                    onSaved: (value) {
                       setState(() {});
                     },
-                    title:
-                        'Steps'.text.bodyText1(context).blue500.makeCentered(),
-                    subtitle: TextFormField(
-                      // controller: _confirmPass,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 14),
-                      decoration: myUnderlineInputDec(),
-                      cursorColor: Theme.of(context).colorScheme.secondary,
-                      cursorHeight: 30,
-                      cursorWidth: 3,
-                      onFieldSubmitted: (value) {},
-                      onSaved: (value) {
-                        setState(() {});
-                      },
-                    ).h(40),
-                  ),
-                  sh(20),
-                  ListTile(
-                    onTap: () {
-                      setState(() {});
-                    },
-                    title:
-                        'Sleep'.text.bodyText1(context).blue500.makeCentered(),
-                    subtitle: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 1,
-                                  color: Colors.blueGrey[100]!,
-                                ),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(5))),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton(
-                                style: const TextStyle(
-                                    fontSize: 14, color: Colors.black),
-                                dropdownColor: Colors.white,
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(8)),
-                                value: _btn3SelectedVal,
-                                hint: 'hours'.text.headline6(context).make(),
-                                onChanged: (String? newValue) {
-                                  if (newValue != null) {
-                                    setState(() => _btn3SelectedVal = newValue);
-                                  }
-                                },
-                                items: dropdown2,
-                              ).pSymmetric(h: 12),
-                            ),
-                          ).h(40),
-                        ),
-                        sw(20),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 1,
-                                  color: Colors.blueGrey[100]!,
-                                ),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(5))),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton(
-                                style: const TextStyle(
-                                    fontSize: 14, color: Colors.black),
-                                dropdownColor: Colors.white,
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(8)),
-                                value: _btn4SelectedVal,
-                                hint: 'minutes'.text.headline6(context).make(),
-                                onChanged: (String? newValue) {
-                                  if (newValue != null) {
-                                    setState(() => _btn4SelectedVal = newValue);
-                                  }
-                                },
-                                items: dropdown1,
-                              ).pSymmetric(h: 12),
-                            ),
-                          ).h(40),
-                        ),
-                      ],
-                    ).pOnly(top: 10),
-                  ),
-                ],
-              ),
-            ),
+                  ).h(40),
+                ),
+                sh(20),
+                ListTile(
+                  onTap: () {
+                    setState(() {});
+                  },
+                  title: 'Sleep'.text.bodyText1(context).blue500.makeCentered(),
+                  subtitle: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 1,
+                                color: Colors.blueGrey[100]!,
+                              ),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(5))),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.black),
+                              dropdownColor: Colors.white,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                              value: _btn3SelectedVal,
+                              hint: 'hours'.text.headline6(context).make(),
+                              onChanged: (String? newValue) {
+                                if (newValue != null) {
+                                  setState(() => _btn3SelectedVal = newValue);
+                                }
+                              },
+                              items: dropdown2,
+                            ).pSymmetric(h: 12),
+                          ),
+                        ).h(40),
+                      ),
+                      sw(20),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 1,
+                                color: Colors.blueGrey[100]!,
+                              ),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(5))),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.black),
+                              dropdownColor: Colors.white,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                              value: _btn4SelectedVal,
+                              hint: 'minutes'.text.headline6(context).make(),
+                              onChanged: (String? newValue) {
+                                if (newValue != null) {
+                                  setState(() => _btn4SelectedVal = newValue);
+                                }
+                              },
+                              items: dropdown1,
+                            ).pSymmetric(h: 12),
+                          ),
+                        ).h(40),
+                      ),
+                    ],
+                  ).pOnly(top: 10),
+                ),
+              ],
+            ).py(16),
           ],
         ),
-      ).cornerRadius(5).p16().hHalf(context),
+      ).cornerRadius(5).p16(),
     );
   }
 }

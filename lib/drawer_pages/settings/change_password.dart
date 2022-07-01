@@ -95,7 +95,10 @@ class _PasswordState extends State<Password> {
                                         _oldpasswordVisibility = false;
                                       });
                                     },
-                                    icon: Icon(CupertinoIcons.eye),
+                                    icon: Icon(
+                                      CupertinoIcons.eye,
+                                      color: Colors.black,
+                                    ),
                                   )
                                 : IconButton(
                                     onPressed: () {
@@ -103,7 +106,10 @@ class _PasswordState extends State<Password> {
                                         _oldpasswordVisibility = true;
                                       });
                                     },
-                                    icon: Icon(CupertinoIcons.eye_slash),
+                                    icon: Icon(
+                                      CupertinoIcons.eye_slash,
+                                      color: Colors.black,
+                                    ),
                                   ),
                           ),
                           obscureText:
@@ -152,7 +158,10 @@ class _PasswordState extends State<Password> {
                                         _newpasswordVisibility = false;
                                       });
                                     },
-                                    icon: Icon(CupertinoIcons.eye),
+                                    icon: Icon(
+                                      CupertinoIcons.eye,
+                                      color: Colors.black,
+                                    ),
                                   )
                                 : IconButton(
                                     onPressed: () {
@@ -160,7 +169,10 @@ class _PasswordState extends State<Password> {
                                         _newpasswordVisibility = true;
                                       });
                                     },
-                                    icon: Icon(CupertinoIcons.eye_slash),
+                                    icon: Icon(
+                                      CupertinoIcons.eye_slash,
+                                      color: Colors.black,
+                                    ),
                                   ),
                           ),
                           controller: _pass,

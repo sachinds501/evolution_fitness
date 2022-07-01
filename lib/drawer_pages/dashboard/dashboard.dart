@@ -59,6 +59,7 @@ class _DashboardState extends State<Dashboard> {
                       width: screenWidth * 100,
                       color: Colors.white,
                       child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

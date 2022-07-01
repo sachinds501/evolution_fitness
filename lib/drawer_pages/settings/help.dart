@@ -203,7 +203,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
           });
         },
         title: 'Email*'.text.bodyText1(context).make(),
-        subtitle: tff(_email, email, context));
+        subtitle: tff('Enter your email', _email, context));
   }
 
   Widget title() {

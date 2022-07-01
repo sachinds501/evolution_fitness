@@ -145,11 +145,13 @@ class _VideoInfoState extends State<VideoInfo> {
   }
 
   _buildYtbView() {
-    return AspectRatio(
-      aspectRatio: 16 / 9,
-      child: _ytbPlayerController != null
-          ? YoutubePlayerIFrame(controller: _ytbPlayerController)
-          : Center(child: CircularProgressIndicator()),
+    return Flexible(
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: _ytbPlayerController != null
+            ? YoutubePlayerIFrame(controller: _ytbPlayerController)
+            : Center(child: CircularProgressIndicator()),
+      ),
     );
   }
 }
