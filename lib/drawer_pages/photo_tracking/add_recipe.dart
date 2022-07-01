@@ -21,12 +21,6 @@ class _RecipeState extends State<Recipe> {
   int _selectScale = 0;
   bool ok = false;
 
-  TextEditingController recipeCntrl = TextEditingController();
-  TextEditingController quantityCntrl = TextEditingController();
-  final TextEditingController _recipeIngridientsController =
-      TextEditingController();
-  final TextEditingController _recipeDescriptionController =
-      TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   var alertDialogMessage = '';
@@ -40,10 +34,6 @@ class _RecipeState extends State<Recipe> {
   void dispose() {
     // Clean up the controller when the widget is removed from the
     // widget tree.
-    recipeCntrl.dispose();
-    quantityCntrl.dispose();
-    _recipeIngridientsController.dispose();
-    _recipeDescriptionController.dispose();
 
     super.dispose();
   }
@@ -187,7 +177,7 @@ class _RecipeState extends State<Recipe> {
           });
         },
         title: 'Recipe Name*'.text.bodyText1(context).make(),
-        subtitle: tff(_recipeName, recipeCntrl, setState, context));
+        subtitle: tff('Recipe Name', _recipeName, context));
   }
 
   Widget recipeIngridients() {
@@ -199,8 +189,8 @@ class _RecipeState extends State<Recipe> {
         });
       },
       title: 'Recipe Ingridients'.text.bodyText1(context).make(),
-      subtitle: tff(_recipeIngridients,  _recipeIngridientsController,
-              setState, context,
+      subtitle: tff('Add ingridients',  _recipeIngridients,
+               context,
               maxlines: null, expands: true)
           .h(150),
     );
@@ -215,8 +205,8 @@ class _RecipeState extends State<Recipe> {
         });
       },
       title: 'Recipe description*'.text.bodyText1(context).make(),
-      subtitle: tff(_recipeDescription,  _recipeDescriptionController,
-              setState, context,
+      subtitle: tff('Add Description',  _recipeDescription,
+               context,
               maxlines: null, expands: true)
           .h(150),
     );
@@ -231,7 +221,7 @@ class _RecipeState extends State<Recipe> {
           });
         },
         title: 'Quantity'.text.bodyText1(context).make(),
-        subtitle: tff(_quantity,  quantityCntrl, setState, context));
+        subtitle: tff('quantity',  _quantity, context));
   }
 
   Widget session() {

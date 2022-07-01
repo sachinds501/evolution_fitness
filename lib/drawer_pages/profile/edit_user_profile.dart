@@ -98,7 +98,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                     color: Colors.black,
                   )).pOnly(right: 10),
         ],
-        data: '$_fname $_lname',
+        data: [_fname, _lname],
       ),
       body: SingleChildScrollView(
         child: Form(

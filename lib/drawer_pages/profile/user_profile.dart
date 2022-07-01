@@ -30,10 +30,7 @@ class _UserProfileState extends State<UserProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      appBar: myAppBar(
-        context,
-        "View Profile",
-      ),
+      appBar: myAppBar(context, "View Profile", data: [fname, lname]),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -58,12 +55,13 @@ class _UserProfileState extends State<UserProfile> {
                                 ));
                             // after the SecondScreen result comes back update the Text widget with it
                             setState(() {
-                              result == null ? null : fname = result.toString();
+                              result == null
+                                  ? null
+                                  : {
+                                      fname = result[0],
+                                      lname = result[1],
+                                    };
                             });
-
-                            // navigatorKey.currentState!.push(
-                            //   SizeTransition5(EditUserProfile()),
-                            // );
                           },
                           style: myButtonStyle(),
                           child:

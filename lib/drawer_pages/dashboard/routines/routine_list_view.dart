@@ -2,7 +2,7 @@ import 'package:evolution_fitness/main.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/blood_glucose.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/blood_pressure.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/exercise.dart';
-import 'package:evolution_fitness/drawer_pages/dashboard/routines/food.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/food/food.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/sleep.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/steps.dart';
 import 'package:evolution_fitness/drawer_pages/dashboard/routines/water.dart';

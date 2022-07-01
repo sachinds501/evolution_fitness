@@ -16,11 +16,27 @@ import 'package:evolution_fitness/pages/splashscreen.dart';
 import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../drawer_pages/user_progress.dart';
+import '../utils/user_simple_preferences.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   const MyDrawer({Key? key}) : super(key: key);
+
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  String fname = '';
+  String lname = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    fname = UserSimplePreferences.getFname() ?? ' ';
+    lname = UserSimplePreferences.getLname() ?? ' ';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +53,21 @@ class MyDrawer extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 child: Center(
                   child: ListTile(
-                    onTap: () {
-                      Navigator.push(context, SizeTransition5(UserProfile()));
+                    onTap: () async {
+                      final result = await Navigator.push(
+                          context,
+                          SizeTransition5(
+                            UserProfile(),
+                          ));
+                      // after the SecondScreen result comes back update the Text widget with it
+                      setState(() {
+                        result == null
+                            ? null
+                            : {
+                                fname = result[0],
+                                lname = result[1],
+                              };
+                      });
                     },
                     leading: CircleAvatar(
                       maxRadius: 28,
@@ -48,7 +77,7 @@ class MyDrawer extends StatelessWidget {
                         fit: BoxFit.fitWidth,
                       ),
                     ),
-                    title: 'Sachin Solanki'.text.bodyText1(context).make(),
+                    title: '$fname $lname'.text.bodyText1(context).make(),
                     subtitle:
                         'codesachin501@gmail.com'.text.caption(context).make(),
                   ),

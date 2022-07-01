@@ -1,3 +1,4 @@
+import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +13,11 @@ class Feeds extends StatefulWidget {
 }
 
 class _FeedsState extends State<Feeds> {
-  String name = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
+      floatingActionButton: myfloatingButton(context, 2, 'Diet'),
       backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(title: "Feeds".text.headline3(context).make(), actions: [
         IconButton(
@@ -27,20 +27,18 @@ class _FeedsState extends State<Feeds> {
                 icon: const Icon(CupertinoIcons.bell_fill))
             .pOnly(right: 5),
       ]),
-      body: ListView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          shrinkWrap: true,
-          children: [
-            // exerciseCard(),
-            for (int i = 0; i < 3; i++)
-              Column(
-                children: [
-                  foodCard().pOnly(bottom: 10),
-                  exerciseCard().pOnly(bottom: 10),
-                ],
-              )
-            // exerciseCard(),
-          ]).p16(),
+      body:
+          ListView(physics: const ScrollPhysics(), shrinkWrap: true, children: [
+        // exerciseCard(),
+        for (int i = 0; i < 3; i++)
+          Column(
+            children: [
+              foodCard().pOnly(bottom: 10),
+              exerciseCard().pOnly(bottom: 10),
+            ],
+          )
+        // exerciseCard(),
+      ]).p16(),
     );
   }
 
@@ -53,30 +51,27 @@ class _FeedsState extends State<Feeds> {
         children: [
           Image.asset(
             'assets/images/healthyfoods.jpg',
-            fit: BoxFit.fill,
-          ).h(220),
+            fit: BoxFit.cover,
+          ),
+          sh(20),
           feedFoodgrid(),
+          sh(20),
           Container(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextFormField(
-                  initialValue: name,
-                  onChanged: (String name) => this.name = name,
-                ),
                 '14-Days Clean-Eating Meal Plan'.text.size(16).make(),
                 'Eating clean is the great way to up your intake of good-for-you foods'
                     .text
                     .size(10)
                     .make(),
+                sh(10),
                 Container(
                   height: 40,
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
-                          onPressed: () async {
-                        
-                          },
+                          onPressed: () async {},
                           style: ButtonStyle(
                             elevation: MaterialStateProperty.all(0),
                             backgroundColor:
@@ -91,6 +86,7 @@ class _FeedsState extends State<Feeds> {
               ],
             ).pSymmetric(h: 16),
           ),
+          sh(10),
         ],
       ),
     ).cornerRadius(8).wFull(context);
@@ -127,7 +123,6 @@ class _FeedsState extends State<Feeds> {
                     .size(10)
                     .make(),
                 Container(
-                  height: 40,
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
                           onPressed: () {},
@@ -141,13 +136,14 @@ class _FeedsState extends State<Feeds> {
                           ),
                           child: 'VIEW MORE'.text.make())
                       .wh(110, 30),
-                )
+                ),
               ],
             ).pSymmetric(h: 16),
           ),
+          sh(20),
         ],
       ),
-    ).cornerRadius(8).h(490).wFull(context);
+    ).cornerRadius(8).wFull(context);
   }
 }
 

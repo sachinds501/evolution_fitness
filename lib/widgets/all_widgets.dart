@@ -1,4 +1,5 @@
 import 'package:evolution_fitness/drawer_pages/appointment/book_appointment.dart';
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/food/today_food.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:intl/intl.dart';
@@ -46,7 +47,9 @@ Widget myfloatingButton(BuildContext context, id, appBarTitle) {
             backgroundColor: Colors.orangeAccent,
             label: appBarTitle,
             // labelStyle: TextTheme(fontSize: 18.0),
-            onTap: () {}),
+            onTap: () {
+              Navigator.of(context).push(SizeTransition5(const TodayFood()));
+            }),
     ],
   );
 }
@@ -199,7 +202,7 @@ InputDecoration myUnderlineInputDec() {
 }
 
 AppBar myAppBar(BuildContext context, String title,
-    {List<Widget>? action = const [], String data = ''}) {
+    {List<Widget>? action = const [], List<String> data = const []}) {
   return AppBar(
     title: title.text.headline3(context).make(),
     actions: action,
@@ -236,7 +239,7 @@ class SizeTransition5 extends PageRouteBuilder {
         );
 }
 
-Widget tff(fieldValue, initialValue, setState, BuildContext context,
+Widget tff(fieldValue, initialValue, BuildContext context,
     {maxlines = 1, readOnly = false, expands = false, suffix = ''}) {
   return TextFormField(
     initialValue: initialValue,

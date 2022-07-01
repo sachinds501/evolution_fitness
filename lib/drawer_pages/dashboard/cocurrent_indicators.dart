@@ -13,13 +13,17 @@ class CocurrentCPI extends StatefulWidget {
 }
 
 class _CocurrentCPIState extends State<CocurrentCPI> {
-  double value = 0;
+  double rvalue = 0;
+  double bvalue = 0;
+  double gvalue = 0;
 
   @override
   void initState() {
     super.initState();
     setState(() {
-      value = 0;
+      rvalue = 0;
+      bvalue = 0;
+      gvalue = 0;
     });
     downloadData();
   }
@@ -29,70 +33,78 @@ class _CocurrentCPIState extends State<CocurrentCPI> {
     final bgcolor = Theme.of(context).canvasColor;
     // double value = widget.value;
 
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Positioned(
-          // top: 33,
-          // left: 33,
-          child: VxCircle(
-            radius: 190,
-            backgroundColor: Colors.transparent,
-            child: CircularProgressIndicator(
-                backgroundColor: bgcolor,
-                strokeWidth: 10,
-                color: Colors.redAccent,
-                value: 0.60),
-          ),
+    return Stack(alignment: Alignment.center, children: [
+      Positioned(
+        // top: 33,
+        // left: 33,
+        child: VxCircle(
+          radius: 190,
+          backgroundColor: Colors.transparent,
+          child: CircularProgressIndicator(
+              backgroundColor: bgcolor,
+              strokeWidth: 10,
+              color: Colors.redAccent,
+              value: rvalue),
         ),
-
-        Positioned(
-          // top: 17,
-          // left: 17,
-          child: VxCircle(
-            radius: 222,
-            backgroundColor: Colors.transparent,
-            child: CircularProgressIndicator(
-                backgroundColor: bgcolor,
-                strokeWidth: 10,
-                color: Colors.blueGrey,
-                value: 0.60),
-          ),
+      ),
+      Positioned(
+        // top: 17,
+        // left: 17,
+        child: VxCircle(
+          radius: 222,
+          backgroundColor: Colors.transparent,
+          child: CircularProgressIndicator(
+              backgroundColor: bgcolor,
+              strokeWidth: 10,
+              color: Colors.blueGrey,
+              value: gvalue),
         ),
-        Positioned(
-          // top: 48,
-          // left: 50,
-          child: CircleAvatar(
-            radius: 73,
-            backgroundColor: Colors.white,
-            child: Image.asset('assets/images/logo.jpg'),
-          ),
+      ),
+      Positioned(
+        // top: 48,
+        // left: 50,
+        child: CircleAvatar(
+          radius: 73,
+          backgroundColor: Colors.white,
+          child: Image.asset('assets/images/logo.jpg'),
         ),
-        Positioned(
-          // top: 5,
-          // left: 20,
-          child: VxCircle(
-            radius: 255,
-            backgroundColor: Colors.transparent,
-            child: CircularProgressIndicator(
-                backgroundColor: bgcolor,
-                strokeWidth: 10,
-                color: Colors.lightBlueAccent,
-                value: value),
-          ),
+      ),
+      Positioned(
+        // top: 5,
+        // left: 20,
+        child: VxCircle(
+          radius: 255,
+          backgroundColor: Colors.transparent,
+          child: CircularProgressIndicator(
+              backgroundColor: bgcolor,
+              strokeWidth: 10,
+              color: Colors.lightBlueAccent,
+              value: bvalue),
         ),
-      ]
-    );
+      ),
+    ]);
   }
 
   void downloadData() {
     Timer.periodic(const Duration(microseconds: 1000), (Timer timer) {
       setState(() {
-        if (value == 1) {
+        if (bvalue == 1) {
           timer.cancel();
-          value = 0;
+          bvalue = 0;
         } else {
-          value = value + 0.001;
+          bvalue = bvalue + 0.001;
+        }
+        if (gvalue == 0.1) {
+          timer.cancel();
+          gvalue = 0;
+        } else {
+          gvalue = gvalue + 0.001;
+        }
+        if (rvalue == 0.8) {
+          timer.cancel();
+          rvalue = 0;
+        } else {
+          rvalue = rvalue + 0.001;
         }
       });
     });

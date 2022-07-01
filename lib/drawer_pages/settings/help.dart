@@ -49,26 +49,18 @@ class _AddNewTicketState extends State<AddNewTicket> {
   bool _selectCheck = false;
   bool ok = false;
 
-  TextEditingController emailCntrl = TextEditingController();
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   var alertDialogMessage = 'select issue';
-  final String _phone = '92540 24221';
-  final String _email = 'sacihnds501@gmail.com';
-  final String _title = 'Title';
-  final String _description = 'Description';
+  final String _phone = '';
+  final String _email = '';
+  final String _title = '';
+  final String _description = '';
 
   @override
   void dispose() {
     // Clean up the controller when the widget is removed from the
     // widget tree.
-    emailCntrl.dispose();
-    _titleController.dispose();
-    _descriptionController.dispose();
-    phoneController.dispose();
     super.dispose();
   }
 
@@ -199,7 +191,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
           });
         },
         title: 'Contact Number*'.text.bodyText1(context).make(),
-        subtitle: tff(_phone, phoneController, setState, context));
+        subtitle: tff('Add phone no.', _phone, context));
   }
 
   Widget email() {
@@ -211,7 +203,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
           });
         },
         title: 'Email*'.text.bodyText1(context).make(),
-        subtitle: tff(_email, emailCntrl, setState, context));
+        subtitle: tff(_email, email, context));
   }
 
   Widget title() {
@@ -223,7 +215,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
         });
       },
       title: 'Title*'.text.bodyText1(context).make(),
-      subtitle: tff(_title, _titleController, setState, context),
+      subtitle: tff('Title', _title, context),
     );
   }
 
@@ -236,7 +228,7 @@ class _AddNewTicketState extends State<AddNewTicket> {
         });
       },
       title: 'Description*'.text.bodyText1(context).make(),
-      subtitle: tff(_description, _descriptionController, setState, context,
+      subtitle: tff('Description', _description, context,
               maxlines: null, expands: true)
           .h(150),
     );
