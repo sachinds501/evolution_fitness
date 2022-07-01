@@ -30,8 +30,23 @@ class _FoodRoutineState extends State<Steps> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      appBar: myAppBar(context, 'Steps'),
-      floatingActionButton: myfloatingButton(context, 1, appBarTitle),
+      appBar: myAppBar(
+        context,
+        'Steps',
+        action: [
+          IconButton(
+            icon: const Icon(Icons.check),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ).pOnly(right: 10)
+        ],
+      ),
+      floatingActionButton: myfloatingButton(
+        context,
+        1,
+        appBarTitle,
+      ),
       body: _isLoading
           ? const ViewAddRecord()
           : Container(

@@ -1,3 +1,4 @@
+import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -14,10 +15,7 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: "Notification".text.xl.bold.black.make(),
-      ),
+      appBar: myAppBar(context, 'Notification'),
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, value) => ListTile(

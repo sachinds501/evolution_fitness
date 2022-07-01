@@ -1,3 +1,5 @@
+import 'package:evolution_fitness/drawer_pages/dashboard/routines/food/today_food.dart';
+import 'package:evolution_fitness/drawer_pages/gym_exercise.dart';
 import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/cupertino.dart';
@@ -71,7 +73,10 @@ class _FeedsState extends State<Feeds> {
                   height: 40,
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
-                          onPressed: () async {},
+                          onPressed: () async {
+                            Navigator.of(context)
+                                .push(SizeTransition5(const TodayFood()));
+                          },
                           style: ButtonStyle(
                             elevation: MaterialStateProperty.all(0),
                             backgroundColor:
@@ -125,7 +130,10 @@ class _FeedsState extends State<Feeds> {
                 Container(
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context)
+                                .push(SizeTransition5(const GymExercise()));
+                          },
                           style: ButtonStyle(
                             elevation: MaterialStateProperty.all(0),
                             backgroundColor:

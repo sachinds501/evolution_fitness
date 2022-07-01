@@ -30,7 +30,18 @@ class _FoodRoutineState extends State<BloodGlucose> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      appBar: myAppBar(context, appBarTitle),
+      appBar: myAppBar(
+        context,
+        appBarTitle,
+        action: [
+          IconButton(
+            icon: const Icon(Icons.check),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ).pOnly(right: 10)
+        ],
+      ),
       floatingActionButton: myfloatingButton(context, 1, appBarTitle),
       body: _isLoading
           ? const ViewAddRecord()

@@ -29,8 +29,19 @@ class _FoodRoutineState extends State<BloodPressure> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      appBar: myAppBar(context, 'Blood Pressure'),
-      floatingActionButton: myfloatingButton(context, 2, 'Blood Pressure'),
+      appBar: myAppBar(
+        context,
+        'Blood Pressure',
+        action: [
+          IconButton(
+            icon: const Icon(Icons.check),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ).pOnly(right: 10)
+        ],
+      ),
+      floatingActionButton: myfloatingButton(context, 1, 'Blood Pressure'),
       body: _isLoading
           ? const ViewAddRecord()
           : Container(

@@ -59,7 +59,14 @@ class _GoalsState extends State<Goals> {
       appBar: myAppBar(
         context,
         'Goal',
-        action: [const Icon(Icons.check).pOnly(right: 10)],
+        action: [
+          IconButton(
+            icon: const Icon(Icons.check),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ).pOnly(right: 10)
+        ],
       ),
       body: Container(
         color: Colors.white,
