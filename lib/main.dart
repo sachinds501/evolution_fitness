@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.dashboardRoute,
+      initialRoute: MyRoutes.splashscreenRoute,
       routes: {
         MyRoutes.dashboardRoute: (context) => const Dashboard(),
         MyRoutes.splashscreenRoute: (context) => const AfterSplash(),
