@@ -44,7 +44,7 @@ class _CocurrentCPIState extends State<CocurrentCPI> {
               backgroundColor: bgcolor,
               strokeWidth: 10,
               color: Colors.redAccent,
-              value: rvalue),
+              value: 0.25),
         ),
       ),
       Positioned(
@@ -57,7 +57,7 @@ class _CocurrentCPIState extends State<CocurrentCPI> {
               backgroundColor: bgcolor,
               strokeWidth: 10,
               color: Colors.blueGrey,
-              value: gvalue),
+              value: 0.3),
         ),
       ),
       Positioned(
