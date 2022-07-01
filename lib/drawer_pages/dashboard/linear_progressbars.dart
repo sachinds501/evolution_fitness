@@ -60,7 +60,6 @@ class _SelectCardState extends State<SelectCard> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = (MediaQuery.of(context).size.width / 100);
 
     return Scaffold(
       backgroundColor: Colors.white,
