@@ -4,6 +4,7 @@ import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../widgets/all_widgets.dart';
 import '../widgets/shimmer_widget.dart';
 
 class ChatsPage extends StatefulWidget {
@@ -31,9 +32,7 @@ class _ChatsPageState extends State<ChatsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: 'Chats'.text.xl.black.bold.make(),
-      ),
+      appBar: myAppBar(context, 'Chats'),
       body: _isLoading
           ? ListView.builder(
               itemCount: 2,
@@ -43,7 +42,8 @@ class _ChatsPageState extends State<ChatsPage> {
           : ListTile(
               title: 'evolutionankleshwar'.text.make(),
               subtitle: 'Admin'.text.make(),
-              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8))),
               leading: Container(
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(10)),

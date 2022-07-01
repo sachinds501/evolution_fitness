@@ -1,3 +1,4 @@
+import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -14,9 +15,7 @@ class _ChangeUnitState extends State<ChangeUnit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: "Change Unit".text.headline3(context).make(),
-      ),
+      appBar: myAppBar(context, 'Change Unit'),
       body: Container(
         child: ListView(
           children: [

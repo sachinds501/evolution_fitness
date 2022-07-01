@@ -32,9 +32,7 @@ class _GymClassesState extends State<GymClasses> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: 'Gym Classes'.text.xl.black.bold.make(),
-      ),
+      appBar: myAppBar(context, 'Gym Classes'),
       body: Column(
         children: [
           Container(

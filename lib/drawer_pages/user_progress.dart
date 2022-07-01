@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../widgets/shimmer_widget.dart';
+import '../widgets/all_widgets.dart';
 
 class UserProgress extends StatefulWidget {
   const UserProgress({Key? key}) : super(key: key);
@@ -31,9 +32,7 @@ class _UserProgressState extends State<UserProgress> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: 'User Progress'.text.xl.black.bold.make(),
-      ),
+      appBar: myAppBar(context, 'User Progress'),
       backgroundColor: Theme.of(context).canvasColor,
       body: _isLoading
           ? ListView.builder(

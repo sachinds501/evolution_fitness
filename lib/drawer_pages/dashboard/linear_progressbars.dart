@@ -31,17 +31,20 @@ class Choice {
 
 const List<Choice> choices = <Choice>[
   Choice(
-      title: '140/550', caption: 'Burned', color: Colors.redAccent, value: 1),
+      title: '140/550',
+      caption: 'Burned',
+      color: Colors.redAccent,
+      value: 0.25),
   Choice(
       title: '841',
       caption: 'kCal Left',
       color: Colors.lightBlueAccent,
-      value: 1),
+      value: 0.7),
   Choice(
       title: '250 /1,191',
       caption: 'Consumed',
       color: Colors.blueGrey,
-      value: 0.4),
+      value: 0.3),
 ];
 
 class SelectCard extends StatefulWidget {
@@ -70,7 +73,6 @@ class _SelectCardState extends State<SelectCard> {
                 children: <Widget>[
                   widget.choice.title.text.xl.bold.make(),
                   SizedBox(
-                    width: screenWidth * 26,
                     child: LinearProgressIndicator(
                       color: widget.choice.color,
                       backgroundColor: Theme.of(context).canvasColor,

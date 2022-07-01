@@ -4,6 +4,7 @@ import 'package:evolution_fitness/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../widgets/all_widgets.dart';
 import '../widgets/shimmer_widget.dart';
 
 class Experts extends StatefulWidget {
@@ -35,9 +36,7 @@ class _ExpertsState extends State<Experts> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: 'Experts'.text.xl.black.bold.make(),
-      ),
+      appBar: myAppBar(context, 'Experts'),
       body: _isLoading
           ? ListView.builder(
               physics: const ScrollPhysics(),

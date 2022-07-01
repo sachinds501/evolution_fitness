@@ -31,9 +31,7 @@ class _GymExerciseState extends State<GymExercise> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: 'Gym Exercise'.text.xl.black.xl.bold.make(),
-      ),
+      appBar: myAppBar(context, 'Gym Exercise'),
       body: Column(
         children: [
           Container(

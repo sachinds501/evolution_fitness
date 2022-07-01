@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../widgets/all_widgets.dart';
+
 class TermsAndConditions extends StatefulWidget {
   const TermsAndConditions({Key? key}) : super(key: key);
 
@@ -26,9 +28,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: "Terms & Conditions".text.headline3(context).make(),
-      ),
+      appBar: myAppBar(context, 'Term and Conditions'),
       body: WebView(
         initialUrl: 'https://simplyloose.com/rules-regulation',
         zoomEnabled: true,
@@ -76,9 +76,7 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: "About us".text.headline3(context).make(),
-      ),
+      appBar: myAppBar(context, 'About Us'),
       body: WebView(
         initialUrl: 'https://simplyloose.com/aboutus',
         zoomEnabled: true,

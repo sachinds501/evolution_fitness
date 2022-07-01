@@ -112,8 +112,11 @@ class _FoodRoutineState extends State<SleepRoutine> {
                     onTap: () {
                       setState(() {});
                     },
-                    title:
-                        'Sleep'.text.bodyText1(context).red500.makeCentered(),
+                    title: 'Sleep today'
+                        .text
+                        .bodyText1(context)
+                        .red500
+                        .makeCentered(),
                     subtitle: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [

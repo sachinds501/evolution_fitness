@@ -73,7 +73,7 @@ class _FoodRoutineState extends State<BloodPressure> {
                     onTap: () {
                       setState(() {});
                     },
-                    title: 'Blood Pressure Level'
+                    title: 'Blood Pressure Level (mm Hg)'
                         .text
                         .bodyText1(context)
                         .red500

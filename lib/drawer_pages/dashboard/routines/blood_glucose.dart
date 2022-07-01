@@ -74,7 +74,7 @@ class _FoodRoutineState extends State<BloodGlucose> {
                     onTap: () {
                       setState(() {});
                     },
-                    title: 'Blood Sugar Level'
+                    title: 'Blood Sugar Level (mg/dl)'
                         .text
                         .bodyText1(context)
                         .orange500

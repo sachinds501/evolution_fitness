@@ -65,9 +65,7 @@ class _DiaryState extends State<Diary> {
 
     return Scaffold(
       drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: 'Diary'.text.xl.black.bold.make(),
-      ),
+      appBar: myAppBar(context, 'Diary'),
       // backgroundColor: Theme.of(context).canvasColor,
       body: _isLoading
           ? ListView.builder(

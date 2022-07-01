@@ -21,9 +21,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: 'Settings'.text.headline3(context).make(),
-      ),
+      appBar: myAppBar(context, 'Settings'),
       body: ListView.builder(
           shrinkWrap: true,
           physics: const AlwaysScrollableScrollPhysics(),

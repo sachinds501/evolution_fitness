@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:evolution_fitness/widgets/all_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,12 +33,10 @@ class _PasswordState extends State<Password> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          // centerTitle: true,
-          title: 'Change Password'.text.headline3(context).make(),
-          // iconTheme: IconTheme(),
-
-          actions: [
+        appBar: myAppBar(
+          context,
+          'Change Password',
+          action: [
             IconButton(
                     onPressed: () {
                       if (_formKey2.currentState!.validate()) {

@@ -59,26 +59,27 @@ class _ViewMoreContentState extends State<ViewMoreContent> {
                                   // height: 70,
                                   color: Colors.grey[50],
                                   child: RichText(
+                                      textAlign: TextAlign.center,
                                       text: TextSpan(children: const [
-                                    TextSpan(
-                                        text: "Consumed\n",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black,
-                                            fontSize: 17)),
-                                    TextSpan(
-                                        text: "      0\n",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.blue,
-                                            fontSize: 22)),
-                                    TextSpan(
-                                        text: "  Calories",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black,
-                                            fontSize: 17))
-                                  ])),
+                                        TextSpan(
+                                            text: "Consumed\n",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black,
+                                                fontSize: 17)),
+                                        TextSpan(
+                                            text: "10\n",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.blue,
+                                                fontSize: 22)),
+                                        TextSpan(
+                                            text: "Calories",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black,
+                                                fontSize: 17))
+                                      ])),
                                 ),
                               ),
                               Flexible(
@@ -88,26 +89,27 @@ class _ViewMoreContentState extends State<ViewMoreContent> {
                                   // height: 70,
                                   color: Colors.grey[50],
                                   child: RichText(
+                                      textAlign: TextAlign.center,
                                       text: TextSpan(children: const [
-                                    TextSpan(
-                                        text: "Remaining\n",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black,
-                                            fontSize: 17)),
-                                    TextSpan(
-                                        text: "      0\n",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.blue,
-                                            fontSize: 22)),
-                                    TextSpan(
-                                        text: "  Calories",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black,
-                                            fontSize: 17))
-                                  ])),
+                                        TextSpan(
+                                            text: "Remaining\n",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black,
+                                                fontSize: 17)),
+                                        TextSpan(
+                                            text: "243\n",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.blue,
+                                                fontSize: 22)),
+                                        TextSpan(
+                                            text: "Calories",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black,
+                                                fontSize: 17))
+                                      ])),
                                 ),
                               ),
                             ],
