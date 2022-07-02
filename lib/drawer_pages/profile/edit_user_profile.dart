@@ -26,18 +26,17 @@ class _EditUserProfileState extends State<EditUserProfile> {
   bool? readOnly;
   String _fname = '';
   String _lname = '';
-  String _phone = '92540 24221';
+  final String _phone = '92540 24221';
   final String _feet = '5';
   final String _inch = '10';
   final String _weight = '60';
-
   final _formKey3 = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    _fname = UserSimplePreferences.getFname()!;
-    _lname = UserSimplePreferences.getLname()!;
+    _fname = UserSimplePreferences.getFname() ?? ' ';
+    _lname = UserSimplePreferences.getLname() ?? ' ';
     setState(() {
       readOnly = false;
     });
@@ -86,16 +85,12 @@ class _EditUserProfileState extends State<EditUserProfile> {
                   child: "Edit".text.red500.bold.make())
               : IconButton(
                   onPressed: () async {
-                    if (_formKey3.currentState!.validate()) {
-                      await UserSimplePreferences.setFname(_fname);
-                      UserSimplePreferences.setLname(_lname);
-                      _formKey3.currentState!.save();
-                      setState(() {
-                        readOnly = true;
-                      });
-                    } else {
-                      snackMessage('Enter a valid Mobile no. of 10 digits');
-                    }
+                    await UserSimplePreferences.setFname(_fname);
+                    UserSimplePreferences.setLname(_lname);
+                    _formKey3.currentState!.save();
+                    setState(() {
+                      readOnly = true;
+                    });
                   },
                   icon: Icon(
                     Icons.check,
@@ -217,6 +212,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                 SizedBox(
                   height: 15,
                 ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -315,23 +311,15 @@ class _EditUserProfileState extends State<EditUserProfile> {
 
   Widget phoneNo() {
     return ListTile(
-      contentPadding: EdgeInsets.zero,
-      onTap: () {
-        setState(() {
-          readOnly = true;
-        });
-      },
-      title: 'Contact Number*'.text.bodyText1(context).make(),
-      subtitle: textformfield(
-        'Enter your phone no.',
-        _phone,
-        context,
-        readOnly: readOnly,
-        index: 2,
-        validationCondition:
-            (_phone.isNumber() && _phone.length == 10 && _phone.isNotEmpty),
-      ),
-    );
+        contentPadding: EdgeInsets.zero,
+        onTap: () {
+          setState(() {
+            readOnly = true;
+          });
+        },
+        title: 'Contact Number*'.text.bodyText1(context).make(),
+        subtitle: textformfield('Enter your phone no.', _phone, context,
+            readOnly: readOnly));
   }
 
   Widget lastName() {
@@ -393,41 +381,19 @@ class _EditUserProfileState extends State<EditUserProfile> {
   }
 
   Widget textformfield(fieldValue, initialValue, BuildContext context,
-      {maxlines = 1,
-      readOnly = false,
-      suffix = '',
-      index = 3,
-      validationCondition = ''}) {
+      {maxlines = 1, readOnly = false, suffix = '', index = 3}) {
     return TextFormField(
-      initialValue: initialValue,
-      readOnly: readOnly == true ? true : false,
-      cursorColor: Theme.of(context).colorScheme.secondary,
-      cursorHeight: 30,
-      cursorWidth: 3,
-      style: const TextStyle(fontSize: 14),
-      decoration: myInputDecoration(fieldValue, suffix),
-      maxLines: maxlines,
-      onChanged: (name) {
-        if (index == 0) _fname = name;
-        if (index == 1) _lname = name;
-        if (index == 2) _phone = name;
-      },
-      validator: (value) {
-        if (value!.isNotEmpty &&
-            value.length == 10 &&
-            value.isNumber() == true) {
-          _formKey3.currentState?.save();
-        }
-        return null;
-      },
-    ).h(40).pOnly(top: 5);
-  }
-
-  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> snackMessage(
-      String str) {
-    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(str),
-      duration: Duration(seconds: 1),
-    ));
+        initialValue: initialValue,
+        readOnly: readOnly == true ? true : false,
+        cursorColor: Theme.of(context).colorScheme.secondary,
+        cursorHeight: 30,
+        cursorWidth: 3,
+        style: const TextStyle(fontSize: 14),
+        decoration: myInputDecoration(fieldValue, suffix),
+        maxLines: maxlines,
+        onChanged: (String name) {
+          if (index == 0) _fname = name;
+          if (index == 1) _lname = name;
+        }).h(40).pOnly(top: 5);
   }
 }
