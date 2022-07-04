@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'dart:io';
 
 import 'package:evolution_fitness/widgets/all_widgets.dart';
@@ -7,14 +9,16 @@ import 'package:image_picker/image_picker.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Recipe extends StatefulWidget {
-  const Recipe({Key? key}) : super(key: key);
-
+  const Recipe({Key? key, this.photo, this.title}) : super(key: key);
+  final photo;
+  final title;
   @override
   State<Recipe> createState() => _RecipeState();
 }
 
 class _RecipeState extends State<Recipe> {
   XFile? _imageFile;
+  var image;
   String? url;
   bool readOnly = false;
   int _selectSession = 0;
@@ -25,10 +29,20 @@ class _RecipeState extends State<Recipe> {
 
   var alertDialogMessage = '';
   var alertDialogMessage2 = '';
-  final String _recipeName = 'Fried Rice';
+  String _recipeName = 'Fried Rice';
   final String _quantity = 'Quantity';
   final String _recipeIngridients = 'Add Ingridients';
   final String _recipeDescription = 'Add Recipe Description';
+
+  @override
+  void initState() {
+    if (widget.photo != null && widget.title != null) {
+      image = widget.photo;
+      _recipeName = widget.title;
+    }
+
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -114,25 +128,31 @@ class _RecipeState extends State<Recipe> {
                 const HeightBox(5),
                 Stack(
                   children: [
-                    Card(
-                      child: _imageFile == null
-                          ? const Placeholder(
-                              color: Colors.white,
-                            ).wh(1, 1)
-                          : Image.file(File(_imageFile!.path)),
-                    ).cornerRadius(5),
-                    if (_imageFile != null)
+                    if (image != null)
+                      Image.asset(widget.photo)
+                    else
+                      Card(
+                        child: _imageFile == null
+                            ? const Placeholder(
+                                color: Colors.white,
+                              ).wh(1, 1)
+                            : Image.file(File(_imageFile!.path)),
+                      ).cornerRadius(5),
+                    if (_imageFile != null || image != null)
                       Positioned(
-                          child: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _imageFile = null;
-                                });
-                              },
-                              icon: const Icon(
-                                Icons.remove_circle,
-                                color: Colors.red,
-                              )))
+                        child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _imageFile = null;
+                              image = null;
+                            });
+                          },
+                          icon: const Icon(
+                            Icons.remove_circle,
+                            color: Colors.red,
+                          ),
+                        ),
+                      )
                   ],
                 ),
                 const HeightBox(10),
@@ -189,8 +209,7 @@ class _RecipeState extends State<Recipe> {
         });
       },
       title: 'Recipe Ingridients'.text.bodyText1(context).make(),
-      subtitle: tff('Add ingridients',  _recipeIngridients,
-               context,
+      subtitle: tff('Add ingridients', _recipeIngridients, context,
               maxlines: null, expands: true)
           .h(150),
     );
@@ -205,8 +224,7 @@ class _RecipeState extends State<Recipe> {
         });
       },
       title: 'Recipe description*'.text.bodyText1(context).make(),
-      subtitle: tff('Add Description',  _recipeDescription,
-               context,
+      subtitle: tff('Add Description', _recipeDescription, context,
               maxlines: null, expands: true)
           .h(150),
     );
@@ -221,7 +239,7 @@ class _RecipeState extends State<Recipe> {
           });
         },
         title: 'Quantity'.text.bodyText1(context).make(),
-        subtitle: tff('quantity',  _quantity, context));
+        subtitle: tff('quantity', _quantity, context));
   }
 
   Widget session() {

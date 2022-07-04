@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_typing_uninitialized_variables
 
 import 'package:evolution_fitness/drawer_pages/photo_tracking/add_recipe.dart';
 import 'package:evolution_fitness/widgets/all_widgets.dart';
@@ -32,33 +32,67 @@ class _PhotoTrackingState extends State<PhotoTracking> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const MyDrawer(),
-      backgroundColor: Theme.of(context).canvasColor,
-      appBar: AppBar(
-        title: "PhotoTracking".text.headline3(context).make(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: 'Add food',
-        backgroundColor: Colors.redAccent,
-        onPressed: () {
-          Navigator.of(context).push(SizeTransition5(const Recipe()));
-        },
-        child: const Icon(
-          Icons.food_bank,
+        drawer: const MyDrawer(),
+        backgroundColor: Theme.of(context).canvasColor,
+        appBar: AppBar(
+          title: "PhotoTracking".text.headline3(context).make(),
         ),
-      ),
-      body: _isLoading
-          ? ListView.builder(
-              itemCount: 2,
-              itemBuilder: (context, index) {
-                return buildPhotoTrackinghimmer();
-              }).pOnly(top: 16, left: 16, right: 16)
-          : Container(
-              color: Colors.white,
-              child: "No Recepie Available".text.make(),
-            ).wFull(context).p16(),
-    );
+        floatingActionButton: ElevatedButton(
+          style: myButtonStyle(),
+          onPressed: () {
+            Navigator.of(context).push(SizeTransition5(const Recipe()));
+          },
+          child: 'Add food'.text.black.make(),
+        ).objectBottomCenter(widthFactor: 3.35),
+        body: _isLoading
+            ? ListView.builder(
+                itemCount: 2,
+                itemBuilder: (context, index) {
+                  return buildPhotoTrackinghimmer();
+                }).pOnly(top: 16, left: 16, right: 16)
+            : ListView.separated(
+                separatorBuilder: (BuildContext context, index) =>
+                    const Padding(
+                  padding: EdgeInsets.only(bottom: 5),
+                ),
+                itemCount: 2,
+                itemBuilder: ((context, index) => Card(
+                      color: Colors.white,
+                      elevation: 3,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(SizeTransition5(
+                            Recipe(
+                                photo: foodPhoto[index],
+                                title: foodItem[index]),
+                          ));
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              foodPhoto[index],
+                              height: 200,
+                              width: MediaQuery.of(context).size.width,
+                              fit: BoxFit.cover,
+                            ).centered(),
+                            foodItem[index].text.xl.blue500.make().p12(),
+                          ],
+                        ).cornerRadius(5),
+                      ),
+                    ).pOnly(bottom: 5)),
+              ).p16().wFull(context));
   }
+
+  List<String> foodPhoto = <String>[
+    'assets/images/vegetable_soup.jpg',
+    'assets/images/fruit_salad.jpg',
+  ];
+  List<String> foodItem = <String>[
+    'Vegetable Soup',
+    'Fruit Salad',
+  ];
 
   Widget buildPhotoTrackinghimmer() {
     final screenHeight = (MediaQuery.of(context).size.height / 100);

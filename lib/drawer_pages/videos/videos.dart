@@ -23,7 +23,9 @@ class _VideosState extends State<Videos> {
     String query = "Athlean X";
     videoResult = await youtube.search(query, order: 'relevance');
     videoResult = await youtube.nextPage();
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
